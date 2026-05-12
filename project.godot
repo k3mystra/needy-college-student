@@ -35,6 +35,7 @@ enabled=PackedStringArray("res://addons/_Godot-IDE_/plugin.cfg")
 
 folder_colors={
 "res://addons/_Godot-IDE_/plugins": "blue",
+"res://addons/_Godot-IDE_/plugins/": "blue",
 "res://addons/_Godot-IDE_/shared_resources/": "teal"
 }
 
