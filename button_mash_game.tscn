@@ -8,6 +8,7 @@
 [node name="ButtonMashGame" type="Node2D" unique_id=1187036442]
 script = ExtResource("1_yoxds")
 cooldown = 0.6
+spam_cooldown = 0.5
 timer = 2.0
 x_range = 275.0
 y_range = 180.0
@@ -35,3 +36,5 @@ theme_override_fonts/font = SubResource("FontVariation_poley")
 theme_override_font_sizes/font_size = 100
 text = "T"
 horizontal_alignment = 1
+
+[node name="spawn" type="Node2D" parent="." unique_id=1253321267]

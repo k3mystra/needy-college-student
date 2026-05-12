@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var cooldown: float
+@export var spam_cooldown : float
 @export var timer: float
 @export var x_range : float
 @export var y_range : float
@@ -14,8 +15,11 @@ var anim_timer = 0.8
 var circleColor = 0
 var prevtimer = 0.0
 var prevcooldown = 0.0
+var prevspamcooldown = 0.0
 var selected_word : String
 
+
+var button_spam = preload("res://button_spam.tscn")
 
 func _ready() -> void:
 	circle.self_modulate = Color("00ff00")
@@ -24,6 +28,7 @@ func _ready() -> void:
 	print (letter_amount)
 	prevtimer = timer
 	prevcooldown = cooldown
+	prevspamcooldown = spam_cooldown
 
 func _process(delta: float) -> void:
 	if allow_count:
@@ -43,6 +48,24 @@ func _process(delta: float) -> void:
 		2: circle.self_modulate = Color("ffff00")
 		3: circle.self_modulate = Color("ff8900")
 		4: circle.self_modulate = Color("e3000d")
+		
+
+	spam_cooldown -= 1 * delta
+	if spam_cooldown < 0:
+		if Global.total_button_spam < 4:
+			_spawn_spam()
+			spam_cooldown = prevspamcooldown
+		else:
+			spam_cooldown = prevspamcooldown
+
+
+func _spawn_spam():
+	var spawnpoint = $spawn
+	spawnpoint.global_position = Vector2(randf_range(-650, 650), randf_range(-350, 350))
+	var button = button_spam.instantiate()
+	button.global_position = spawnpoint.global_position
+	get_parent().add_child(button)
+
 
 func _start():
 	allow_count = false
