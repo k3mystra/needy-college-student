@@ -9,10 +9,11 @@
 [node name="ButtonMashGame" type="Node2D" unique_id=1187036442]
 script = ExtResource("1_yoxds")
 cooldown = 1.0
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1709048721]
+x_range = 275.0
+y_range = 180.0
 
 [node name="WordHolder" type="Sprite2D" parent="." unique_id=200945918]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_wboi5")
 
 [node name="WordHolderCircle" type="Sprite2D" parent="WordHolder" unique_id=911656915]
