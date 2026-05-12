@@ -14,7 +14,13 @@ func _ready() -> void:
 	monitor_y_range.x = monitor_bottom_right.position.y
 	monitor_y_range.y = monitor_upper_right.position.y
 	
+	var random_position : Vector2 = choose_rand_position() 
+	print(str(random_position.x) + " " + str(random_position.y))
+	
+func choose_rand_position() -> Vector2:
 	var random_x = randf_range(monitor_x_range.x, monitor_x_range.y)
 	var random_y = randf_range(monitor_y_range.x, monitor_y_range.y)
+	return Vector2(random_x,random_y)		
 	
-	print(str(random_x) + " " + str(random_y))
+func _process(delta: float) -> void:
+	pass
