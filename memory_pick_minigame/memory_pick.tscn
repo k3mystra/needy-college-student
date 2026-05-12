@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dxtneicd1ti3h"]
+
+[ext_resource type="Texture2D" uid="uid://bisg56bicpi82" path="res://memory_pick_minigame/white-square.png" id="1_pyxjy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lndx"]
+size = Vector2(100, 100)
+
+[node name="MemoryPick" type="Node" unique_id=1005337355]
+
+[node name="Memory" type="CharacterBody2D" parent="." unique_id=1757956081]
+position = Vector2(423.99994, 264)
+scale = Vector2(1.0087293, 1.022573)
+
+[node name="Sprite" type="Sprite2D" parent="Memory" unique_id=844501846]
+position = Vector2(7.915497e-05, -1.1444092e-05)
+scale = Vector2(6.0886846, 3.6041596)
+texture = ExtResource("1_pyxjy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Memory" unique_id=1276315604]
+shape = SubResource("RectangleShape2D_4lndx")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1666907676]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=1477059061]
+offset_left = 896.0
+offset_right = 1024.0
+offset_bottom = 648.0
+alignment = 1
+
+[node name="DiscardBtn" type="Button" parent="UI/VBoxContainer" unique_id=570542455]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Discard"
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer" unique_id=1448621850]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="KeepBtn" type="Button" parent="UI/VBoxContainer/MarginContainer" unique_id=1474327106]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Keep"
