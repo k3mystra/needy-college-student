@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0iqjy8uxd7ch"
-path="res://.godot/imported/wordholdercircle.png-8c9204e4ddaa41715c285d269fa8e755.ctex"
+uid="uid://qlf7ca7tjgsw"
+path="res://.godot/imported/wordholderblank.png-39814159aa77da7225f178c5b030aa2b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://placeholder/wordholdercircle.png"
-dest_files=["res://.godot/imported/wordholdercircle.png-8c9204e4ddaa41715c285d269fa8e755.ctex"]
+source_file="res://placeholder/wordholderblank.png"
+dest_files=["res://.godot/imported/wordholderblank.png-39814159aa77da7225f178c5b030aa2b.ctex"]
 
 [params]
 
