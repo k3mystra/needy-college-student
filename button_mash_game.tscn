@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dgtk7ho5e4h88"]
+
+[ext_resource type="Script" uid="uid://6l4umri3nlpe" path="res://button_mash_game.gd" id="1_yoxds"]
+[ext_resource type="Texture2D" uid="uid://c2181oy0hwqc8" path="res://placeholder/wordholder.png" id="2_wboi5"]
+[ext_resource type="Texture2D" uid="uid://d0iqjy8uxd7ch" path="res://placeholder/wordholdercircle.png" id="3_w5tor"]
+
+[sub_resource type="FontVariation" id="FontVariation_poley"]
+
+[node name="ButtonMashGame" type="Node2D" unique_id=1187036442]
+script = ExtResource("1_yoxds")
+cooldown = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1709048721]
+
+[node name="WordHolder" type="Sprite2D" parent="." unique_id=200945918]
+texture = ExtResource("2_wboi5")
+
+[node name="WordHolderCircle" type="Sprite2D" parent="WordHolder" unique_id=911656915]
+texture = ExtResource("3_w5tor")
+
+[node name="Word" type="Label" parent="WordHolder" unique_id=1678596821]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -127.5
+offset_right = -76.0
+offset_bottom = -64.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_poley")
+theme_override_font_sizes/font_size = 100
+text = "T"
+horizontal_alignment = 1
