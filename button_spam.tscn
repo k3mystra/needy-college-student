@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dib3i6nrc65tw"]
+
+[ext_resource type="Script" uid="uid://chuumegaat2fo" path="res://button_spam.gd" id="1_km3y2"]
+[ext_resource type="Texture2D" uid="uid://qlf7ca7tjgsw" path="res://placeholder/wordholderblank.png" id="2_k8knq"]
+
+[node name="button_spam" type="Node2D" unique_id=614955222]
+position = Vector2(525, 331)
+script = ExtResource("1_km3y2")
+max_size = 3.0
+
+[node name="resize" type="StaticBody2D" parent="." unique_id=1365346980]
+scale = Vector2(0.5, 0.5)
+
+[node name="Button" type="Button" parent="resize" unique_id=1446274529]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("2_k8knq")
+flat = true
+
+[connection signal="pressed" from="resize/Button" to="." method="_on_button_pressed"]
