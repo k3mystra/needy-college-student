@@ -5,10 +5,10 @@
 [node name="MiniGameManager" type="Node2D" unique_id=906977319]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=873118765]
-z_index = -1
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(47.96, 27.32)
+mouse_filter = 2
 color = Color(0.5936789, 0.5936789, 0.5936789, 1)
 
 [node name="Monitor" parent="." unique_id=1322128148 instance=ExtResource("1_h2i6g")]

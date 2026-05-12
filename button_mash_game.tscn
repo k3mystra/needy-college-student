@@ -12,6 +12,7 @@ spam_cooldown = 0.5
 timer = 2.0
 x_range = 275.0
 y_range = 180.0
+metadata/_edit_group_ = true
 
 [node name="WordHolder" type="Sprite2D" parent="." unique_id=200945918]
 self_modulate = Color(1, 0.5372549, 0, 1)

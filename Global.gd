@@ -1,3 +1,3 @@
 # Global.gd
 extends Node
-var total_button_spam = 0
+var total_button_spam = 4
