@@ -57,7 +57,6 @@ func _process(delta: float) -> void:
 		2: circle.self_modulate = Color("ffff00")
 		3: circle.self_modulate = Color("ff8900")
 		4: circle.self_modulate = Color("e3000d")
-		
 
 	spam_cooldown -= 1 * delta
 	if spam_cooldown < 0:
@@ -106,8 +105,6 @@ func _input(event: InputEvent) -> void:
 				_slider_damage(10)
 				timer -= 0.5
 				print ("OOPS")
-	else:
-		pass
 
 func _resultcheck(result: bool):
 	circle.hide()
@@ -127,7 +124,7 @@ func _resultcheck(result: bool):
 func _animation():
 	circle.global_position.x = prevpos.x + randf_range(-6, 6)
 	circle.global_position.y = prevpos.y + randf_range(-6, 6)
-	circle.rotation_degrees = 0 + randf_range(-15, 15)
+	circle.rotation_degrees = randf_range(-15, 15)
 
 func _slider_damage(value: float):
 	slider.value += value
@@ -139,7 +136,7 @@ func _slider_damage(value: float):
 		value -= 3
 		await get_tree().create_timer(0.05).timeout
 	sliderholder.global_position = prevsliderpos
-	sliderholder.rotation_degrees = 0
+	sliderholder.rotation_degrees /= 2
 
 
 func _buttonspamW():
