@@ -12,7 +12,7 @@ extends Node2D
 @onready var slider = $sliderholder/HSlider
 @onready var sliderholder = $sliderholder
 
-var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x"]
+var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x", "c"]
 var letter_amount : int
 var allow_count = true
 var prevpos : Vector2
@@ -114,14 +114,14 @@ func _resultcheck(result: bool):
 	if result:
 		_slider_damage(-10)
 		allow_count = true
-		timer = prevtimer
+		timer = prevtimer - 0.65
 		cooldown = prevcooldown
 		print ("GOOD EVERYTHING IS GOOD")
 	else:
 		_slider_damage(25)
 		allow_count = true
 		timer = prevtimer
-		cooldown = prevcooldown + randf_range(-0.3, 0.3)
+		cooldown = prevcooldown + randf_range(-0.4, 0)
 		print ("NO BUTTON PRESSED AND RAN OUT OF TIME")
 
 func _animation():
@@ -133,7 +133,7 @@ func _slider_damage(value: float):
 	slider.value += value
 	while value > 0:
 		sliderholder.global_position = prevsliderpos
-		sliderholder.global_position += Vector2(randf_range(-25, 25), randf_range(-25, 25))
+		sliderholder.global_position += Vector2(randf_range(-35, 35), randf_range(-35, 35))
 		sliderholder.rotation_degrees = 0
 		sliderholder.rotation_degrees += randf_range(-8, 8)
 		value -= 3
