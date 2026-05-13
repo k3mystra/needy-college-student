@@ -11,9 +11,28 @@ config_version=5
 [application]
 
 config/name="Kind"
-run/main_scene="uid://dxtneicd1ti3h"
+run/main_scene="uid://ooqmm5rd26wm"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=960
+window/size/window_height_override=540
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/_Godot-IDE_/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/_Godot-IDE_/plugins": "blue",
+"res://addons/_Godot-IDE_/shared_resources/": "teal"
+}
 
 [physics]
 

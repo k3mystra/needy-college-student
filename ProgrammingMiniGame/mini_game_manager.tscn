@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ooqmm5rd26wm"]
+
+[ext_resource type="PackedScene" uid="uid://hnydpv58p0ji" path="res://ProgrammingMiniGame/monitor.tscn" id="1_h2i6g"]
+
+[node name="MiniGameManager" type="Node2D" unique_id=906977319]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=873118765]
+z_index = -1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(47.96, 27.32)
+color = Color(0.5936789, 0.5936789, 0.5936789, 1)
+
+[node name="Monitor" parent="." unique_id=1322128148 instance=ExtResource("1_h2i6g")]
+position = Vector2(960, 540)

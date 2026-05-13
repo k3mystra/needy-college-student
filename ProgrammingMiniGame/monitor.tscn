@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://hnydpv58p0ji"]
+
+[ext_resource type="Texture2D" uid="uid://btbk1kect2kev" path="res://ProgrammingMiniGame/Monitor-export.png" id="1_gvc8r"]
+[ext_resource type="Script" uid="uid://b2l28b63cdvwg" path="res://ProgrammingMiniGame/monitor.gd" id="1_stov2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_stov2"]
+
+[node name="Monitor" type="Node2D" unique_id=1322128148]
+script = ExtResource("1_stov2")
+
+[node name="MonitorPNG" type="Sprite2D" parent="." unique_id=1367352235]
+scale = Vector2(2, 2)
+texture = ExtResource("1_gvc8r")
+metadata/_edit_group_ = true
+
+[node name="ScreenBottomLeft" type="Marker2D" parent="MonitorPNG" unique_id=1502639154]
+position = Vector2(-245, 134)
+scale = Vector2(0.5, 0.5)
+
+[node name="ScreenBottomRight" type="Marker2D" parent="MonitorPNG" unique_id=2113151344]
+position = Vector2(260.5, 134)
+scale = Vector2(0.5, 0.5)
+
+[node name="ScreenUpperRight" type="Marker2D" parent="MonitorPNG" unique_id=1578859280]
+position = Vector2(260.5, -175)
+scale = Vector2(0.5, 0.5)
+
+[node name="AllBugs" type="Node" parent="." unique_id=1001844569]
+
+[node name="Bug" type="Node2D" parent="AllBugs" unique_id=285792610]
+
+[node name="Area2D" type="Area2D" parent="AllBugs/Bug" unique_id=1846032706]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AllBugs/Bug/Area2D" unique_id=950362714]
+shape = SubResource("CircleShape2D_stov2")
