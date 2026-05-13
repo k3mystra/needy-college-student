@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://5pbgdqctex1l"]
+
+[ext_resource type="Script" uid="uid://bkevcshyusnpx" path="res://DrivingMiniGame/car_dashboard.gd" id="1_d7gq5"]
+[ext_resource type="Texture2D" uid="uid://dx8xi2no13st1" path="res://DrivingMiniGame/CarDashboardPlaceholder.png" id="2_jaalo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hgjn"]
+size = Vector2(26.139618, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jaalo"]
+size = Vector2(241, 148.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55fhc"]
+size = Vector2(217, 146)
+
+[node name="CarDashboard" type="CharacterBody2D" unique_id=624995954]
+script = ExtResource("1_d7gq5")
+
+[node name="CarDashboardPlaceholder" type="Sprite2D" parent="." unique_id=1380996085]
+position = Vector2(1145.0001, 503)
+rotation = 3.1415927
+scale = Vector2(0.61755174, -0.46062022)
+texture = ExtResource("2_jaalo")
+
+[node name="CarWidthCollider" type="CollisionShape2D" parent="." unique_id=2068832888]
+position = Vector2(1144.405, 1002.99994)
+scale = Vector2(59.419, 7.4)
+shape = SubResource("RectangleShape2D_5hgjn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=587969635]
+
+[node name="LeftWheelCollider" type="CollisionShape2D" parent="Area2D" unique_id=1423224965]
+position = Vector2(490, 1004.25)
+shape = SubResource("RectangleShape2D_jaalo")
+
+[node name="RightWheelCollider" type="CollisionShape2D" parent="Area2D" unique_id=946337406]
+position = Vector2(1661.5, 1005)
+shape = SubResource("RectangleShape2D_55fhc")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
