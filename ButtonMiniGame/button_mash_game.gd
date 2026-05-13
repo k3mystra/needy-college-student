@@ -13,6 +13,7 @@ extends Node2D
 @onready var sliderholder = $sliderholder
 @onready var clock = $AudioStreamPlayer2D
 @onready var bloodParticle = $sliderholder/HSlider/blood
+@onready var particle = $CPUParticles2D
 
 var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x", "c"]
 var letter_amount : int
@@ -83,6 +84,7 @@ func _process(delta: float) -> void:
 				button_spam_limit += 1 
 			spam_cooldown = prevspamcooldown + randf_range(-0.4, 0)
 	_border()
+	_follow_word()
 
 
 func _spawn_spam():
@@ -129,14 +131,14 @@ func _resultcheck(result: bool):
 		_slider_damage(-10)
 		allow_count = true
 		timer = prevtimer - 0.65
-		cooldown = prevcooldown
+		cooldown = prevcooldown + randf_range(-0.35, 0.2)
 		print ("GOOD EVERYTHING IS GOOD")
 	else:
 		play_sound(bell, 1, 3)
 		_slider_damage(45)
 		allow_count = true
 		timer = prevtimer
-		cooldown = prevcooldown + randf_range(-0.4, 0)
+		cooldown = prevcooldown + randf_range(-0.5, 0)
 		print ("NO BUTTON PRESSED AND RAN OUT OF TIME")
 
 func _animation():
@@ -144,7 +146,7 @@ func _animation():
 	circle.global_position.y = prevpos.y + randf_range(-6, 6)
 	circle.rotation_degrees = randf_range(-15, 15)
 
-func _slider_damage(value: float):
+func _slider_damage(value: float): # somehow make the bar slowly stop vibrating  
 	if value > 0:
 		play_sound(glass, 1, 6)
 		bloodParticle.emitting = true
@@ -157,7 +159,7 @@ func _slider_damage(value: float):
 		value -= 3
 		await get_tree().create_timer(0.05).timeout
 	sliderholder.global_position = prevsliderpos
-	sliderholder.rotation_degrees /= 2
+	sliderholder.rotation_degrees /= 1.3
 
 func play_sound (stream: AudioStream, pitch: float, volume: float): # YOU CAN JUST COPY AND PASTE THIS
 	var p = AudioStreamPlayer2D.new() # make new audioplayer
@@ -183,3 +185,6 @@ func _buttonspamW():
 func _buttonspamL():
 	bloodParticle.emitting = true
 	_slider_damage(20)
+
+func _follow_word():
+	particle.global_position = circle.global_position

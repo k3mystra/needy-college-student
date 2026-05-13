@@ -7,9 +7,6 @@
 
 [sub_resource type="FontVariation" id="FontVariation_poley"]
 
-[sub_resource type="Gradient" id="Gradient_7810j"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
 [sub_resource type="ImageTexture" id="ImageTexture_4wmo7"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_h0o0h"]
@@ -38,6 +35,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 metadata/_snap_count = 2
+
+[sub_resource type="Gradient" id="Gradient_7810j"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [node name="ButtonMashGame" type="Node2D" unique_id=1187036442]
 script = ExtResource("1_yoxds")
@@ -72,27 +72,6 @@ theme_override_fonts/font = SubResource("FontVariation_poley")
 theme_override_font_sizes/font_size = 100
 text = "T"
 horizontal_alignment = 1
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="WordHolder" unique_id=1816945181]
-z_index = -1
-amount = 55
-texture = ExtResource("3_h0o0h")
-lifetime = 2.0
-preprocess = 1.61
-randomness = 0.27
-lifetime_randomness = 0.4
-local_coords = true
-emission_shape = 2
-emission_sphere_radius = 95.0
-direction = Vector2(0, 1)
-gravity = Vector2(0, 1200)
-initial_velocity_min = 123.4
-initial_velocity_max = 137.85
-angular_velocity_min = -300.0
-angular_velocity_max = 300.0
-scale_amount_min = 0.4
-scale_amount_max = 8.0
-color_initial_ramp = SubResource("Gradient_7810j")
 
 [node name="spawn" type="Node2D" parent="." unique_id=1253321267]
 
@@ -145,3 +124,23 @@ scale = Vector2(29.955181, 16.886055)
 size_flags_horizontal = 4
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_fgape")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1816945181]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+amount = 25
+texture = ExtResource("3_h0o0h")
+preprocess = 1.61
+speed_scale = 0.4
+emission_shape = 2
+emission_sphere_radius = 65.0
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 1200)
+initial_velocity_min = 123.4
+initial_velocity_max = 474.48
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+scale_amount_min = 0.6
+scale_amount_max = 8.0
+color_initial_ramp = SubResource("Gradient_7810j")
