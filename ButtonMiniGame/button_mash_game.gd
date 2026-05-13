@@ -33,6 +33,7 @@ var button_spam = preload("res://ButtonMiniGame/button_spam.tscn")
 var bell = preload("res://ButtonMiniGame/sounds/bell.ogg")
 var ping = preload("res://ButtonMiniGame/sounds/ping.ogg")
 var wrong = preload("res://ButtonMiniGame/sounds/wrong.ogg")
+var glass = preload("res://ButtonMiniGame/sounds/break.ogg")
 
 
 func _ready() -> void:
@@ -116,7 +117,7 @@ func _input(event: InputEvent) -> void:
 				_resultcheck(true)
 			else:
 				play_sound(wrong, 1, 2)
-				_slider_damage(10)
+				_slider_damage(15)
 				timer -= 0.5
 				print ("OOPS")
 
@@ -131,7 +132,7 @@ func _resultcheck(result: bool):
 		print ("GOOD EVERYTHING IS GOOD")
 	else:
 		play_sound(bell, 1, 3)
-		_slider_damage(25)
+		_slider_damage(45)
 		allow_count = true
 		timer = prevtimer
 		cooldown = prevcooldown + randf_range(-0.4, 0)
@@ -143,7 +144,9 @@ func _animation():
 	circle.rotation_degrees = randf_range(-15, 15)
 
 func _slider_damage(value: float):
-	bloodParticle.emitting = true
+	if value > 0:
+		play_sound(glass, 1, 6)
+		bloodParticle.emitting = true
 	slider.value += value
 	while value > 0:
 		sliderholder.global_position = prevsliderpos
