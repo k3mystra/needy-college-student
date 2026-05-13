@@ -64,17 +64,23 @@ horizontal_alignment = 1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="WordHolder" unique_id=1816945181]
 z_index = -1
+amount = 55
 texture = ExtResource("3_h0o0h")
+lifetime = 2.0
+preprocess = 1.6099999999999999
+randomness = 0.27
 lifetime_randomness = 0.4
+local_coords = true
 emission_shape = 2
 emission_sphere_radius = 95.0
 direction = Vector2(0, 1)
+gravity = Vector2(0, 1200)
 initial_velocity_min = 123.4
 initial_velocity_max = 137.85
 angular_velocity_min = -300.0
 angular_velocity_max = 300.0
 scale_amount_min = 0.4
-scale_amount_max = 3.0
+scale_amount_max = 8.0
 color_initial_ramp = SubResource("Gradient_7810j")
 
 [node name="spawn" type="Node2D" parent="." unique_id=1253321267]

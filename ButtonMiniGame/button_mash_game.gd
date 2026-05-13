@@ -173,4 +173,5 @@ func _buttonspamW():
 	_slider_damage(-7)
 
 func _buttonspamL():
+	bloodParticle.emitting = true
 	_slider_damage(20)
