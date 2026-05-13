@@ -7,6 +7,9 @@
 
 [sub_resource type="FontVariation" id="FontVariation_poley"]
 
+[sub_resource type="Gradient" id="Gradient_7810j"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
 [sub_resource type="ImageTexture" id="ImageTexture_4wmo7"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_h0o0h"]
@@ -70,7 +73,9 @@ initial_velocity_min = 123.4
 initial_velocity_max = 137.85
 angular_velocity_min = -300.0
 angular_velocity_max = 300.0
-color = Color(0, 0, 0, 1)
+scale_amount_min = 0.4
+scale_amount_max = 3.0
+color_initial_ramp = SubResource("Gradient_7810j")
 
 [node name="spawn" type="Node2D" parent="." unique_id=1253321267]
 
@@ -92,6 +97,22 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_7810j")
 max_value = 150.0
 editable = false
 scrollable = false
+
+[node name="blood" type="CPUParticles2D" parent="sliderholder/HSlider" unique_id=206856327]
+position = Vector2(612, 13.434998)
+emitting = false
+amount = 90
+texture = ExtResource("3_h0o0h")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(600, 1)
+direction = Vector2(0, -1)
+initial_velocity_min = 267.32
+initial_velocity_max = 554.45
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+color = Color(0.73333335, 0, 0, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1470038093]
 stream = ExtResource("4_7810j")

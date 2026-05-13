@@ -12,6 +12,7 @@ extends Node2D
 @onready var slider = $sliderholder/HSlider
 @onready var sliderholder = $sliderholder
 @onready var clock = $AudioStreamPlayer2D
+@onready var bloodParticle = $sliderholder/HSlider/blood
 
 var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x", "c"]
 var letter_amount : int
@@ -84,7 +85,7 @@ func _process(delta: float) -> void:
 
 func _spawn_spam():
 	var spawnpoint = $spawn
-	spawnpoint.global_position = Vector2(randf_range(-1000, 1000), randf_range(-500, 500))
+	spawnpoint.global_position = Vector2(randf_range(-800, 800), randf_range(-500, 500))
 	var button = button_spam.instantiate()
 	button.global_position = spawnpoint.global_position
 	get_parent().add_child(button)
@@ -142,6 +143,7 @@ func _animation():
 	circle.rotation_degrees = randf_range(-15, 15)
 
 func _slider_damage(value: float):
+	bloodParticle.emitting = true
 	slider.value += value
 	while value > 0:
 		sliderholder.global_position = prevsliderpos

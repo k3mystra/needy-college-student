@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chuumegaat2fo" path="res://ButtonMiniGame/button_spam.gd" id="1_km3y2"]
 [ext_resource type="Texture2D" uid="uid://qlf7ca7tjgsw" path="res://ButtonMiniGame/placeholder/wordholderblank.png" id="2_k8knq"]
+[ext_resource type="Texture2D" uid="uid://cd5rny8pfj16t" path="res://ButtonMiniGame/placeholder/star.png" id="3_ix4o1"]
 
 [node name="button_spam" type="Node2D" unique_id=614955222]
 position = Vector2(525, 331)
@@ -27,5 +28,26 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 icon = ExtResource("2_k8knq")
 flat = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="resize" unique_id=421354515]
+z_index = 1
+amount = 35
+texture = ExtResource("3_ix4o1")
+lifetime_randomness = 0.4
+emission_shape = 2
+emission_sphere_radius = 95.0
+direction = Vector2(0, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 123.4
+initial_velocity_max = 137.85
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+linear_accel_min = 3.96
+linear_accel_max = 33.66
+scale_amount_min = 0.1
+scale_amount_max = 2.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="resize/Button" to="." method="_on_button_pressed"]
