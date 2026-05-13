@@ -26,7 +26,7 @@ var prevcooldown = 0.0
 var prevspamcooldown = 0.0
 var prevsliderpos : Vector2
 var selected_word : String
-
+# replace the spam button to the things taht come from the side of the screen
 
 var button_spam = preload("res://ButtonMiniGame/button_spam.tscn")
 
