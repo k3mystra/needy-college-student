@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dib3i6nrc65tw"]
 
-[ext_resource type="Script" uid="uid://chuumegaat2fo" path="res://button_spam.gd" id="1_km3y2"]
-[ext_resource type="Texture2D" uid="uid://qlf7ca7tjgsw" path="res://placeholder/wordholderblank.png" id="2_k8knq"]
+[ext_resource type="Script" uid="uid://chuumegaat2fo" path="res://ButtonMiniGame/button_spam.gd" id="1_km3y2"]
+[ext_resource type="Texture2D" uid="uid://qlf7ca7tjgsw" path="res://ButtonMiniGame/placeholder/wordholderblank.png" id="2_k8knq"]
 
 [node name="button_spam" type="Node2D" unique_id=614955222]
 position = Vector2(525, 331)

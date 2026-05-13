@@ -5,8 +5,11 @@ extends Node2D
 @export var timer: float
 @export var x_range : float
 @export var y_range : float
+
 @onready var circle = $WordHolder
 @onready var word = $WordHolder/Word
+@onready var slider = $HSlider
+
 var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x"]
 var letter_amount : int
 var allow_count = true
@@ -19,7 +22,7 @@ var prevspamcooldown = 0.0
 var selected_word : String
 
 
-var button_spam = preload("res://button_spam.tscn")
+var button_spam = preload("res://ButtonMiniGame/button_spam.tscn")
 
 func _ready() -> void:
 	circle.self_modulate = Color("00ff00")
@@ -36,7 +39,7 @@ func _process(delta: float) -> void:
 		if cooldown < 0:
 			_start()
 	elif !allow_count:
-		show()
+		circle.show()
 		_maintimer()
 	anim_timer -= 1 * delta
 	if anim_timer < 0:
@@ -81,7 +84,7 @@ func _maintimer():
 		var target_color = remap(timer, 2, 0.0, 0.0, 4.99)
 		circleColor = int(floor(target_color))
 	else:
-		hide()
+		circle.hide()
 		_resultcheck(false)
 
 func _input(event: InputEvent) -> void:
@@ -97,13 +100,15 @@ func _input(event: InputEvent) -> void:
 		pass
 
 func _resultcheck(result: bool):
-	hide()
+	circle.hide()
 	if result:
+		slider.value -= 10
 		allow_count = true
 		timer = prevtimer
 		cooldown = prevcooldown
 		print ("GOOD EVERYTHING IS GOOD")
 	else:
+		slider.value += 25
 		allow_count = true
 		timer = prevtimer
 		cooldown = prevcooldown + randf_range(-0.3, 0.3)

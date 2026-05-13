@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dgtk7ho5e4h88"]
+
+[ext_resource type="Script" uid="uid://6l4umri3nlpe" path="res://ButtonMiniGame/button_mash_game.gd" id="1_yoxds"]
+[ext_resource type="Texture2D" uid="uid://qlf7ca7tjgsw" path="res://ButtonMiniGame/placeholder/wordholderblank.png" id="2_m3u7b"]
+
+[sub_resource type="FontVariation" id="FontVariation_poley"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_4wmo7"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_h0o0h"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_7810j"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4wmo7"]
+color = Color(0, 1, 0, 1)
+thickness = 25
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_h0o0h"]
+color = Color(1, 0, 0, 1)
+thickness = 25
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7810j"]
+color = Color(1, 0, 0, 1)
+thickness = 25
+
+[node name="ButtonMashGame" type="Node2D" unique_id=1187036442]
+script = ExtResource("1_yoxds")
+cooldown = 0.6
+spam_cooldown = 0.5
+timer = 2.0
+x_range = 275.0
+y_range = 180.0
+
+[node name="WordHolder" type="Sprite2D" parent="." unique_id=200945918]
+self_modulate = Color(1, 0.5372549, 0, 1)
+z_index = 15
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_m3u7b")
+
+[node name="Word" type="Label" parent="WordHolder" unique_id=1678596821]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -164.5
+offset_right = -67.5
+offset_bottom = -27.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_poley")
+theme_override_font_sizes/font_size = 100
+text = "T"
+horizontal_alignment = 1
+
+[node name="spawn" type="Node2D" parent="." unique_id=1253321267]
+
+[node name="HSlider" type="HSlider" parent="." unique_id=1571373617]
+z_index = 25
+offset_left = -612.0
+offset_top = 392.0
+offset_right = 612.0
+offset_bottom = 417.0
+theme_override_icons/grabber = SubResource("ImageTexture_4wmo7")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_h0o0h")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_7810j")
+theme_override_styles/slider = SubResource("StyleBoxLine_4wmo7")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_h0o0h")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_7810j")
+editable = false
+scrollable = false
