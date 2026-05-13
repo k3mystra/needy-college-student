@@ -7,6 +7,8 @@ class_name monitor extends Node2D
 @onready var monitor_upper_right =$MonitorPNG/ScreenUpperRight
 @onready var AllBugs = $AllBugs
 
+var default_spawn_cd : int = 1
+
 var monitor_x_range : Vector2 = Vector2(-1,-1)
 var monitor_y_range : Vector2 = Vector2(-1,-1)
 
@@ -17,8 +19,6 @@ func _ready() -> void:
 	monitor_y_range.x = monitor_bottom_right.global_position.y
 	monitor_y_range.y = monitor_upper_right.global_position.y
 	
-	var random_position : Vector2 = choose_rand_position() 
-	print(str(random_position.x) + " " + str(random_position.y))
 	$BugSpawnCD.start()
 	
 func choose_rand_position() -> Vector2:
@@ -34,4 +34,4 @@ func _on_bug_spawn_cd_timeout() -> void:
 	AllBugs.add_child(new_bug)
 	new_bug.position = choose_rand_position()
 	new_bug.rotation = randi_range(0,360)
-	print("a bug is spawned")
+	$BugSpawnCD.wait_time = default_spawn_cd * pow(0.99, AllBugs.get_child_count())

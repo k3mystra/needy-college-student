@@ -7,13 +7,13 @@
 radius = 38.0
 height = 76.0
 
-[node name="Bug" type="Node2D" unique_id=1756963268]
+[node name="Bug" type="Node2D" unique_id=1756963268 groups=["MonitorBugs"]]
 script = ExtResource("1_1akvc")
 
 [node name="Bug" type="Sprite2D" parent="." unique_id=61206248]
 texture = ExtResource("2_1xp5h")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2139924440]
+[node name="Area2D" type="Area2D" parent="." unique_id=2139924440 groups=["MonitorBugs"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1016643897]
 shape = SubResource("CapsuleShape2D_3bv6s")

@@ -31,6 +31,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqrrg"]
+size = Vector2(1.5, 1.5)
+
 [node name="GameCursor" type="Node2D" unique_id=184071685]
 script = ExtResource("1_xqrrg")
 
@@ -38,6 +41,13 @@ script = ExtResource("1_xqrrg")
 z_index = 2
 position = Vector2(24, 40)
 sprite_frames = SubResource("SpriteFrames_3pqra")
-animation = &"Hand"
 autoplay = "default"
-offset = Vector2(-11.585, -2.045)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1444960569]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1545918395]
+position = Vector2(0.75, 0.75)
+shape = SubResource("RectangleShape2D_xqrrg")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://hnydpv58p0ji" path="res://ProgrammingMiniGame/monitor.tscn" id="1_h2i6g"]
 [ext_resource type="Script" uid="uid://crfmkjqt8tvfb" path="res://ProgrammingMiniGame/mini_game_manager.gd" id="1_h3317"]
-[ext_resource type="PackedScene" uid="uid://yswpw1h7k7gr" path="res://ProgrammingMiniGame/game_cursor.tscn" id="3_e0n88"]
 
 [node name="MiniGameManager" type="Node2D" unique_id=906977319]
 script = ExtResource("1_h3317")
@@ -16,5 +15,3 @@ color = Color(0.5936789, 0.5936789, 0.5936789, 1)
 
 [node name="Monitor" parent="." unique_id=1322128148 instance=ExtResource("1_h2i6g")]
 position = Vector2(960, 540)
-
-[node name="GameCursor" parent="." unique_id=184071685 instance=ExtResource("3_e0n88")]
