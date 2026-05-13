@@ -5,10 +5,12 @@ extends Node2D
 @export var timer: float
 @export var x_range : float
 @export var y_range : float
+@export var button_spam_limit : int
 
 @onready var circle = $WordHolder
 @onready var word = $WordHolder/Word
-@onready var slider = $HSlider
+@onready var slider = $sliderholder/HSlider
+@onready var sliderholder = $sliderholder
 
 var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x"]
 var letter_amount : int
@@ -19,6 +21,7 @@ var circleColor = 0
 var prevtimer = 0.0
 var prevcooldown = 0.0
 var prevspamcooldown = 0.0
+var prevsliderpos : Vector2
 var selected_word : String
 
 
@@ -32,6 +35,9 @@ func _ready() -> void:
 	prevtimer = timer
 	prevcooldown = cooldown
 	prevspamcooldown = spam_cooldown
+	prevsliderpos = sliderholder.global_position
+	Global.buttonspam_L.connect(_buttonspamL)
+	Global.buttonspam_W.connect(_buttonspamW)
 
 func _process(delta: float) -> void:
 	if allow_count:
@@ -55,11 +61,14 @@ func _process(delta: float) -> void:
 
 	spam_cooldown -= 1 * delta
 	if spam_cooldown < 0:
-		if Global.total_button_spam < 4:
+		if Global.total_button_spam < button_spam_limit:
 			_spawn_spam()
-			spam_cooldown = prevspamcooldown
+			spam_cooldown = prevspamcooldown + randf_range(-0.2, 0.1)
+			button_spam_limit = 4
 		else:
-			spam_cooldown = prevspamcooldown
+			if randi_range(0, 3) == 0:
+				button_spam_limit += 1 
+			spam_cooldown = prevspamcooldown + randf_range(-0.4, 0)
 
 
 func _spawn_spam():
@@ -94,6 +103,7 @@ func _input(event: InputEvent) -> void:
 			if key_pressed in selected_word:
 				_resultcheck(true)
 			else:
+				_slider_damage(10)
 				timer -= 0.5
 				print ("OOPS")
 	else:
@@ -102,13 +112,13 @@ func _input(event: InputEvent) -> void:
 func _resultcheck(result: bool):
 	circle.hide()
 	if result:
-		slider.value -= 10
+		_slider_damage(-10)
 		allow_count = true
 		timer = prevtimer
 		cooldown = prevcooldown
 		print ("GOOD EVERYTHING IS GOOD")
 	else:
-		slider.value += 25
+		_slider_damage(25)
 		allow_count = true
 		timer = prevtimer
 		cooldown = prevcooldown + randf_range(-0.3, 0.3)
@@ -118,3 +128,22 @@ func _animation():
 	circle.global_position.x = prevpos.x + randf_range(-6, 6)
 	circle.global_position.y = prevpos.y + randf_range(-6, 6)
 	circle.rotation_degrees = 0 + randf_range(-15, 15)
+
+func _slider_damage(value: float):
+	slider.value += value
+	while value > 0:
+		sliderholder.global_position = prevsliderpos
+		sliderholder.global_position += Vector2(randf_range(-25, 25), randf_range(-25, 25))
+		sliderholder.rotation_degrees = 0
+		sliderholder.rotation_degrees += randf_range(-8, 8)
+		value -= 3
+		await get_tree().create_timer(0.05).timeout
+	sliderholder.global_position = prevsliderpos
+	sliderholder.rotation_degrees = 0
+
+
+func _buttonspamW():
+	_slider_damage(-10)
+
+func _buttonspamL():
+	_slider_damage(10)

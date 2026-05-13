@@ -35,9 +35,11 @@ func _process(delta: float) -> void:
 	if circle_size.scale.x > max_size:
 		queue_free()
 		Global.total_button_spam -= 1
+		Global.buttonspam_L.emit()
 	elif circle_size.scale.x < 0.4:
 		queue_free()
 		Global.total_button_spam -= 1
+		Global.buttonspam_W.emit()
 
 func _on_button_pressed() -> void:
 	circle_size.scale -= Vector2(0.4, 0.4)
