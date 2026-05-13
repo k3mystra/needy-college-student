@@ -1,23 +1,18 @@
 [gd_scene format=3 uid="uid://dxtneicd1ti3h"]
 
-[ext_resource type="Texture2D" uid="uid://bisg56bicpi82" path="res://memory_pick_minigame/white-square.png" id="1_pyxjy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lndx"]
-size = Vector2(100, 100)
+[ext_resource type="Script" uid="uid://ctwoho7ai73b7" path="res://memory_pick_minigame/memory_pick.gd" id="1_pyxjy"]
+[ext_resource type="PackedScene" uid="uid://duh22q5qswf0g" path="res://memory_pick_minigame/memory.tscn" id="2_4lndx"]
+[ext_resource type="Script" uid="uid://dyoe3d5thysfy" path="res://memory_pick_minigame/memory_data.gd" id="2_d77l3"]
+[ext_resource type="Resource" uid="uid://c2vldq8f4wn6u" path="res://memory_pick_minigame/memories/black.tres" id="3_d7u6o"]
+[ext_resource type="Resource" uid="uid://ccq5tgf2v8g6r" path="res://memory_pick_minigame/memories/blue.tres" id="4_y6yek"]
+[ext_resource type="Resource" uid="uid://btx18a2j2elw7" path="res://memory_pick_minigame/memories/green.tres" id="5_evonj"]
+[ext_resource type="Resource" uid="uid://bjxxhr7c5vja3" path="res://memory_pick_minigame/memories/red.tres" id="6_13c6v"]
+[ext_resource type="Resource" uid="uid://dkh1rwoe7u0w2" path="res://memory_pick_minigame/memories/white.tres" id="7_b3f6d"]
 
 [node name="MemoryPick" type="Node" unique_id=1005337355]
-
-[node name="Memory" type="CharacterBody2D" parent="." unique_id=1757956081]
-position = Vector2(423.99994, 264)
-scale = Vector2(1.0087293, 1.022573)
-
-[node name="Sprite" type="Sprite2D" parent="Memory" unique_id=844501846]
-position = Vector2(7.915497e-05, -1.1444092e-05)
-scale = Vector2(6.0886846, 3.6041596)
-texture = ExtResource("1_pyxjy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Memory" unique_id=1276315604]
-shape = SubResource("RectangleShape2D_4lndx")
+script = ExtResource("1_pyxjy")
+memory_data_array = Array[ExtResource("2_d77l3")]([ExtResource("3_d7u6o"), ExtResource("4_y6yek"), ExtResource("5_evonj"), ExtResource("6_13c6v"), ExtResource("7_b3f6d")])
+memory_scene = ExtResource("2_4lndx")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1666907676]
 
@@ -41,3 +36,6 @@ theme_override_constants/margin_top = 30
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Keep"
+
+[connection signal="pressed" from="UI/VBoxContainer/DiscardBtn" to="." method="_on_discard_btn_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/MarginContainer/KeepBtn" to="." method="_on_keep_btn_pressed"]
