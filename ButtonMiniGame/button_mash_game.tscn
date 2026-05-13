@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://6l4umri3nlpe" path="res://ButtonMiniGame/button_mash_game.gd" id="1_yoxds"]
 [ext_resource type="Texture2D" uid="uid://qlf7ca7tjgsw" path="res://ButtonMiniGame/placeholder/wordholderblank.png" id="2_m3u7b"]
+[ext_resource type="Texture2D" uid="uid://cd5rny8pfj16t" path="res://ButtonMiniGame/placeholder/star.png" id="3_h0o0h"]
+[ext_resource type="AudioStream" uid="uid://cjppm5ligydfs" path="res://ButtonMiniGame/sounds/clock.ogg" id="4_7810j"]
 
 [sub_resource type="FontVariation" id="FontVariation_poley"]
 
@@ -57,6 +59,19 @@ theme_override_font_sizes/font_size = 100
 text = "T"
 horizontal_alignment = 1
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="WordHolder" unique_id=1816945181]
+z_index = -1
+texture = ExtResource("3_h0o0h")
+lifetime_randomness = 0.4
+emission_shape = 2
+emission_sphere_radius = 95.0
+direction = Vector2(0, 1)
+initial_velocity_min = 123.4
+initial_velocity_max = 137.85
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+color = Color(0, 0, 0, 1)
+
 [node name="spawn" type="Node2D" parent="." unique_id=1253321267]
 
 [node name="sliderholder" type="Node2D" parent="." unique_id=627574491]
@@ -77,3 +92,6 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_7810j")
 max_value = 150.0
 editable = false
 scrollable = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1470038093]
+stream = ExtResource("4_7810j")

@@ -11,6 +11,7 @@ extends Node2D
 @onready var word = $WordHolder/Word
 @onready var slider = $sliderholder/HSlider
 @onready var sliderholder = $sliderholder
+@onready var clock = $AudioStreamPlayer2D
 
 var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x", "c"]
 var letter_amount : int
@@ -27,7 +28,14 @@ var selected_word : String
 
 var button_spam = preload("res://ButtonMiniGame/button_spam.tscn")
 
+#PRELAOD SOUNDS HERE
+var bell = preload("res://ButtonMiniGame/sounds/bell.ogg")
+var ping = preload("res://ButtonMiniGame/sounds/ping.ogg")
+var wrong = preload("res://ButtonMiniGame/sounds/wrong.ogg")
+
+
 func _ready() -> void:
+	circle.hide()
 	circle.self_modulate = Color("00ff00")
 	letter_amount = letter.size()
 	print ("TESTING: Letter chosen is, ", letter[randi_range(0, letter_amount - 1)])
@@ -41,12 +49,16 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if allow_count:
+		clock.stop()
 		cooldown -= 1 * delta
 		if cooldown < 0:
+			clock.play()
 			_start()
 	elif !allow_count:
+		_clock_sound()
 		circle.show()
 		_maintimer()
+		
 	anim_timer -= 1 * delta
 	if anim_timer < 0:
 		_animation()
@@ -72,7 +84,7 @@ func _process(delta: float) -> void:
 
 func _spawn_spam():
 	var spawnpoint = $spawn
-	spawnpoint.global_position = Vector2(randf_range(-650, 650), randf_range(-350, 350))
+	spawnpoint.global_position = Vector2(randf_range(-1000, 1000), randf_range(-500, 500))
 	var button = button_spam.instantiate()
 	button.global_position = spawnpoint.global_position
 	get_parent().add_child(button)
@@ -102,6 +114,7 @@ func _input(event: InputEvent) -> void:
 			if key_pressed in selected_word:
 				_resultcheck(true)
 			else:
+				play_sound(wrong, 1, 2)
 				_slider_damage(10)
 				timer -= 0.5
 				print ("OOPS")
@@ -109,12 +122,14 @@ func _input(event: InputEvent) -> void:
 func _resultcheck(result: bool):
 	circle.hide()
 	if result:
+		play_sound(ping, 1, 1)
 		_slider_damage(-10)
 		allow_count = true
 		timer = prevtimer - 0.65
 		cooldown = prevcooldown
 		print ("GOOD EVERYTHING IS GOOD")
 	else:
+		play_sound(bell, 1, 3)
 		_slider_damage(25)
 		allow_count = true
 		timer = prevtimer
@@ -138,9 +153,22 @@ func _slider_damage(value: float):
 	sliderholder.global_position = prevsliderpos
 	sliderholder.rotation_degrees /= 2
 
+func play_sound (stream: AudioStream, pitch: float, volume: float): # YOU CAN JUST COPY AND PASTE THIS
+	var p = AudioStreamPlayer2D.new() # make new audioplayer
+	p.stream = stream
+	p.pitch_scale = pitch
+	p.volume_db = 2 + volume
+	add_child(p) # adds to the world
+	p.play() # play first
+	p.finished.connect(p.queue_free) # remove itself after finished playing
+
+func _clock_sound():
+	var target_pitch = remap(timer, 2, 0, 1, 2)
+	clock.pitch_scale = target_pitch
+	
 
 func _buttonspamW():
-	_slider_damage(-10)
+	_slider_damage(-7)
 
 func _buttonspamL():
-	_slider_damage(10)
+	_slider_damage(20)

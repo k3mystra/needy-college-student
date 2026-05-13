@@ -8,6 +8,9 @@ var timer = 0.6
 var prev_timer = 0.0
 var cur_scale : float
 
+#PRELAOD SOUNDS HERE
+var grow = preload("res://ButtonMiniGame/sounds/grow.ogg")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.total_button_spam += 1
@@ -30,6 +33,7 @@ func _process(delta: float) -> void:
 	circleColor = int(ceil(target_color))
 	timer -= 1 * delta
 	if timer < 0:
+		play_sound(grow, 0.5, 1)
 		circle_size.scale += Vector2(speed, speed)
 		timer = prev_timer
 	if circle_size.scale.x > max_size:
@@ -43,3 +47,12 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	circle_size.scale -= Vector2(0.4, 0.4)
+
+func play_sound (stream: AudioStream, pitch: float, volume: float): # YOU CAN JUST COPY AND PASTE THIS
+	var p = AudioStreamPlayer2D.new() # make new audioplayer
+	p.stream = stream
+	p.pitch_scale = pitch
+	p.volume_db = 2 + volume
+	add_child(p) # adds to the world
+	p.play() # play first
+	p.finished.connect(p.queue_free) # remove itself after finished playing
