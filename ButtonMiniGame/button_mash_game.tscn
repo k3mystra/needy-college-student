@@ -28,6 +28,17 @@ thickness = 25
 color = Color(1, 0, 0, 1)
 thickness = 25
 
+[sub_resource type="Gradient" id="Gradient_vnqqn"]
+offsets = PackedFloat32Array(0, 0.7289157, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.18674701, 0.18674701, 0.18674701, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fgape"]
+gradient = SubResource("Gradient_vnqqn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
 [node name="ButtonMashGame" type="Node2D" unique_id=1187036442]
 script = ExtResource("1_yoxds")
 cooldown = 0.6
@@ -122,3 +133,15 @@ color = Color(0.73333335, 0, 0, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1470038093]
 stream = ExtResource("4_7810j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=115248658]
+
+[node name="vignette" type="TextureRect" parent="CanvasLayer" unique_id=690874806]
+self_modulate = Color(1, 0, 0, 0)
+z_index = 5
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(29.955181, 16.886055)
+size_flags_horizontal = 4
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_fgape")

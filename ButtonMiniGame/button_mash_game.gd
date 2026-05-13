@@ -82,6 +82,7 @@ func _process(delta: float) -> void:
 			if randi_range(0, 3) == 0:
 				button_spam_limit += 1 
 			spam_cooldown = prevspamcooldown + randf_range(-0.4, 0)
+	_border()
 
 
 func _spawn_spam():
@@ -170,7 +171,11 @@ func play_sound (stream: AudioStream, pitch: float, volume: float): # YOU CAN JU
 func _clock_sound():
 	var target_pitch = remap(timer, 2, 0, 1, 2)
 	clock.pitch_scale = target_pitch
-	
+
+func _border():
+	var border = $CanvasLayer/vignette
+	var targetAlpha = remap(slider.value, 0.0, 150.0, 0.0, 0.6)
+	border.self_modulate.a = targetAlpha
 
 func _buttonspamW():
 	_slider_damage(-7)
