@@ -11,7 +11,7 @@ func _process(delta):
 		queue_free()
 		
 func _move_towards(delta):
-	if position.x < CarDashboard.global_position.x + 1200:
+	if position.x < CarDashboard.global_position.x:
 		position.x -= 100 * delta
-	elif position.x > CarDashboard.global_position.x + 1200:
+	elif position.x > CarDashboard.global_position.x:
 		position.x += 100 * delta

@@ -16,24 +16,24 @@ size = Vector2(217, 146)
 script = ExtResource("1_d7gq5")
 
 [node name="CarDashboardPlaceholder" type="Sprite2D" parent="." unique_id=1380996085]
-position = Vector2(1145.0001, 503)
+position = Vector2(0, 503)
 rotation = 3.1415927
 scale = Vector2(0.61755174, -0.46062022)
 texture = ExtResource("2_jaalo")
 
 [node name="CarWidthCollider" type="CollisionShape2D" parent="." unique_id=2068832888]
-position = Vector2(1144.405, 1002.99994)
+position = Vector2(0, 1003)
 scale = Vector2(59.419, 7.4)
 shape = SubResource("RectangleShape2D_5hgjn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=587969635]
 
 [node name="LeftWheelCollider" type="CollisionShape2D" parent="Area2D" unique_id=1423224965]
-position = Vector2(490, 1004.25)
+position = Vector2(-660, 1004.25)
 shape = SubResource("RectangleShape2D_jaalo")
 
 [node name="RightWheelCollider" type="CollisionShape2D" parent="Area2D" unique_id=946337406]
-position = Vector2(1661.5, 1005)
+position = Vector2(509, 1005)
 shape = SubResource("RectangleShape2D_55fhc")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

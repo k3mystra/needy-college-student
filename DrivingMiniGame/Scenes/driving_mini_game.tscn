@@ -8,10 +8,10 @@
 script = ExtResource("1_21l2p")
 
 [node name="CarDashboard" parent="." unique_id=624995954 instance=ExtResource("2_h0y7q")]
-position = Vector2(487, 0)
+position = Vector2(1728, 0)
 
 [node name="Camera2D" type="Camera2D" parent="CarDashboard" unique_id=1118085567]
-position = Vector2(1141, 503)
+position = Vector2(-2, 503)
 zoom = Vector2(1.245, 0.94)
 
 [node name="CarBoundary" parent="." unique_id=787241941 instance=ExtResource("3_agv8p")]
