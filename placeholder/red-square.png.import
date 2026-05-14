@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bisg56bicpi82"
-path="res://.godot/imported/white-square.png-02616d4f838985e03abe9e233068a29b.ctex"
+uid="uid://bc6jja46gas2s"
+path="res://.godot/imported/red-square.png-e7be84300d09728041a1d62087ecf114.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://memory_pick_minigame/memories/white-square.png"
-dest_files=["res://.godot/imported/white-square.png-02616d4f838985e03abe9e233068a29b.ctex"]
+source_file="res://placeholder/red-square.png"
+dest_files=["res://.godot/imported/red-square.png-e7be84300d09728041a1d62087ecf114.ctex"]
 
 [params]
 
