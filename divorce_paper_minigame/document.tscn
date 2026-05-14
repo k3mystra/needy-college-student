@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bjschen7wsg5u"]
+
+[ext_resource type="Script" uid="uid://4sd5ubxukw0y" path="res://divorce_paper_minigame/document.gd" id="1_if656"]
+[ext_resource type="Texture2D" uid="uid://bisg56bicpi82" path="res://placeholder/white-square.png" id="1_t6y3i"]
+[ext_resource type="SpriteFrames" uid="uid://bpdfqwh2ii4r4" path="res://divorce_paper_minigame/signing_anime.tres" id="3_egqek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy14"]
+
+[node name="Document" type="CharacterBody2D" unique_id=1180025037]
+script = ExtResource("1_if656")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=364910207]
+scale = Vector2(6, 8)
+texture = ExtResource("1_t6y3i")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=232088666]
+shape = SubResource("RectangleShape2D_cyy14")
+
+[node name="SigningAnim" type="AnimatedSprite2D" parent="." unique_id=1047026064]
+sprite_frames = ExtResource("3_egqek")
+animation = &"sign"

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dnwndmt1ebaxc"]
+
+[ext_resource type="Script" uid="uid://cwa3absbjiwbe" path="res://divorce_paper_minigame/divorce_paper_minigame.gd" id="1_8xd02"]
+[ext_resource type="PackedScene" uid="uid://bjschen7wsg5u" path="res://divorce_paper_minigame/document.tscn" id="2_1n01s"]
+[ext_resource type="Script" uid="uid://cqu6hbrn3jlkg" path="res://divorce_paper_minigame/document_data.gd" id="2_u5ewr"]
+[ext_resource type="Resource" uid="uid://cd4sy2htbmu2h" path="res://divorce_paper_minigame/documents/black.tres" id="3_068vs"]
+[ext_resource type="Resource" uid="uid://bdnbu1pindflx" path="res://divorce_paper_minigame/documents/blue.tres" id="4_dotn6"]
+[ext_resource type="Resource" uid="uid://lwbgaih2x80g" path="res://divorce_paper_minigame/documents/green.tres" id="5_dq3la"]
+[ext_resource type="Resource" uid="uid://dw13gwbclmh32" path="res://divorce_paper_minigame/documents/red.tres" id="6_fgcfx"]
+[ext_resource type="Resource" uid="uid://nbp0v3aewyrq" path="res://divorce_paper_minigame/documents/white.tres" id="7_og5ye"]
+
+[node name="DivorcePaperMinigame" type="Node2D" unique_id=245305844]
+script = ExtResource("1_8xd02")
+doc_data_array = Array[ExtResource("2_u5ewr")]([ExtResource("3_068vs"), ExtResource("4_dotn6"), ExtResource("5_dq3la"), ExtResource("6_fgcfx"), ExtResource("7_og5ye")])
+doc_scene = ExtResource("2_1n01s")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1019920477]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=1174362850]
+offset_left = 1432.0
+offset_right = 1688.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="SignBtn" type="Button" parent="UI/VBoxContainer" unique_id=1780093064]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Sign"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="UI/VBoxContainer/SignBtn" to="." method="_on_sign_btn_pressed"]
