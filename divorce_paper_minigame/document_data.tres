@@ -1,6 +1,0 @@
-[gd_resource type="Resource" format=3 uid="uid://bkr056tobdjhy"]
-
-[ext_resource type="Script" uid="uid://cqu6hbrn3jlkg" path="res://divorce_paper_minigame/document_data.gd" id="1_8q0ve"]
-
-[resource]
-script = ExtResource("1_8q0ve")

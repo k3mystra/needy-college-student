@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DocumentData" format=3 uid="uid://nbp0v3aewyrq"]
-
-[ext_resource type="Script" uid="uid://cqu6hbrn3jlkg" path="res://divorce_paper_minigame/document_data.gd" id="1_k406f"]
-[ext_resource type="Texture2D" uid="uid://bisg56bicpi82" path="res://placeholder/white-square.png" id="2_leiqv"]
-
-[resource]
-script = ExtResource("1_k406f")
-sprite = ExtResource("2_leiqv")
-metadata/_custom_type_script = "uid://cqu6hbrn3jlkg"
