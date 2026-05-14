@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://duh22q5qswf0g"]
 
-[ext_resource type="Texture2D" uid="uid://bisg56bicpi82" path="res://memory_pick_minigame/memories/white-square.png" id="1_m5p8x"]
+[ext_resource type="Texture2D" uid="uid://bisg56bicpi82" path="res://placeholder/white-square.png" id="1_m5p8x"]
 [ext_resource type="Script" uid="uid://b2nwh4meqr2dy" path="res://memory_pick_minigame/memory.gd" id="1_uye3s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5p8x"]
