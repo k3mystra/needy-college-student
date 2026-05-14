@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5pbgdqctex1l"]
 
-[ext_resource type="Script" uid="uid://bkevcshyusnpx" path="res://DrivingMiniGame/car_dashboard.gd" id="1_d7gq5"]
+[ext_resource type="Script" uid="uid://bkevcshyusnpx" path="res://DrivingMiniGame/Scripts/car_dashboard.gd" id="1_d7gq5"]
 [ext_resource type="Texture2D" uid="uid://dx8xi2no13st1" path="res://DrivingMiniGame/CarDashboardPlaceholder.png" id="2_jaalo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hgjn"]

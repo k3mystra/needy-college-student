@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var potholeHit
+var tireHealth = 3
 const SPEED = 600.0
 func _physics_process(delta: float) -> void:
 
@@ -12,8 +14,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
+
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("pothole"):
 		print("player hit pothole")
+		tireHealth -= 1
+		potholeHit = true

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://6o03b8vdjbr8"]
+
+[ext_resource type="Script" uid="uid://yhxks8x73vf1" path="res://DrivingMiniGame/Scripts/driving_mini_game.gd" id="1_21l2p"]
+[ext_resource type="PackedScene" uid="uid://5pbgdqctex1l" path="res://DrivingMiniGame/Scenes/CarDashboard.tscn" id="2_h0y7q"]
+[ext_resource type="PackedScene" uid="uid://n7u5iqb0stpd" path="res://DrivingMiniGame/Scenes/car_boundary.tscn" id="3_agv8p"]
+
+[node name="DrivingMiniGame" type="Node2D" unique_id=51446634]
+script = ExtResource("1_21l2p")
+
+[node name="CarDashboard" parent="." unique_id=624995954 instance=ExtResource("2_h0y7q")]
+position = Vector2(487, 0)
+
+[node name="Camera2D" type="Camera2D" parent="CarDashboard" unique_id=1118085567]
+position = Vector2(1141, 503)
+zoom = Vector2(1.245, 0.94)
+
+[node name="CarBoundary" parent="." unique_id=787241941 instance=ExtResource("3_agv8p")]
+position = Vector2(1324, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=739408166]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

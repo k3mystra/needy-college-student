@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://txc4h3nbrprp"]
 
-[ext_resource type="Texture2D" uid="uid://bmo14iln5wal3" path="res://DrivingMiniGame/pothole.png" id="1_51itn"]
-[ext_resource type="Script" uid="uid://djsi0kgv1iugi" path="res://DrivingMiniGame/potholes.gd" id="1_bhyrk"]
+[ext_resource type="Script" uid="uid://djsi0kgv1iugi" path="res://DrivingMiniGame/Scripts/potholes.gd" id="1_ryw8e"]
+[ext_resource type="Texture2D" uid="uid://bmo14iln5wal3" path="res://DrivingMiniGame/pothole.png" id="2_oeqr4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_11ose"]
 radius = 15.033297
 
 [node name="Potholes" type="Area2D" unique_id=1183689320]
-script = ExtResource("1_bhyrk")
+script = ExtResource("1_ryw8e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1058341344]
 position = Vector2(0, -12)
@@ -15,4 +15,4 @@ shape = SubResource("CircleShape2D_11ose")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1024468679]
 z_index = -1
-texture = ExtResource("1_51itn")
+texture = ExtResource("2_oeqr4")
