@@ -74,6 +74,7 @@ text = "T"
 horizontal_alignment = 1
 
 [node name="spawn" type="Node2D" parent="." unique_id=1253321267]
+position = Vector2(896, -384)
 
 [node name="sliderholder" type="Node2D" parent="." unique_id=627574491]
 position = Vector2(0, 384)
@@ -144,3 +145,9 @@ angular_velocity_max = 300.0
 scale_amount_min = 0.6
 scale_amount_max = 8.0
 color_initial_ramp = SubResource("Gradient_7810j")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=370932546]
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=442261553]
+position = Vector2(-896, -384)
+gizmo_extents = 290.7

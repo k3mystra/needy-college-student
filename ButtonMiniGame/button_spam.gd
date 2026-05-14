@@ -1,12 +1,15 @@
 extends Node2D
-@export var max_size : float
-@onready var circle = $resize/Button
-@onready var circle_size = $resize
-var circleColor = 0
-var speed = 0.2
-var timer = 0.6
+@export var max_distance : float
+@export var dir : int
+@export var timer = 0.6
+@export var speed = 25
+
+@onready var hand = $resize/Hand
+
+var handcolor = 0
 var prev_timer = 0.0
-var cur_scale : float
+var prev_posX = 0.0
+var total_move : float
 
 #PRELAOD SOUNDS HERE
 var grow = preload("res://ButtonMiniGame/sounds/grow.ogg")
@@ -16,40 +19,60 @@ var shrink = preload("res://ButtonMiniGame/sounds/shrink.ogg")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.total_button_spam += 1
-	speed += randf_range(-0.1, 0.1)
+	speed += randf_range(-5, 35)
 	timer += randf_range(-0.15, 0.6)
-	var rand_scale = randf_range(0, 0.4)
-	circle_size.scale += Vector2(rand_scale, rand_scale)
 	prev_timer = timer
-	cur_scale = circle_size.scale.x
+	if dir == 0:
+		scale.x = 1
+		position.x += randf_range(0, 180)
+	elif dir == 1:
+		scale.x = -1
+		position.x -= randf_range(0, 180)
+	prev_posX = position.x
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	match circleColor:
-		0: circle.self_modulate = Color("00ff00")
-		1: circle.self_modulate = Color("c1ff00")
-		2: circle.self_modulate = Color("ffff00")
-		3: circle.self_modulate = Color("ff8900")
-		4: circle.self_modulate = Color("e3000d")
-	var target_color = remap(circle_size.scale.x, cur_scale, max_size, 0.0, 4.0)
-	circleColor = int(ceil(target_color))
+	match handcolor:
+		0: hand.self_modulate = Color("00ff00")
+		1: hand.self_modulate = Color("c1ff00")
+		2: hand.self_modulate = Color("ffff00")
+		3: hand.self_modulate = Color("ff8900")
+		4: hand.self_modulate = Color("e3000d")
+	var distance_traveled = abs(position.x - prev_posX)
+	var target_color = remap(distance_traveled, 0, max_distance, 0, 4)
+	handcolor = int(ceil(target_color))
 	timer -= 1 * delta
 	if timer < 0:
 		play_sound(grow, 0.5, 0.2)
-		circle_size.scale += Vector2(speed, speed)
+		if scale.x == 1:
+			position.x += speed
+		elif scale.x == -1:
+			position.x -= speed
+		total_move += speed
 		timer = prev_timer
-	if circle_size.scale.x > max_size:
-		queue_free()
-		Global.total_button_spam -= 1
+	if distance_traveled > max_distance:
+		print("Reached max distance!", position.x)
 		Global.buttonspam_L.emit()
-	elif circle_size.scale.x < 0.4:
-		queue_free()
 		Global.total_button_spam -= 1
-		Global.buttonspam_W.emit()
+		queue_free()
+	
+	if dir == 0 and position.x < prev_posX:
+		_success()
+	elif dir == 1 and position.x > prev_posX:
+		_success()
+
+func _success():
+	Global.buttonspam_W.emit()
+	Global.total_button_spam -= 1
+	queue_free()
 
 func _on_button_pressed() -> void:
 	play_sound(shrink, 2, 5)
-	circle_size.scale -= Vector2(0.4, 0.4)
+	if dir == 0:
+		position.x -= 75
+	elif dir == 1:
+		position.x += 75
+
 
 
 func play_sound (stream: AudioStream, pitch: float, volume: float): # YOU CAN JUST COPY AND PASTE THIS

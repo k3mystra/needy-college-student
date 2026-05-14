@@ -46,7 +46,7 @@ func _ready() -> void:
 	prevtimer = timer
 	prevcooldown = cooldown
 	prevspamcooldown = spam_cooldown
-	prevsliderpos = sliderholder.global_position
+	prevsliderpos = sliderholder.position
 	Global.buttonspam_L.connect(_buttonspamL)
 	Global.buttonspam_W.connect(_buttonspamW)
 
@@ -89,16 +89,21 @@ func _process(delta: float) -> void:
 
 func _spawn_spam():
 	var spawnpoint = $spawn
-	spawnpoint.global_position = Vector2(randf_range(-800, 800), randf_range(-500, 500))
 	var button = button_spam.instantiate()
+	if randi_range(0, 1) == 0:
+		spawnpoint.position = Vector2(-896, randf_range(-384, 384))
+		button.dir = 0
+	else:
+		spawnpoint.position = Vector2(896, randf_range(-384, 384))
+		button.dir = 1
 	button.global_position = spawnpoint.global_position
 	get_parent().add_child(button)
 
 
 func _start():
 	allow_count = false
-	circle.global_position = Vector2(randf_range(-x_range, x_range), randf_range(-y_range, y_range))
-	prevpos = circle.global_position
+	circle.position = Vector2(randf_range(-x_range, x_range), randf_range(-y_range, y_range))
+	prevpos = circle.position
 	selected_word = letter[randi_range(0, letter_amount - 1)]
 	print ("selected_word is ", selected_word)
 	word.text = selected_word.to_upper()
@@ -142,8 +147,8 @@ func _resultcheck(result: bool):
 		print ("NO BUTTON PRESSED AND RAN OUT OF TIME")
 
 func _animation():
-	circle.global_position.x = prevpos.x + randf_range(-6, 6)
-	circle.global_position.y = prevpos.y + randf_range(-6, 6)
+	circle.position.x = prevpos.x + randf_range(-6, 6)
+	circle.position.y = prevpos.y + randf_range(-6, 6)
 	circle.rotation_degrees = randf_range(-15, 15)
 
 func _slider_damage(value: float): # somehow make the bar slowly stop vibrating  
@@ -152,13 +157,13 @@ func _slider_damage(value: float): # somehow make the bar slowly stop vibrating
 		bloodParticle.emitting = true
 	slider.value += value
 	while value > 0:
-		sliderholder.global_position = prevsliderpos
-		sliderholder.global_position += Vector2(randf_range(-35, 35), randf_range(-35, 35))
+		sliderholder.position = prevsliderpos
+		sliderholder.position += Vector2(randf_range(-35, 35), randf_range(-35, 35))
 		sliderholder.rotation_degrees = 0
 		sliderholder.rotation_degrees += randf_range(-8, 8)
 		value -= 3
 		await get_tree().create_timer(0.05).timeout
-	sliderholder.global_position = prevsliderpos
+	sliderholder.position = prevsliderpos
 	sliderholder.rotation_degrees /= 1.3
 
 func play_sound (stream: AudioStream, pitch: float, volume: float): # YOU CAN JUST COPY AND PASTE THIS
@@ -184,7 +189,7 @@ func _buttonspamW():
 
 func _buttonspamL():
 	bloodParticle.emitting = true
-	_slider_damage(20)
+	_slider_damage(45)
 
 func _follow_word():
-	particle.global_position = circle.global_position
+	particle.position = circle.position
