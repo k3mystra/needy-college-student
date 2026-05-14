@@ -2,95 +2,22 @@
 
 [ext_resource type="Script" uid="uid://cwa3absbjiwbe" path="res://divorce_paper_minigame/divorce_paper_minigame.gd" id="1_8xd02"]
 [ext_resource type="PackedScene" uid="uid://cxaccl8vxu3ky" path="res://divorce_paper_minigame/document.tscn" id="2_1n01s"]
-[ext_resource type="Texture2D" uid="uid://bisg56bicpi82" path="res://placeholder/white-square.png" id="2_q6o1u"]
-[ext_resource type="Texture2D" uid="uid://b1eyqsvyw6yth" path="res://placeholder/black-square.png" id="3_2ydlo"]
-[ext_resource type="Texture2D" uid="uid://bbjoh55uo3i6a" path="res://placeholder/blue-square.png" id="4_u5ewr"]
-[ext_resource type="Texture2D" uid="uid://dlfvvfkeu6w4t" path="res://placeholder/green-square.png" id="5_068vs"]
-[ext_resource type="Texture2D" uid="uid://bc6jja46gas2s" path="res://placeholder/red-square.png" id="6_dotn6"]
-
-[sub_resource type="GDScript" id="GDScript_dq3la"]
-script/source = "extends CharacterBody2D
-
-var sign_position: Vector2
-
-
-func set_doc_data(doc_data: DocumentData) -> void:
-	$Sprite.texture = doc_data.sprite
-	sign_position = doc_data.sign_position
-
-
-func play_signing_anim() -> void:
-	$SigningAnim.position = sign_position
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy14"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fgcfx"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"sign",
-"speed": 5.0
-}]
-
-[sub_resource type="PackedScene" id="PackedScene_og5ye"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
-"names": PackedStringArray("Document", "CharacterBody2D", "script", "Sprite", "Sprite2D", "scale", "texture", "CollisionShape", "CollisionShape2D", "shape", "SigningAnim", "AnimatedSprite2D", "sprite_frames", "animation"),
-"node_count": 4,
-"node_ids": PackedInt32Array(1180025037, 364910207, 232088666, 1047026064),
-"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 2, 5, 1, 6, 2, 0, 1073741825, 0, 8, 7, -1, 1, 9, 3, 0, 1073741826, 0, 11, 10, -1, 2, 12, 4, 13, 5, 0),
-"variants": [SubResource("GDScript_dq3la"), Vector2(6, 8), ExtResource("2_q6o1u"), SubResource("RectangleShape2D_cyy14"), SubResource("SpriteFrames_fgcfx"), &"sign"],
-"version": 3
-}
-
-[sub_resource type="GDScript" id="GDScript_mss11"]
-script/source = "class_name DocumentData
-extends Resource
-
-
-@export var sprite: Texture2D
-@export var sign_position: Vector2
-
-
-func _init(p_sprite = null, p_sign_position = Vector2(0,0)) -> void:
-	sprite = p_sprite
-	sign_position = p_sign_position
-"
-
-[sub_resource type="Resource" id="Resource_n17g8"]
-script = SubResource("GDScript_mss11")
-sprite = ExtResource("3_2ydlo")
-metadata/_custom_type_script = "uid://cqu6hbrn3jlkg"
-
-[sub_resource type="Resource" id="Resource_cxqst"]
-script = SubResource("GDScript_mss11")
-sprite = ExtResource("4_u5ewr")
-metadata/_custom_type_script = "uid://cqu6hbrn3jlkg"
-
-[sub_resource type="Resource" id="Resource_hgctv"]
-script = SubResource("GDScript_mss11")
-sprite = ExtResource("5_068vs")
-metadata/_custom_type_script = "uid://cqu6hbrn3jlkg"
-
-[sub_resource type="Resource" id="Resource_06cpt"]
-script = SubResource("GDScript_mss11")
-sprite = ExtResource("6_dotn6")
-metadata/_custom_type_script = "uid://cqu6hbrn3jlkg"
-
-[sub_resource type="Resource" id="Resource_dcbw5"]
-script = SubResource("GDScript_mss11")
-sprite = ExtResource("2_q6o1u")
-metadata/_custom_type_script = "uid://cqu6hbrn3jlkg"
 
 [node name="DivorcePaperMinigame" type="Node2D" unique_id=245305844]
 script = ExtResource("1_8xd02")
-doc_scene = SubResource("PackedScene_og5ye")
-doc_data_array = Array[SubResource("GDScript_mss11")]([SubResource("Resource_n17g8"), SubResource("Resource_cxqst"), SubResource("Resource_hgctv"), SubResource("Resource_06cpt"), SubResource("Resource_dcbw5")])
+doc_scene = ExtResource("2_1n01s")
 
-[node name="Document" parent="." unique_id=1180025037 instance=ExtResource("2_1n01s")]
-position = Vector2(952, 496)
+[node name="UI" type="CanvasLayer" parent="." unique_id=812748538]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=2059026382]
+offset_left = 1440.0
+offset_right = 1696.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="FinishBtn" type="Button" parent="UI/VBoxContainer" unique_id=1622158629]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Finish"
+
+[connection signal="pressed" from="UI/VBoxContainer/FinishBtn" to="." method="_on_finish_btn_pressed"]
