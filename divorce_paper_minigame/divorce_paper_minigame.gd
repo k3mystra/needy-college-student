@@ -11,7 +11,7 @@ const DOC_SPRITE_HALF_WIDTH = 300
 
 var doc_index = 0
 var current_state = game_state.SWITCHING
-var current_doc: PackedScene
+var current_doc
 
 
 func _ready() -> void:
