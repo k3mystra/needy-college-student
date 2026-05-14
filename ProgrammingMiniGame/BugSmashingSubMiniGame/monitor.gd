@@ -6,6 +6,8 @@ class_name monitor extends Node2D
 @onready var monitor_bottom_right = $MonitorPNG/ScreenBottomRight
 @onready var monitor_upper_right =$MonitorPNG/ScreenUpperRight
 @onready var AllBugs = $AllBugs
+@onready var pc : PC = $PC
+@onready var github = $Github
 
 var default_spawn_cd : int = 1
 
@@ -19,7 +21,28 @@ func _ready() -> void:
 	monitor_y_range.x = monitor_bottom_right.global_position.y
 	monitor_y_range.y = monitor_upper_right.global_position.y
 	
-	$BugSpawnCD.start()
+	pc.turn_on.connect(show_git)
+	#$BugSpawnCD.start()
+	pc.show()
+	github.hide()
+	github.git_window.hide()
+	pc.blackscreen.show()
+	ProgrammingMiniGameSignal.merge_button_pressed.connect(execute_merge)
+	ProgrammingMiniGameSignal.end_bug_smashing.connect(stop_bug_game)
+
+func stop_bug_game():
+	$BugSpawnCD.stop()
+	
+func execute_merge():
+	var i = randf()
+	if i > 0.1:
+		#trigger bus smashing game
+		$Github/GitHubWindow/PullRequest.hide()
+		$Github/GitHubWindow/Code.hide()
+		$Github/GitHubWindow/IDE.hide()
+		$Github/GitHubWindow/PullRequestWindow.hide()
+		$Github.disable_ide()
+		$BugSpawnCD.start()
 	
 func choose_rand_position() -> Vector2:
 	var random_x = randf_range(monitor_x_range.x, monitor_x_range.y)
@@ -28,6 +51,9 @@ func choose_rand_position() -> Vector2:
 	
 func _process(delta: float) -> void:
 	pass
+
+func show_git():
+	github.show()
 	
 func _on_bug_spawn_cd_timeout() -> void:
 	var new_bug : code_bug = bug.instantiate()

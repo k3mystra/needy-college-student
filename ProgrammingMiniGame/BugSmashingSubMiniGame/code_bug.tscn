@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bx53guja84csu"]
 
-[ext_resource type="Script" uid="uid://xyaesarjbds" path="res://ProgrammingMiniGame/bug.gd" id="1_1akvc"]
-[ext_resource type="Texture2D" uid="uid://dx2hliqvj5uxd" path="res://ProgrammingMiniGame/BUG.png" id="2_1xp5h"]
+[ext_resource type="Script" uid="uid://xyaesarjbds" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/bug.gd" id="1_1akvc"]
+[ext_resource type="Texture2D" uid="uid://dx2hliqvj5uxd" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/BUG.png" id="2_1xp5h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3bv6s"]
 radius = 38.0

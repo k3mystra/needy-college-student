@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx2hliqvj5uxd"
-path="res://.godot/imported/BUG.png-fbf2fd9cab5f54780f670f3cff789a51.ctex"
+uid="uid://ctcm4chlv6d1f"
+path="res://.godot/imported/SeanNote.png-103ac626836c9045e2e17a509d2e54c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ProgrammingMiniGame/BUG.png"
-dest_files=["res://.godot/imported/BUG.png-fbf2fd9cab5f54780f670f3cff789a51.ctex"]
+source_file="res://ProgrammingMiniGame/MergingGame/SeanNote.png"
+dest_files=["res://.godot/imported/SeanNote.png-103ac626836c9045e2e17a509d2e54c0.ctex"]
 
 [params]
 

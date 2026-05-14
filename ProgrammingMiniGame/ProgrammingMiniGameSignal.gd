@@ -1,4 +1,8 @@
 extends Node
 
-signal in_bug
-signal out_bug
+signal pull_request_button_pressed
+
+signal merge_button_pressed
+
+signal bug_smashed
+signal end_bug_smashing

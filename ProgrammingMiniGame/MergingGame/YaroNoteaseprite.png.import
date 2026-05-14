@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btbk1kect2kev"
-path="res://.godot/imported/Monitor-export.png-eb418b872fc57cb4bdc28732c439a35b.ctex"
+uid="uid://b8fqr2tbkc03a"
+path="res://.godot/imported/YaroNoteaseprite.png-4cb7257ce49ce3c8494c737bf8ebc823.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ProgrammingMiniGame/Monitor-export.png"
-dest_files=["res://.godot/imported/Monitor-export.png-eb418b872fc57cb4bdc28732c439a35b.ctex"]
+source_file="res://ProgrammingMiniGame/MergingGame/YaroNoteaseprite.png"
+dest_files=["res://.godot/imported/YaroNoteaseprite.png-4cb7257ce49ce3c8494c737bf8ebc823.ctex"]
 
 [params]
 
