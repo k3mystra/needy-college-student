@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bnwglx7ynjjsn" path="res://placeholder/white-square.png" id="1_m5p8x"]
 [ext_resource type="Script" uid="uid://b2nwh4meqr2dy" path="res://memory_pick_minigame/memory.gd" id="1_uye3s"]
-[ext_resource type="AnimationLibrary" uid="uid://uichhgmkx8rr" path="res://memory_pick_minigame/memory_animations.tres" id="3_gyojt"]
+[ext_resource type="AnimationLibrary" uid="uid://b5rksjjuo6tnd" path="res://memory_pick_minigame/memory_animations.tres" id="3_gyojt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5p8x"]
 
