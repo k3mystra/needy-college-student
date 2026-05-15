@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 @export var chance : int
 
 @onready var animation = $AnimatedSprite2D
