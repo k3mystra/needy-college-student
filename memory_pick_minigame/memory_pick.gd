@@ -60,7 +60,7 @@ func cycle_memory() -> void:
 
 
 func resist_action() -> void:
-	pass
+	current_memory.shake()
 
 
 func end_game() -> void:
