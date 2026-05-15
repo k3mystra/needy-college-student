@@ -33,7 +33,6 @@ func _ready() -> void:
 	# But that doesn't work for some reason
 	var memory_anim_library = $AnimationPlayer.get_animation_library(MEMORY_ANIMATION_LIB_NAME)
 	memory_anim_library.add_animation(SHAKE_ANIM_NAME, shake_anim)
-	ResourceSaver.save(shake_anim, "shake_animation.tres", 1)
 
 
 func set_memory_data(memory_data: MemoryData) -> void:
