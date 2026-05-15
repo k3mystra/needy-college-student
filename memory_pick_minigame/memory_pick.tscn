@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dxtneicd1ti3h"]
+
+[ext_resource type="Script" uid="uid://ctwoho7ai73b7" path="res://memory_pick_minigame/memory_pick.gd" id="1_pyxjy"]
+[ext_resource type="PackedScene" uid="uid://duh22q5qswf0g" path="res://memory_pick_minigame/memory.tscn" id="2_4lndx"]
+[ext_resource type="Script" uid="uid://dyoe3d5thysfy" path="res://memory_pick_minigame/memory_data.gd" id="2_d77l3"]
+[ext_resource type="Resource" uid="uid://c2vldq8f4wn6u" path="res://memory_pick_minigame/memories/black.tres" id="3_d7u6o"]
+[ext_resource type="Resource" uid="uid://ccq5tgf2v8g6r" path="res://memory_pick_minigame/memories/blue.tres" id="4_y6yek"]
+[ext_resource type="Resource" uid="uid://btx18a2j2elw7" path="res://memory_pick_minigame/memories/green.tres" id="5_evonj"]
+[ext_resource type="Resource" uid="uid://bjxxhr7c5vja3" path="res://memory_pick_minigame/memories/red.tres" id="6_13c6v"]
+[ext_resource type="Resource" uid="uid://dkh1rwoe7u0w2" path="res://memory_pick_minigame/memories/white.tres" id="7_b3f6d"]
+
+[node name="MemoryPick" type="Node" unique_id=1005337355]
+script = ExtResource("1_pyxjy")
+memory_data_array = Array[ExtResource("2_d77l3")]([ExtResource("3_d7u6o"), ExtResource("4_y6yek"), ExtResource("5_evonj"), ExtResource("6_13c6v"), ExtResource("7_b3f6d")])
+memory_scene = ExtResource("2_4lndx")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1666907676]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=1477059061]
+offset_left = 1360.0
+offset_right = 1616.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="DiscardBtn" type="Button" parent="UI/VBoxContainer" unique_id=570542455]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Discard"
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer" unique_id=1448621850]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="KeepBtn" type="Button" parent="UI/VBoxContainer/MarginContainer" unique_id=1474327106]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Keep"
+
+[connection signal="pressed" from="UI/VBoxContainer/DiscardBtn" to="." method="_on_discard_btn_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/MarginContainer/KeepBtn" to="." method="_on_keep_btn_pressed"]

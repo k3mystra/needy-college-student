@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cxaccl8vxu3ky"]
+
+[ext_resource type="Script" uid="uid://4sd5ubxukw0y" path="res://divorce_paper_minigame/document.gd" id="1_if656"]
+[ext_resource type="Texture2D" uid="uid://bisg56bicpi82" path="res://placeholder/white-square.png" id="1_t6y3i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy14"]
+size = Vector2(592, 800)
+
+[node name="Document" type="CharacterBody2D" unique_id=1180025037]
+z_index = 100
+z_as_relative = false
+input_pickable = true
+script = ExtResource("1_if656")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=364910207]
+z_index = -100
+scale = Vector2(6, 8)
+texture = ExtResource("1_t6y3i")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=232088666]
+z_index = -100
+shape = SubResource("RectangleShape2D_cyy14")
