@@ -29,6 +29,7 @@ var prevspamcooldown = 0.0
 var prevsliderpos : Vector2
 var selected_word : String
 var prev_total_time : float
+var intensity = 0.0
 # replace the spam button to the things taht come from the side of the screen
 
 var button_spam = preload("res://ButtonMiniGame/button_spam.tscn")
@@ -66,7 +67,17 @@ func _process(delta: float) -> void:
 		_clock_sound()
 		circle.show()
 		_maintimer()
-		
+	
+	if intensity > 0.1:
+		intensity = lerpf(intensity, 0.0, delta * 8)
+		sliderholder.position = prevsliderpos + Vector2(
+			randf_range(-intensity, intensity), 
+			randf_range(-intensity, intensity))
+		sliderholder.rotation_degrees = randf_range(-8.0, 8.0) * (intensity / 35.0)
+	else:
+		intensity = 0.0
+		sliderholder.position = prevsliderpos
+		sliderholder.rotation_degrees = 0.0
 	anim_timer -= 1 * delta
 	if anim_timer < 0:
 		_animation()
@@ -161,20 +172,16 @@ func _animation():
 	circle.position.y = prevpos.y + randf_range(-6, 6)
 	circle.rotation_degrees = randf_range(-15, 15)
 
-func _slider_damage(value: float): # somehow make the bar slowly stop vibrating  
+func _slider_damage(value: float):
+	slider.value += value
+	
 	if value > 0:
 		play_sound(glass, 1, 6)
 		bloodParticle.emitting = true
-	slider.value += value
-	while value > 0:
-		sliderholder.position = prevsliderpos
-		sliderholder.position += Vector2(randf_range(-35, 35), randf_range(-35, 35))
-		sliderholder.rotation_degrees = 0
-		sliderholder.rotation_degrees += randf_range(-8, 8)
-		value -= 3
-		await get_tree().create_timer(0.05).timeout
-	sliderholder.position = prevsliderpos
-	sliderholder.rotation_degrees /= 1.3
+		intensity = 35.0 
+	else:
+		intensity = 0.0
+
 
 func play_sound (stream: AudioStream, pitch: float, volume: float): # YOU CAN JUST COPY AND PASTE THIS
 	var p = AudioStreamPlayer2D.new() # make new audioplayer
