@@ -8,6 +8,7 @@ radius = 38.0
 height = 76.0
 
 [node name="Bug" type="Node2D" unique_id=1756963268 groups=["MonitorBugs"]]
+z_index = 1
 script = ExtResource("1_1akvc")
 
 [node name="Bug" type="Sprite2D" parent="." unique_id=61206248]

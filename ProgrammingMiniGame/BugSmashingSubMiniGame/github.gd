@@ -32,6 +32,7 @@ func execute_merge():
 		$GitHubWindow/IDE.hide()
 		$GitHubWindow/PullRequestWindow.hide()
 		ProgrammingMiniGameSignal.start_bug_smashing.emit()
+		$GitHubWindow/Debug.show()
 	else:
 		finish_debug()
 		$GitHubWindow/PullRequestWindow.hide()
@@ -93,6 +94,7 @@ func _on_button_button_up() -> void:
 		$GithubLogo.hide()
 
 func finish_debug():
+	$GitHubWindow/Debug.hide()
 	$GitHubWindow/Code.show()
 	$GitHubWindow/PullRequest.show()
 	var selected_child
