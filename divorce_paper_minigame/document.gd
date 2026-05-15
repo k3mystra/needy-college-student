@@ -17,8 +17,8 @@ var down = preload("res://divorce_paper_minigame/sounds/pen_down.ogg")
 func _process(delta: float) -> void:
 	if mouse_speed > 0:
 		mouse_speed = lerpf(mouse_speed, 0.0, delta * 10.0)
-		var target_pitch = remap(mouse_speed, 0, 400, 0.1, 1)
-		loop.pitch_scale = target_pitch
+		var target_pitch = remap(mouse_speed, 0, 300, 0.1, 1.5)
+		loop.pitch_scale = clampf(target_pitch, 0.1, 1.5)
 
 func _draw() -> void:
 	if sign_points.size() < 2:
