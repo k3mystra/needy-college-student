@@ -49,6 +49,7 @@ timer = 2.0
 x_range = 275.0
 y_range = 180.0
 button_spam_limit = 4
+total_time = 120.0
 
 [node name="WordHolder" type="Sprite2D" parent="." unique_id=200945918]
 self_modulate = Color(1, 0.5372549, 0, 1)
@@ -113,6 +114,25 @@ angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 color = Color(0.73333335, 0, 0, 1)
 
+[node name="time" type="Label" parent="sliderholder" unique_id=174154018]
+z_index = 44
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -120.0
+offset_right = 43.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1470038093]
 stream = ExtResource("4_7810j")
 
@@ -131,6 +151,7 @@ texture = SubResource("GradientTexture2D_fgape")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1816945181]
 z_index = -1
 scale = Vector2(0.5, 0.5)
+emitting = false
 amount = 25
 texture = ExtResource("3_h0o0h")
 preprocess = 1.61

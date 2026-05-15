@@ -6,6 +6,7 @@
 [node name="button_spam" type="Node2D" unique_id=614955222]
 script = ExtResource("1_km3y2")
 max_distance = 1000.0
+speed = 35
 
 [node name="resize" type="StaticBody2D" parent="." unique_id=1365346980]
 scale = Vector2(0.5, 0.5)
@@ -30,5 +31,21 @@ flat = true
 position = Vector2(-2378.8003, 0)
 scale = Vector2(597.3, 18.961304)
 texture = ExtResource("3_ix4o1")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="resize" unique_id=575422343]
+position = Vector2(-2000, 0)
+amount = 45
+texture = ExtResource("3_ix4o1")
+preprocess = 1.31
+randomness = 0.18
+lifetime_randomness = 0.66
+emission_shape = 3
+emission_rect_extents = Vector2(2000, 80)
+direction = Vector2(0, 1)
+spread = 0.0
+initial_velocity_max = 168.32
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="resize/Button" to="." method="_on_button_pressed"]

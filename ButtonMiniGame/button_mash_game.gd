@@ -6,6 +6,7 @@ extends Node2D
 @export var x_range : float
 @export var y_range : float
 @export var button_spam_limit : int
+@export var total_time : float
 
 @onready var circle = $WordHolder
 @onready var word = $WordHolder/Word
@@ -14,6 +15,7 @@ extends Node2D
 @onready var clock = $AudioStreamPlayer2D
 @onready var bloodParticle = $sliderholder/HSlider/blood
 @onready var particle = $CPUParticles2D
+
 
 var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x", "c"]
 var letter_amount : int
@@ -26,6 +28,7 @@ var prevcooldown = 0.0
 var prevspamcooldown = 0.0
 var prevsliderpos : Vector2
 var selected_word : String
+var prev_total_time : float
 # replace the spam button to the things taht come from the side of the screen
 
 var button_spam = preload("res://ButtonMiniGame/button_spam.tscn")
@@ -47,6 +50,7 @@ func _ready() -> void:
 	prevcooldown = cooldown
 	prevspamcooldown = spam_cooldown
 	prevsliderpos = sliderholder.position
+	prev_total_time = total_time
 	Global.buttonspam_L.connect(_buttonspamL)
 	Global.buttonspam_W.connect(_buttonspamW)
 
@@ -58,6 +62,7 @@ func _process(delta: float) -> void:
 			clock.play()
 			_start()
 	elif !allow_count:
+		particle.emitting = true
 		_clock_sound()
 		circle.show()
 		_maintimer()
@@ -72,17 +77,21 @@ func _process(delta: float) -> void:
 		2: circle.self_modulate = Color("ffff00")
 		3: circle.self_modulate = Color("ff8900")
 		4: circle.self_modulate = Color("e3000d")
-
-	spam_cooldown -= 1 * delta
-	if spam_cooldown < 0:
-		if Global.total_button_spam < button_spam_limit:
-			_spawn_spam()
-			spam_cooldown = prevspamcooldown + randf_range(-0.2, 0.1)
-			button_spam_limit = 4
-		else:
-			if randi_range(0, 3) == 0:
-				button_spam_limit += 1 
-			spam_cooldown = prevspamcooldown + randf_range(-0.4, 0)
+	
+	if (total_time < prev_total_time/2 + 45):
+		spam_cooldown -= 1 * delta
+		if spam_cooldown < 0:
+			if Global.total_button_spam < button_spam_limit:
+				_spawn_spam()
+				spam_cooldown = prevspamcooldown + randf_range(-0.2, 0.1)
+				button_spam_limit = 4
+			else:
+				if randi_range(0, 3) == 0:
+					button_spam_limit += 1 
+				spam_cooldown = prevspamcooldown + randf_range(-0.4, 0)
+	
+	total_time -= 1 * delta
+	_showtime(total_time)
 	_border()
 	_follow_word()
 
@@ -114,6 +123,7 @@ func _maintimer():
 		var target_color = remap(timer, 2, 0.0, 0.0, 4.99)
 		circleColor = int(floor(target_color))
 	else:
+		particle.emitting = false
 		circle.hide()
 		_resultcheck(false)
 
@@ -193,3 +203,7 @@ func _buttonspamL():
 
 func _follow_word():
 	particle.position = circle.position
+
+func _showtime(seconds: float):
+	var time = $sliderholder/time
+	time.text = str(int(seconds))
