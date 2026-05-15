@@ -9,6 +9,11 @@
 [ext_resource type="Script" uid="uid://cvfaptmep3ega" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/pc.gd" id="6_mvjbd"]
 [ext_resource type="Script" uid="uid://dhfuq4qc2lpdv" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/git_hub_window.gd" id="7_mhud3"]
 [ext_resource type="Texture2D" uid="uid://c4hja1a4vyory" path="res://ProgrammingMiniGame/PC-Sheet.png" id="7_p72re"]
+[ext_resource type="Script" uid="uid://cttjuaj0gcro2" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/github_logo.gd" id="8_64smk"]
+[ext_resource type="Script" uid="uid://douhvdh8unr4j" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/pull_request_window.gd" id="8_enrwd"]
+[ext_resource type="PackedScene" uid="uid://cavpk2761eol7" path="res://ProgrammingMiniGame/MergingGame/pr_users.tscn" id="9_2o845"]
+[ext_resource type="Script" uid="uid://btxg2f3xsmpq3" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/pull_request.gd" id="9_kdtwn"]
+[ext_resource type="Script" uid="uid://gwmgginlmysa" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/code.gd" id="9_n81ul"]
 [ext_resource type="Texture2D" uid="uid://bsxxljlfo0guj" path="res://ProgrammingMiniGame/MergingGame/IzminNote.png" id="10_hyui6"]
 [ext_resource type="Texture2D" uid="uid://ctcm4chlv6d1f" path="res://ProgrammingMiniGame/MergingGame/SeanNote.png" id="11_enrwd"]
 [ext_resource type="Texture2D" uid="uid://b8fqr2tbkc03a" path="res://ProgrammingMiniGame/MergingGame/YaroNoteaseprite.png" id="12_2o845"]
@@ -16,11 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://m5vce1nu7l2t" path="res://ProgrammingMiniGame/MergingGame/JasonNote.png" id="14_kdtwn"]
 [ext_resource type="Texture2D" uid="uid://810y1plmc87" path="res://ProgrammingMiniGame/MergingGame/DaneNote.png" id="15_64smk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gkbb6"]
-radius = 72.28557
+[sub_resource type="LabelSettings" id="LabelSettings_hyui6"]
+font_size = 60
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p72re"]
-size = Vector2(12.071929, 11.985157)
+[sub_resource type="LabelSettings" id="LabelSettings_enrwd"]
+font_size = 22
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhud3"]
 atlas = ExtResource("7_p72re")
@@ -43,6 +48,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gkbb6"]
+radius = 72.28557
 
 [node name="Monitor" type="Node2D" unique_id=1322128148]
 script = ExtResource("1_stov2")
@@ -74,16 +82,12 @@ scale = Vector2(0.5, 0.5)
 [node name="Github" type="Node2D" parent="." unique_id=246883637]
 position = Vector2(-360, -235)
 script = ExtResource("5_mvjbd")
+pr_user = ExtResource("9_2o845")
 
 [node name="GithubLogo" type="Sprite2D" parent="Github" unique_id=1090451380]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_gkbb6")
-
-[node name="Area2D" type="Area2D" parent="Github/GithubLogo" unique_id=1495490150 groups=["MonitorBugs"]]
-scale = Vector2(3.3333333, 3.3333333)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Github/GithubLogo/Area2D" unique_id=1200960239]
-shape = SubResource("CircleShape2D_gkbb6")
+script = ExtResource("8_64smk")
 
 [node name="Button" type="Button" parent="Github/GithubLogo" unique_id=193677040]
 offset_left = -210.0
@@ -114,6 +118,7 @@ offset_bottom = -62.0
 scale = Vector2(5.5914836, 1.9774445)
 mouse_filter = 2
 color = Color(0.14911401, 0.14911404, 0.14911401, 1)
+script = ExtResource("9_kdtwn")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Github/GitHubWindow/PullRequest" unique_id=1212891236]
@@ -139,14 +144,6 @@ offset_bottom = 8.0
 scale = Vector2(4.9861517, 4.994602)
 flat = true
 
-[node name="Area2D" type="Area2D" parent="Github/GitHubWindow/PullRequest" unique_id=889150480]
-scale = Vector2(3.3333333, 3.3333333)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Github/GitHubWindow/PullRequest/Area2D" unique_id=1688870738]
-position = Vector2(5.982315, 5.992584)
-scale = Vector2(1, 1.0000002)
-shape = SubResource("RectangleShape2D_p72re")
-
 [node name="Code" type="ColorRect" parent="Github/GitHubWindow" unique_id=596972494]
 z_index = 1
 offset_left = -95.0
@@ -156,6 +153,7 @@ offset_bottom = -60.0
 scale = Vector2(5.5914836, 1.9774445)
 mouse_filter = 2
 color = Color(0.14911401, 0.14911404, 0.14911401, 1)
+script = ExtResource("9_n81ul")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Github/GitHubWindow/Code" unique_id=2115626887]
@@ -178,13 +176,100 @@ offset_bottom = 8.0
 scale = Vector2(5.0017037, 4.965041)
 flat = true
 
-[node name="Area2D" type="Area2D" parent="Github/GitHubWindow/Code" unique_id=336833899]
-scale = Vector2(3.3333333, 3.3333333)
+[node name="PullRequestWindow" type="Control" parent="Github/GitHubWindow" unique_id=745462741]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 360.0
+offset_top = 235.0
+offset_right = 400.0
+offset_bottom = 275.0
+script = ExtResource("8_enrwd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Github/GitHubWindow/Code/Area2D" unique_id=651976046]
-position = Vector2(5.982315, 5.992584)
-scale = Vector2(1, 1.0000002)
-shape = SubResource("RectangleShape2D_p72re")
+[node name="ColorRect2" type="ColorRect" parent="Github/GitHubWindow/PullRequestWindow" unique_id=816453412]
+z_index = 1
+layout_mode = 0
+offset_left = -447.0
+offset_top = -241.0
+offset_right = -407.0
+offset_bottom = -201.0
+scale = Vector2(21.036081, 11.8869915)
+mouse_filter = 2
+color = Color(0.14901961, 0.14901961, 0.14901961, 1)
+
+[node name="user" type="Label" parent="Github/GitHubWindow/PullRequestWindow" unique_id=213354947]
+z_index = 1
+layout_mode = 0
+offset_left = -412.0
+offset_top = -228.0
+offset_right = -255.0
+offset_bottom = -145.0
+label_settings = SubResource("LabelSettings_hyui6")
+
+[node name="DescriptionRect" type="ColorRect" parent="Github/GitHubWindow/PullRequestWindow" unique_id=124294171]
+z_index = 1
+layout_mode = 0
+offset_left = -419.0
+offset_top = -124.0
+offset_right = 366.0
+offset_bottom = 206.0
+mouse_filter = 2
+color = Color(0.525894, 0.52589405, 0.525894, 1)
+
+[node name="description" type="RichTextLabel" parent="Github/GitHubWindow/PullRequestWindow" unique_id=86571010]
+z_index = 1
+layout_mode = 0
+offset_left = -393.0
+offset_top = -99.0
+offset_right = 340.0
+offset_bottom = 169.0
+theme_override_font_sizes/normal_font_size = 35
+
+[node name="TitleRect" type="ColorRect" parent="Github/GitHubWindow/PullRequestWindow" unique_id=1117922152]
+z_index = 1
+layout_mode = 0
+offset_left = -114.0
+offset_top = -205.0
+offset_right = 366.0
+offset_bottom = -147.0
+mouse_filter = 2
+color = Color(0.525894, 0.52589405, 0.525894, 1)
+
+[node name="title" type="Label" parent="Github/GitHubWindow/PullRequestWindow" unique_id=2050491683]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.9280002
+anchor_top = -5.241
+anchor_right = 9.184
+anchor_bottom = -3.7000003
+offset_left = 19.12001
+offset_top = 13.640015
+offset_right = -10.359985
+offset_bottom = -9.999985
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_enrwd")
+autowrap_mode = 2
+
+[node name="All_prs" type="Node2D" parent="Github/GitHubWindow/PullRequestWindow" unique_id=855671662]
+
+[node name="AllSlots" type="Node2D" parent="Github/GitHubWindow/PullRequestWindow" unique_id=314690731]
+
+[node name="1" type="Marker2D" parent="Github/GitHubWindow/PullRequestWindow/AllSlots" unique_id=641343242]
+position = Vector2(380.99994, -182)
+scale = Vector2(3.1515667, 1.5953208)
+
+[node name="2" type="Marker2D" parent="Github/GitHubWindow/PullRequestWindow/AllSlots" unique_id=217586056]
+position = Vector2(378.99988, -103)
+scale = Vector2(3.1515667, 1.5953208)
+
+[node name="3" type="Marker2D" parent="Github/GitHubWindow/PullRequestWindow/AllSlots" unique_id=1781022217]
+position = Vector2(378, -18.000015)
+scale = Vector2(3.1515667, 1.5953208)
+
+[node name="4" type="Marker2D" parent="Github/GitHubWindow/PullRequestWindow/AllSlots" unique_id=1202177641]
+position = Vector2(373.99988, 68.00003)
+scale = Vector2(3.1515667, 1.5953208)
 
 [node name="IDE" type="Control" parent="Github/GitHubWindow" unique_id=1965993695]
 visible = false
@@ -236,25 +321,6 @@ offset_top = -4.0
 offset_right = 31.0
 offset_bottom = 36.0
 scale = Vector2(12.771832, 12.356454)
-color = Color(0.14901961, 0.14901961, 0.14901961, 1)
-
-[node name="PullRequestWindow" type="Control" parent="Github/GitHubWindow" unique_id=745462741]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 360.0
-offset_top = 235.0
-offset_right = 400.0
-offset_bottom = 275.0
-
-[node name="ColorRect2" type="ColorRect" parent="Github/GitHubWindow/PullRequestWindow" unique_id=816453412]
-z_index = 1
-layout_mode = 0
-offset_left = -447.0
-offset_top = -241.0
-offset_right = -407.0
-offset_bottom = -201.0
-scale = Vector2(21.036081, 11.8869915)
 color = Color(0.14901961, 0.14901961, 0.14901961, 1)
 
 [node name="Debug" type="Node2D" parent="Github/GitHubWindow" unique_id=1702467140]
@@ -333,6 +399,12 @@ texture = ExtResource("15_64smk")
 
 [connection signal="timeout" from="BugSpawnCD" to="." method="_on_bug_spawn_cd_timeout"]
 [connection signal="button_up" from="Github/GithubLogo/Button" to="Github" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Github/GithubLogo/Button" to="Github/GithubLogo" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Github/GithubLogo/Button" to="Github/GithubLogo" method="_on_button_mouse_exited"]
 [connection signal="button_up" from="Github/GitHubWindow/PullRequest/PullRequestButton" to="Github/GitHubWindow" method="_on_pull_request_button_button_up"]
+[connection signal="mouse_entered" from="Github/GitHubWindow/PullRequest/PullRequestButton" to="Github/GitHubWindow/PullRequest" method="_on_pull_request_button_mouse_entered"]
+[connection signal="mouse_exited" from="Github/GitHubWindow/PullRequest/PullRequestButton" to="Github/GitHubWindow/PullRequest" method="_on_pull_request_button_mouse_exited"]
 [connection signal="button_up" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow" method="_on_code_button_button_up"]
+[connection signal="mouse_entered" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow/Code" method="_on_code_button_mouse_entered"]
+[connection signal="mouse_exited" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow/Code" method="_on_code_button_mouse_exited"]
 [connection signal="button_up" from="PC/Button" to="PC" method="_on_button_button_up"]

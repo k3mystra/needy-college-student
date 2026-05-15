@@ -27,22 +27,11 @@ func _ready() -> void:
 	github.hide()
 	github.git_window.hide()
 	pc.blackscreen.show()
-	ProgrammingMiniGameSignal.merge_button_pressed.connect(execute_merge)
-	ProgrammingMiniGameSignal.end_bug_smashing.connect(stop_bug_game)
+	ProgrammingMiniGameSignal.start_bug_smashing.connect(func(): $BugSpawnCD.start())
+	ProgrammingMiniGameSignal.end_bug_smashing.connect(stop_bug_game)		
 
 func stop_bug_game():
 	$BugSpawnCD.stop()
-	
-func execute_merge():
-	var i = randf()
-	if i > 0.1:
-		#trigger bus smashing game
-		$Github/GitHubWindow/PullRequest.hide()
-		$Github/GitHubWindow/Code.hide()
-		$Github/GitHubWindow/IDE.hide()
-		$Github/GitHubWindow/PullRequestWindow.hide()
-		$Github.disable_ide()
-		$BugSpawnCD.start()
 	
 func choose_rand_position() -> Vector2:
 	var random_x = randf_range(monitor_x_range.x, monitor_x_range.y)
@@ -61,3 +50,7 @@ func _on_bug_spawn_cd_timeout() -> void:
 	new_bug.position = choose_rand_position()
 	new_bug.rotation = randi_range(0,360)
 	$BugSpawnCD.wait_time = default_spawn_cd * pow(0.99, AllBugs.get_child_count())
+
+
+func _on_area_2d_mouse_entered() -> void:
+	pass # Replace with function body.

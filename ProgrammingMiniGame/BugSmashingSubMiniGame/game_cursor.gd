@@ -1,8 +1,8 @@
 class_name game_cursor extends Node2D
 
-#func _ready() -> void:
-	#ProgrammingMiniGameSignal.in_bug.connect(switch_hand)
-	#ProgrammingMiniGameSignal.out_bug.connect(switch_normal)
+func _ready() -> void:
+	ProgrammingMiniGameSignal.cursor_in.connect(switch_hand)
+	ProgrammingMiniGameSignal.cursor_out.connect(switch_normal)
 
 func _process(delta: float) -> void:
 	global_position = get_global_mouse_position()
