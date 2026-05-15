@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qlf7ca7tjgsw"
-path="res://.godot/imported/wordholderblank.png-39814159aa77da7225f178c5b030aa2b.ctex"
+path="res://.godot/imported/wordholderblank.png-0b0e4c50bb384bb32ee3833e23b7fcf2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://placeholder/wordholderblank.png"
-dest_files=["res://.godot/imported/wordholderblank.png-39814159aa77da7225f178c5b030aa2b.ctex"]
+source_file="res://ButtonMiniGame/placeholder/wordholderblank.png"
+dest_files=["res://.godot/imported/wordholderblank.png-0b0e4c50bb384bb32ee3833e23b7fcf2.ctex"]
 
 [params]
 
