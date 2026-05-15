@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 		_clock_sound()
 		circle.show()
 		_maintimer()
-		
+
 	anim_timer -= 1 * delta
 	if anim_timer < 0:
 		_animation()
@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 		2: circle.self_modulate = Color("ffff00")
 		3: circle.self_modulate = Color("ff8900")
 		4: circle.self_modulate = Color("e3000d")
-	
+
 	if (total_time < prev_total_time/2 + 45):
 		spam_cooldown -= 1 * delta
 		if spam_cooldown < 0:
@@ -87,9 +87,9 @@ func _process(delta: float) -> void:
 				button_spam_limit = 4
 			else:
 				if randi_range(0, 3) == 0:
-					button_spam_limit += 1 
+					button_spam_limit += 1
 				spam_cooldown = prevspamcooldown + randf_range(-0.4, 0)
-	
+
 	total_time -= 1 * delta
 	_showtime(total_time)
 	_border()
@@ -161,7 +161,7 @@ func _animation():
 	circle.position.y = prevpos.y + randf_range(-6, 6)
 	circle.rotation_degrees = randf_range(-15, 15)
 
-func _slider_damage(value: float): # somehow make the bar slowly stop vibrating  
+func _slider_damage(value: float): # somehow make the bar slowly stop vibrating
 	if value > 0:
 		play_sound(glass, 1, 6)
 		bloodParticle.emitting = true
