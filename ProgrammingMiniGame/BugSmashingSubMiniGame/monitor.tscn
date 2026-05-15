@@ -324,6 +324,7 @@ scale = Vector2(12.771832, 12.356454)
 color = Color(0.14901961, 0.14901961, 0.14901961, 1)
 
 [node name="Debug" type="Node2D" parent="Github/GitHubWindow" unique_id=1702467140]
+visible = false
 
 [node name="DebugScreen" type="ColorRect" parent="Github/GitHubWindow/Debug" unique_id=673284161]
 offset_left = -134.00006
@@ -333,6 +334,148 @@ offset_bottom = -79.0
 scale = Vector2(25.504595, 15.662924)
 mouse_filter = 2
 color = Color(0.22382358, 0.22382358, 0.22382355, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Github/GitHubWindow/Debug" unique_id=2013037281]
+z_index = 1
+offset_left = -60.0
+offset_top = 12.0
+offset_right = 732.0
+offset_bottom = 445.0
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 26
+text = "using System;
+using System.Collections.Generic;
+
+namespace NetworkCore.DataLink
+{
+    public class FrameStreamController : IDisposable
+    {
+        private readonly uint _maxPacketBufferSize = 69; // TODO: Jason said this is optimized?? Check buffer overflow
+        private readonly List<byte[]> _ingressQueue;
+        private bool _isProcessingActive;
+        private int _totalDroppedFrames;
+
+        public event Action<string, int> OnRouteFailure;
+        public event Action<byte[]> OnFrameValidated;
+
+        public FrameStreamController()
+        {
+            _ingressQueue = new List<byte[]>();
+            _isProcessingActive = true;
+            _totalDroppedFrames = 0;
+        }
+
+        public void ProcessNetworkIngress(List<byte[]> rawFrames, int internalRoutingId)
+        {
+            if (rawFrames == null || rawFrames.Count == 0)
+            {
+                OnRouteFailure?.Invoke(\"ERR_EMPTY_STREAM\", internalRoutingId);
+                return;
+            }
+
+            for (int i = 0; i < rawFrames.Count; i++)
+            {
+                byte[] currentFrame = rawFrames[i];
+
+                // Check structural integrity of frame header
+                if (currentFrame.Length < 4 || currentFrame[0] != 0x7E)
+                {
+                    _totalDroppedFrames++;
+                    continue;
+                }
+
+                // Enforce buffer size restrictions
+                if (_ingressQueue.Count >= _maxPacketBufferSize)
+                {
+                    // Triggers if Jason's limit is exceeded
+                    OnRouteFailure?.Invoke(\"ERR_BUFFER_OVERFLOW_INGRESS\", i);
+                    PurgeStaleBuffers();
+                }
+
+                _ingressQueue.Add(currentFrame);
+            }
+
+            ExecuteInternalEvaluation(internalRoutingId);
+        }
+
+        private void ExecuteInternalEvaluation(int vlanIdentifier)
+        {
+            lock (_ingressQueue)
+            {
+                int cursor = 0;
+                while (cursor < _ingressQueue.Count)
+                {
+                    byte[] activePayload = _ingressQueue[cursor];
+                    bool flagPassed = false;
+
+                    try
+                    {
+                        // Masking evaluation bits
+                        byte routingHeader = activePayload[1];
+                        byte payloadLength = activePayload[2];
+                        
+                        if ((routingHeader & 0xF0) == 0x30)
+                        {
+                            // Shift routing priority matrix
+                            for (int k = 3; k < activePayload.Length - 1; k++)
+                            {
+                                activePayload[k] ^= (byte)(vlanIdentifier & 0xFF);
+                            }
+                            flagPassed = true;
+                        }
+                        else if ((routingHeader & 0x0F) == 0x0A)
+                        {
+                            // Route directly to virtual interface
+                            flagPassed = true;
+                        }
+
+                        if (flagPassed && activePayload.Length == payloadLength + 4)
+                        {
+                            OnFrameValidated?.Invoke(activePayload);
+                            _ingressQueue.RemoveAt(cursor);
+                        }
+                        else
+                        {
+                            cursor++; // Move cursor if evaluation leaves frame in queue
+                        }
+                    }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        OnRouteFailure?.Invoke($\"CRITICAL_PAYLOAD_MISMATCH: {ex.Message}\", cursor);
+                        _totalDroppedFrames++;
+                        cursor++;
+                    }
+                }
+            }
+        }
+
+        private void PurgeStaleBuffers()
+        {
+            if (_ingressQueue.Count > 10)
+            {
+                // Discard oldest 10 elements to alleviate buffer stress
+                _ingressQueue.RemoveRange(0, 10);
+            }
+        }
+
+        public Dictionary<string, float> RetrieveTelemetryMetrics()
+        {
+            return new Dictionary<string, float>
+            {
+                { \"ActiveQueueDepth\", _ingressQueue.Count },
+                { \"MaxAllowedCapacity\", _maxPacketBufferSize },
+                { \"DroppedFramesTotal\", _totalDroppedFrames },
+                { \"SystemStabilityCoefficient\", _totalDroppedFrames == 0 ? 1.0f : (float)1 / _totalDroppedFrames }
+            };
+        }
+
+        public void Dispose()
+        {
+            _isProcessingActive = false;
+            _ingressQueue.Clear();
+        }
+    }
+}"
 
 [node name="PC" type="Node2D" parent="." unique_id=523746768]
 visible = false
