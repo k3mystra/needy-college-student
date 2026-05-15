@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bxgjki6i3b2wb"]
+
+[ext_resource type="Texture2D" uid="uid://dutv5qn5gv0qa" path="res://taiko-minigame/Assets/taiko-office-fpv.png" id="1_fqmn3"]
+[ext_resource type="Texture2D" uid="uid://br0h0u3bpe7ag" path="res://taiko-minigame/Assets/taiko-boss.png" id="2_moc4h"]
+[ext_resource type="Texture2D" uid="uid://dju43xiwqm7x2" path="res://taiko-minigame/Assets/Monitor_Taiko.png" id="3_tl8dn"]
+
+[node name="Environment" type="Node2D" unique_id=230811383]
+
+[node name="TaikoOfficeFpv" type="Sprite2D" parent="." unique_id=889115490]
+position = Vector2(962, 544)
+texture = ExtResource("1_fqmn3")
+
+[node name="TaikoBoss" type="Sprite2D" parent="." unique_id=541253966]
+position = Vector2(968, 554)
+texture = ExtResource("2_moc4h")
+
+[node name="MonitorTaiko" type="Sprite2D" parent="." unique_id=2017060278]
+position = Vector2(492, 558)
+scale = Vector2(1.3320521, 1.2861446)
+texture = ExtResource("3_tl8dn")
