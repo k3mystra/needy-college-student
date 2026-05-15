@@ -478,7 +478,6 @@ namespace NetworkCore.DataLink
 }"
 
 [node name="PC" type="Node2D" parent="." unique_id=523746768]
-visible = false
 script = ExtResource("6_mvjbd")
 
 [node name="pc" type="AnimatedSprite2D" parent="PC" unique_id=1078321037]

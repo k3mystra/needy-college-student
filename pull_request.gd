@@ -78,6 +78,54 @@ const PR_POOL: Array[Dictionary] = [
 		"title": "Compressed UI typography font files",
 		"description": "The fonts are now beautiful 4K high-resolution vector assets. The UI might take an extra 8 seconds to load now, but the line tracking looks absolutely immaculate.",
 		"good_merge_chance": 0.80
+	},
+	{
+		"user": "Sean",
+		"title": "Cleaned up the UI layout container flags",
+		"description": "The layout alignment flags were giving me a headache so I completely rewrote the anchor presets. While doing that, I accidentally changed the server ping interval to match my heart rate when drinking coffee. Feels faster now.",
+		"good_merge_chance": 0.25
+	},
+	{
+		"user": "Izmin",
+		"title": "Implemented data compression algorithm",
+		"description": "The old serialization logic was mid. I implemented a new streaming algorithm that absolutely shreds the packet weight. It is skibidi clean, lock in and merge this post-haste.",
+		"good_merge_chance": 0.95
+	},
+	{
+		"user": "Dane",
+		"title": "Refactored the transit schedule update loops",
+		"description": "Deep within the nested loop structures, I discovered a cluster of rogue conditions. They multiply if you touch them. I left a colony of nested if-statements to stabilize them. It feels like Deepnest down there now. Beautiful.",
+		"good_merge_chance": 0.10
+	},
+	{
+		"user": "Haqeem",
+		"title": "patching database connections",
+		"description": "re-routed the connection pools. had to do this with one hand while holding a shield against the Nameless King. if the database drops connection just retry, my focus is currently occupied.",
+		"good_merge_chance": 0.45
+	},
+	{
+		"user": "Yaro",
+		"title": "Re-designed the system error console window",
+		"description": "The debug terminal console looked way too industrial and depressing! I replaced the harsh red text warnings with soft pastel pink hex values and added a cute bouncing cat animation in the corner. You're welcome! <3",
+		"good_merge_chance": 0.30
+	},
+	{
+		"user": "Jason",
+		"title": "Updated loop bounds for security key generation",
+		"description": "The encryption algorithm was generating odd salt indices. Realigned the iteration cap from 65 up to 67. We are almost at peak optimization, just two more iterations to greatness.",
+		"good_merge_chance": 0.85
+	},
+	{
+		"user": "Sean",
+		"title": "Blah Blah Blah",
+		"description": "huh",
+		"good_merge_chance": 0.40
+	},
+	{
+		"user": "Izmin",
+		"title": "Refactored client-side input validation checking",
+		"description": "The input validation logic was letting absolute garbage through. Patched the boundary parameters so the server stops crying. This fix goes hard, built entirely with high-aura energy.",
+		"good_merge_chance": 0.92
 	}
 ]
 
