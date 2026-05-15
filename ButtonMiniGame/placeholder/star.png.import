@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fwm2gyc5snmf"
-path="res://.godot/imported/green-square.png-077651cf00b31e276e9ee059422ee64c.ctex"
+uid="uid://cd5rny8pfj16t"
+path="res://.godot/imported/star.png-ee4f2cb4f07fb0f8e03cfb32ddc2953c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://placeholder/green-square.png"
-dest_files=["res://.godot/imported/green-square.png-077651cf00b31e276e9ee059422ee64c.ctex"]
+source_file="res://ButtonMiniGame/placeholder/star.png"
+dest_files=["res://.godot/imported/star.png-ee4f2cb4f07fb0f8e03cfb32ddc2953c.ctex"]
 
 [params]
 
