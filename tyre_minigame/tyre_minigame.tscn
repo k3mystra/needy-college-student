@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" path="res://tyre_minigame/tyre_minigame.gd" id="1_7ifhr"]
 [ext_resource type="Texture2D" uid="uid://c0uv83je6lhg2" path="res://tyre_minigame/axle.png" id="2_dekca"]
-[ext_resource type="Texture2D" uid="uid://d3l3mx3puj6jt" path="res://tyre_minigame/car-part-filler.png" id="3_s8o2b"]
-[ext_resource type="Texture2D" uid="uid://p7mbswyjt08r" path="res://tyre_minigame/car-part.png" id="3_yxo34"]
+[ext_resource type="Texture2D" uid="uid://cnfs516fmeyrs" path="res://tyre_minigame/car-side.png" id="3_n3ltu"]
+[ext_resource type="Texture2D" uid="uid://bbqjhrw0615fg" path="res://tyre_minigame/dan_road.png" id="4_pdpd1"]
 [ext_resource type="PackedScene" uid="uid://dyr7eyy1lfmhq" path="res://tyre_minigame/nut_object.tscn" id="5_6bhow"]
-[ext_resource type="Script" path="res://tyre_minigame/wheel.gd" id="5_8beto"]
-[ext_resource type="Texture2D" uid="uid://b3054jrn44umd" path="res://tyre_minigame/wheel-Sheet.png" id="6_8beto"]
+[ext_resource type="Script" uid="uid://b0p0tkprwjyaq" path="res://tyre_minigame/wheel.gd" id="5_8beto"]
+[ext_resource type="Texture2D" uid="uid://dm44y6po7y1ny" path="res://tyre_minigame/flattire.png" id="5_v2wwx"]
+[ext_resource type="Texture2D" uid="uid://caqdwdun0kr6l" path="res://tyre_minigame/tire.png" id="6_pdpd1"]
 [ext_resource type="PackedScene" uid="uid://yswpw1h7k7gr" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/game_cursor.tscn" id="7_7ifhr"]
 [ext_resource type="Script" uid="uid://cdwpikon1iihr" path="res://tyre_minigame/nuthole.gd" id="8_v2wwx"]
 [ext_resource type="Texture2D" uid="uid://c6vonodxxw0il" path="res://tyre_minigame/Spanar.png" id="9_6sn50"]
@@ -16,22 +17,22 @@
 rough = true
 bounce = 0.55
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6sn50"]
-atlas = ExtResource("6_8beto")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0deg7"]
+atlas = ExtResource("5_v2wwx")
+region = Rect2(0, 0, 600, 600)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n3ltu"]
-atlas = ExtResource("6_8beto")
-region = Rect2(128, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wof12"]
+atlas = ExtResource("6_pdpd1")
+region = Rect2(0, 0, 600, 600)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6sn50"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6sn50")
+"texture": SubResource("AtlasTexture_0deg7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n3ltu")
+"texture": SubResource("AtlasTexture_wof12")
 }],
 "loop": false,
 "name": &"default",
@@ -67,20 +68,17 @@ position = Vector2(0, 48.999996)
 scale = Vector2(7.525, 7.525)
 texture = ExtResource("2_dekca")
 
-[node name="CarPart" type="Sprite2D" parent="car" unique_id=183607048]
-position = Vector2(0, -8)
-scale = Vector2(7.525, 7.525)
-texture = ExtResource("3_yxo34")
+[node name="CarSide" type="Sprite2D" parent="car" unique_id=698152064]
+z_index = -2
+position = Vector2(47, -151)
+scale = Vector2(2, 2)
+texture = ExtResource("3_n3ltu")
 
-[node name="CarPartFiller" type="Sprite2D" parent="car" unique_id=69577314]
-position = Vector2(-1019, -366)
-scale = Vector2(19.777779, 12)
-texture = ExtResource("3_s8o2b")
-
-[node name="CarPartFiller2" type="Sprite2D" parent="car" unique_id=625019051]
-position = Vector2(1019, -366)
-scale = Vector2(19.777779, 12)
-texture = ExtResource("3_s8o2b")
+[node name="DanRoad" type="Sprite2D" parent="car" unique_id=1878712667]
+z_index = -3
+position = Vector2(-3, 64)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_pdpd1")
 
 [node name="Wheel" type="RigidBody2D" parent="." unique_id=1587171699]
 collision_layer = 2
@@ -92,11 +90,12 @@ metadata/_edit_group_ = true
 
 [node name="WheelPng" type="AnimatedSprite2D" parent="Wheel" unique_id=672035962]
 z_index = 1
-scale = Vector2(7.525, 7.525)
+scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_6sn50")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel" unique_id=913810844]
 z_index = 1
+position = Vector2(9, 19)
 shape = SubResource("CircleShape2D_8beto")
 
 [node name="GameCursor" parent="." unique_id=184071685 instance=ExtResource("7_7ifhr")]
@@ -106,28 +105,28 @@ position = Vector2(425, -34)
 [node name="All_nuthole" type="Node2D" parent="." unique_id=914376593]
 
 [node name="nuthole" type="Area2D" parent="All_nuthole" unique_id=1987373366]
-position = Vector2(-54, -49)
+position = Vector2(-58, -29)
 script = ExtResource("8_v2wwx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole" unique_id=1042037669]
 shape = SubResource("CircleShape2D_n3ltu")
 
 [node name="nuthole2" type="Area2D" parent="All_nuthole" unique_id=1748739286]
-position = Vector2(53, -50)
+position = Vector2(68, -30)
 script = ExtResource("8_v2wwx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole2" unique_id=1106705542]
 shape = SubResource("CircleShape2D_n3ltu")
 
 [node name="nuthole3" type="Area2D" parent="All_nuthole" unique_id=1013400071]
-position = Vector2(55, 49)
+position = Vector2(68, 86)
 script = ExtResource("8_v2wwx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole3" unique_id=326535650]
 shape = SubResource("CircleShape2D_n3ltu")
 
 [node name="nuthole4" type="Area2D" parent="All_nuthole" unique_id=1864315939]
-position = Vector2(-54, 49)
+position = Vector2(-58, 85)
 script = ExtResource("8_v2wwx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole4" unique_id=1423267390]
@@ -138,19 +137,19 @@ metadata/_edit_lock_ = true
 
 [node name="NutObject" parent="all_nuts" unique_id=838063495 instance=ExtResource("5_6bhow")]
 z_index = 1
-position = Vector2(-54, -49)
+position = Vector2(-58, -29)
 
 [node name="NutObject2" parent="all_nuts" unique_id=127017659 instance=ExtResource("5_6bhow")]
 z_index = 1
-position = Vector2(53, -50)
+position = Vector2(68, -30)
 
 [node name="NutObject3" parent="all_nuts" unique_id=230435973 instance=ExtResource("5_6bhow")]
 z_index = 1
-position = Vector2(-54, 49)
+position = Vector2(-58, 85)
 
 [node name="NutObject4" parent="all_nuts" unique_id=726142569 instance=ExtResource("5_6bhow")]
 z_index = 1
-position = Vector2(55, 49)
+position = Vector2(68, 86)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=139357829]
 collision_layer = 3

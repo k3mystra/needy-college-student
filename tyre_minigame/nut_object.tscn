@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dyr7eyy1lfmhq"]
 
 [ext_resource type="Script" uid="uid://c8dddp6ndvo6y" path="res://tyre_minigame/nut_object.gd" id="1_xk048"]
-[ext_resource type="Texture2D" uid="uid://6lhco1067c13" path="res://tyre_minigame/nuts.png" id="2_odq3w"]
+[ext_resource type="Texture2D" uid="uid://blsh7etifg3q0" path="res://tyre_minigame/nail.png" id="2_odq3w"]
 [ext_resource type="Texture2D" uid="uid://cd5rny8pfj16t" path="res://ButtonMiniGame/placeholder/star.png" id="3_odq3w"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xk048"]
@@ -16,7 +16,7 @@ physics_material_override = SubResource("PhysicsMaterial_xk048")
 script = ExtResource("1_xk048")
 
 [node name="Nuts" type="Sprite2D" parent="." unique_id=913856819]
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 texture = ExtResource("2_odq3w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1476348064]
