@@ -1,11 +1,49 @@
 [gd_scene format=3 uid="uid://dgtk7ho5e4h88"]
 
 [ext_resource type="Script" uid="uid://6l4umri3nlpe" path="res://ButtonMiniGame/button_mash_game.gd" id="1_yoxds"]
+[ext_resource type="Texture2D" uid="uid://cd3pmecmqpj1y" path="res://ButtonMiniGame/assets/mouth2.png" id="2_wc1nl"]
 [ext_resource type="Texture2D" uid="uid://cd5rny8pfj16t" path="res://ButtonMiniGame/placeholder/star.png" id="3_h0o0h"]
+[ext_resource type="Texture2D" uid="uid://cwu1jr0hev1gq" path="res://ButtonMiniGame/assets/mouth4.png" id="3_w2ii7"]
 [ext_resource type="AudioStream" uid="uid://cjppm5ligydfs" path="res://ButtonMiniGame/sounds/clock.ogg" id="4_7810j"]
+[ext_resource type="Texture2D" uid="uid://btaljgottpp1m" path="res://ButtonMiniGame/assets/mouth1.png" id="4_d72tk"]
+[ext_resource type="PackedScene" uid="uid://bie2wgut5q5hk" path="res://foxy/foxyjumpscare.tscn" id="4_vnqqn"]
+[ext_resource type="Texture2D" uid="uid://bfmk60fybdnk" path="res://ButtonMiniGame/assets/mouth3.png" id="5_18xqy"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h0o0h"]
-load_path = "res://.godot/imported/wordholderblank.png-0b0e4c50bb384bb32ee3833e23b7fcf2.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_mllj5"]
+atlas = ExtResource("2_wc1nl")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evbfj"]
+atlas = ExtResource("3_w2ii7")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oht5"]
+atlas = ExtResource("4_d72tk")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smuu"]
+atlas = ExtResource("5_18xqy")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_360h8"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_mllj5")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_evbfj")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_4oht5")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_3smuu")
+}],
+"loop": true,
+"name": &"anim",
+"speed": 5.0
+}]
 
 [sub_resource type="FontVariation" id="FontVariation_poley"]
 
@@ -51,33 +89,37 @@ y_range = 180.0
 button_spam_limit = 4
 total_time = 120.0
 
-[node name="WordHolder" type="Sprite2D" parent="." unique_id=200945918]
+[node name="WordHolder" type="AnimatedSprite2D" parent="." unique_id=856626917]
 self_modulate = Color(1, 0.5372549, 0, 1)
 z_index = 15
 scale = Vector2(0.5, 0.5)
-texture = SubResource("CompressedTexture2D_h0o0h")
+sprite_frames = SubResource("SpriteFrames_360h8")
+animation = &"anim"
+frame_progress = 0.7684302
 
 [node name="Word" type="Label" parent="WordHolder" unique_id=1678596821]
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -124.5
-offset_top = -164.5
-offset_right = -67.5
-offset_bottom = -27.5
+offset_left = -328.5
+offset_top = -368.5
+offset_right = -271.5
+offset_bottom = -231.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(18.892157, 18.892157, 18.892157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_poley")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 155
 text = "T"
 horizontal_alignment = 1
 
 [node name="spawn" type="Node2D" parent="." unique_id=1253321267]
-position = Vector2(896, -448)
+position = Vector2(704, -448)
 
 [node name="sliderholder" type="Node2D" parent="." unique_id=627574491]
 position = Vector2(0, 384)
@@ -170,3 +212,5 @@ scale_amount_max = 8.0
 color_initial_ramp = SubResource("Gradient_7810j")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=370932546]
+
+[node name="foxyjumpscare" parent="." unique_id=79037854 instance=ExtResource("4_vnqqn")]

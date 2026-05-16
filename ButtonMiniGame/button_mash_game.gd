@@ -15,6 +15,7 @@ extends Node2D
 @onready var clock = $AudioStreamPlayer2D
 @onready var bloodParticle = $sliderholder/HSlider/blood
 @onready var particle = $CPUParticles2D
+@onready var animation = $WordHolder
 
 
 var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x", "c"]
@@ -30,6 +31,7 @@ var prevsliderpos : Vector2
 var selected_word : String
 var prev_total_time : float
 var intensity = 0.0
+var frame_count : int
 # replace the spam button to the things taht come from the side of the screen
 
 var button_spam = preload("res://ButtonMiniGame/button_spam.tscn")
@@ -42,6 +44,7 @@ var glass = preload("res://ButtonMiniGame/sounds/break.ogg")
 
 
 func _ready() -> void:
+	frame_count = animation.sprite_frames.get_frame_count("anim")
 	circle.hide()
 	circle.self_modulate = Color("00ff00")
 	letter_amount = letter.size()
@@ -111,7 +114,7 @@ func _spawn_spam():
 	var spawnpoint = $spawn
 	var button = button_spam.instantiate()
 	var chance : int
-	if (total_time < prev_total_time/3 + 14):
+	if (total_time < prev_total_time/3 + 20):
 		chance = randi_range(0, 3)
 	else:
 		chance = randi_range(0, 1)
@@ -122,16 +125,22 @@ func _spawn_spam():
 		spawnpoint.position = Vector2(896, randf_range(-384, 384))
 		button.dir = 1
 	elif chance == 2:
-		spawnpoint.position = Vector2(randf_range(-896, 896), -448)
+		spawnpoint.position = Vector2(randf_range(-650, 650), -448)
 		button.dir = 2
 	elif chance == 3:
-		spawnpoint.position = Vector2(randf_range(-896, 896), 448)
+		spawnpoint.position = Vector2(randf_range(-650, 650), 448)
 		button.dir = 3
 	button.global_position = spawnpoint.global_position
 	get_parent().add_child(button)
 
 
 func _start():
+	animation.frame = randi_range(0, frame_count - 1)
+	animation.speed_scale = randi_range(1, 3)
+	if randi_range(0, 1) == 0:
+		animation.play()
+	else:
+		animation.play_backwards()
 	allow_count = false
 	circle.position = Vector2(randf_range(-x_range, x_range), randf_range(-y_range, y_range))
 	prevpos = circle.position

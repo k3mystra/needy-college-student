@@ -36,10 +36,10 @@ func _ready() -> void:
 		position.x -= randf_range(0, 180)
 	elif dir == 2: # up (starts high, moves down)
 		rotation_degrees = 90
-		position.y -= randf_range(0, 180) # Subtract to spawn higher up off-screen
+		position.y += randf_range(0, 45)
 	elif dir == 3: # down (starts low, moves up)
 		rotation_degrees = -90
-		position.y += randf_range(0, 180) # Add to spawn lower down off-screen
+		position.y -= randf_range(0, 45)
 		
 	# Store the starting positions exactly where they spawned
 	start_pos_x = position.x
