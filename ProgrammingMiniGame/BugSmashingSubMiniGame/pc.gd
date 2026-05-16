@@ -14,7 +14,7 @@ func _on_button_button_up() -> void:
 		play_sound(buttonup, 1, 1)
 		active = true
 		$pc.frame = 1
-		$Area2D.remove_from_group("MonitorBugs")
+		$pc/Button/Area2D.remove_from_group("MonitorBugs")
 		play_sound(startup, 1.5, 1)
 		var tween = create_tween()
 		tween.tween_property($MonitorOff, "modulate:a", 0.0, 

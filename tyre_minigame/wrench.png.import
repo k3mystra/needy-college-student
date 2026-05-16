@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bni0oqbxc3d4p"
+path="res://.godot/imported/wrench.png-3f639329ea1a61c03851342c7d699b9e.res"
+
+[deps]
+
+source_file="res://tyre_minigame/wrench.png"
+dest_files=["res://.godot/imported/wrench.png-3f639329ea1a61c03851342c7d699b9e.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

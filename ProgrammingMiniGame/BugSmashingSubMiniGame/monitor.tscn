@@ -225,7 +225,6 @@ scale = Vector2(5.0017037, 4.965041)
 flat = true
 
 [node name="PullRequestWindow" type="Control" parent="Github/GitHubWindow" unique_id=745462741]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 360.0
@@ -303,7 +302,7 @@ autowrap_mode = 2
 [node name="All_prs" type="Node2D" parent="Github/GitHubWindow/PullRequestWindow" unique_id=855671662]
 
 [node name="AllSlots" type="Node2D" parent="Github/GitHubWindow/PullRequestWindow" unique_id=314690731]
-position = Vector2(-6.91, 0)
+position = Vector2(0.49, 0)
 
 [node name="1" type="Marker2D" parent="Github/GitHubWindow/PullRequestWindow/AllSlots" unique_id=641343242]
 position = Vector2(380.99994, -182)
@@ -537,28 +536,28 @@ namespace NetworkCore.DataLink
 }"
 
 [node name="PC" type="Node2D" parent="." unique_id=523746768]
-visible = false
 position = Vector2(0, 2)
 script = ExtResource("6_mvjbd")
 metadata/_edit_group_ = true
 
 [node name="pc" type="AnimatedSprite2D" parent="PC" unique_id=1078321037]
-position = Vector2(881.00006, -22)
+z_index = 2
+position = Vector2(740, -22)
 sprite_frames = SubResource("SpriteFrames_616jt")
 
-[node name="Button" type="Button" parent="PC" unique_id=892996654]
-offset_left = 956.99994
-offset_top = -357.00003
-offset_right = 964.99994
-offset_bottom = -349.00003
+[node name="Button" type="Button" parent="PC/pc" unique_id=892996654]
+offset_left = 75.99988
+offset_top = -335.00003
+offset_right = 83.99988
+offset_bottom = -327.00003
 scale = Vector2(12.997968, 12.463431)
 flat = true
 
-[node name="Area2D" type="Area2D" parent="PC" unique_id=1463554738 groups=["MonitorBugs"]]
-position = Vector2(1013, -308)
-scale = Vector2(3.3333333, 3.3333333)
+[node name="Area2D" type="Area2D" parent="PC/pc/Button" unique_id=1463554738 groups=["MonitorBugs"]]
+position = Vector2(4.3083725, 3.9315052)
+scale = Vector2(0.25645036, 0.26744908)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/Area2D" unique_id=1844093006]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/pc/Button/Area2D" unique_id=1844093006]
 position = Vector2(-1.2000002, 0)
 scale = Vector2(0.22, 0.22)
 shape = SubResource("CircleShape2D_gkbb6")
@@ -608,5 +607,5 @@ texture = ExtResource("15_64smk")
 [connection signal="button_up" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow" method="_on_code_button_button_up"]
 [connection signal="mouse_entered" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow/Code" method="_on_code_button_mouse_entered"]
 [connection signal="mouse_exited" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow/Code" method="_on_code_button_mouse_exited"]
-[connection signal="button_down" from="PC/Button" to="PC" method="_on_button_button_down"]
-[connection signal="button_up" from="PC/Button" to="PC" method="_on_button_button_up"]
+[connection signal="button_down" from="PC/pc/Button" to="PC" method="_on_button_button_down"]
+[connection signal="button_up" from="PC/pc/Button" to="PC" method="_on_button_button_up"]
