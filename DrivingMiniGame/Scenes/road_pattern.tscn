@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dji7qe18valke"]
+
+[ext_resource type="Script" uid="uid://c4afx7m4runey" path="res://DrivingMiniGame/Scripts/road_pattern.gd" id="1_d1vgt"]
+[ext_resource type="Texture2D" uid="uid://gcogqm1kcm1a" path="res://DrivingMiniGame/dan_roadpattern.png" id="1_xaps5"]
+
+[node name="RoadPattern" type="Area2D" unique_id=962580853]
+scale = Vector2(4.159998, 2.1007988)
+script = ExtResource("1_d1vgt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=380167529]
+scale = Vector2(0.0400002, 0.0400002)
+texture = ExtResource("1_xaps5")
