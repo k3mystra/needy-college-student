@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://n7u5iqb0stpd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jjjp"]
+size = Vector2(20, 160.39902)
+
+[node name="CarBoundary" type="Node2D" unique_id=787241941]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1610907863]
+
+[node name="LeftBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=147403154]
+position = Vector2(-1255, 470)
+scale = Vector2(5.8737397, 11.887056)
+shape = SubResource("RectangleShape2D_7jjjp")
+
+[node name="RightBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=206010911]
+position = Vector2(2060, 422)
+scale = Vector2(5.8737397, 11.887056)
+shape = SubResource("RectangleShape2D_7jjjp")
