@@ -21,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://m5vce1nu7l2t" path="res://ProgrammingMiniGame/MergingGame/JasonNote.png" id="14_kdtwn"]
 [ext_resource type="Texture2D" uid="uid://810y1plmc87" path="res://ProgrammingMiniGame/MergingGame/DaneNote.png" id="15_64smk"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64smk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sydj7"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_hyui6"]
 font_size = 60
 
@@ -72,6 +76,34 @@ scale = Vector2(0.5, 0.5)
 [node name="ScreenUpperRight" type="Marker2D" parent="MonitorPNG" unique_id=1578859280]
 position = Vector2(242, -150)
 scale = Vector2(0.5, 0.5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MonitorPNG" unique_id=267101010]
+
+[node name="border" type="CollisionShape2D" parent="MonitorPNG/StaticBody2D" unique_id=1556579087]
+z_index = 25
+position = Vector2(-236, -20)
+scale = Vector2(1.0630323, 16.791016)
+shape = SubResource("RectangleShape2D_64smk")
+
+[node name="border2" type="CollisionShape2D" parent="MonitorPNG/StaticBody2D" unique_id=842466785]
+z_index = 25
+position = Vector2(264, -20)
+scale = Vector2(1.0630323, 16.791016)
+shape = SubResource("RectangleShape2D_64smk")
+
+[node name="border3" type="CollisionShape2D" parent="MonitorPNG/StaticBody2D" unique_id=2082474300]
+z_index = 25
+position = Vector2(8, -160)
+rotation = -1.5707964
+scale = Vector2(1.0630323, 25.231014)
+shape = SubResource("RectangleShape2D_sydj7")
+
+[node name="border4" type="CollisionShape2D" parent="MonitorPNG/StaticBody2D" unique_id=1201421413]
+z_index = 25
+position = Vector2(11.999999, 132)
+rotation = -1.5707964
+scale = Vector2(1.0630323, 24.391016)
+shape = SubResource("RectangleShape2D_sydj7")
 
 [node name="AllBugs" type="Node" parent="." unique_id=1001844569]
 
@@ -550,4 +582,5 @@ texture = ExtResource("15_64smk")
 [connection signal="button_up" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow" method="_on_code_button_button_up"]
 [connection signal="mouse_entered" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow/Code" method="_on_code_button_mouse_entered"]
 [connection signal="mouse_exited" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow/Code" method="_on_code_button_mouse_exited"]
+[connection signal="button_down" from="PC/Button" to="PC" method="_on_button_button_down"]
 [connection signal="button_up" from="PC/Button" to="PC" method="_on_button_button_up"]
