@@ -7,12 +7,20 @@ var minigames = [
 	preload("res://divorce_paper_minigame/divorce_paper_minigame.tscn"),
 	preload("res://memory_pick_minigame/memory_pick.tscn")
 ]
+var current_level
+@onready var MinigameContainer = $"../Minigames"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	load_level(4)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func load_level(index):
+	if current_level:
+		current_level.queue_free()
+	current_level = minigames[index].instantiate()
+	MinigameContainer.add_child(current_level)
+	
