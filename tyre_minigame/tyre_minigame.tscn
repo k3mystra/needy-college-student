@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dcibv5xhvd87x"]
+
+[ext_resource type="Texture2D" uid="uid://drutthh52cwvc" path="res://tyre_minigame/wheel.png" id="1_r4ky5"]
+[ext_resource type="Texture2D" uid="uid://c0uv83je6lhg2" path="res://tyre_minigame/axle.png" id="2_dekca"]
+[ext_resource type="Texture2D" uid="uid://d3l3mx3puj6jt" path="res://tyre_minigame/car-part-filler.png" id="3_s8o2b"]
+[ext_resource type="Texture2D" uid="uid://p7mbswyjt08r" path="res://tyre_minigame/car-part.png" id="3_yxo34"]
+
+[node name="tyre" type="Node2D" unique_id=1530019945]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=614448098]
+
+[node name="car" type="Node2D" parent="." unique_id=1721026031]
+position = Vector2(0, -49)
+
+[node name="Axle" type="Sprite2D" parent="car" unique_id=546825411]
+scale = Vector2(7.525, 7.525)
+texture = ExtResource("2_dekca")
+
+[node name="CarPart" type="Sprite2D" parent="car" unique_id=183607048]
+position = Vector2(0, -8)
+scale = Vector2(7.525, 7.525)
+texture = ExtResource("3_yxo34")
+
+[node name="CarPartFiller" type="Sprite2D" parent="car" unique_id=69577314]
+position = Vector2(-1019, -366)
+scale = Vector2(19.777779, 12)
+texture = ExtResource("3_s8o2b")
+
+[node name="CarPartFiller2" type="Sprite2D" parent="car" unique_id=625019051]
+position = Vector2(1019, -366)
+scale = Vector2(19.777779, 12)
+texture = ExtResource("3_s8o2b")
+
+[node name="Wheel" type="Sprite2D" parent="." unique_id=1092437986]
+z_index = 1
+scale = Vector2(7.525, 7.525)
+texture = ExtResource("1_r4ky5")
+
+[node name="nut1" type="Marker2D" parent="." unique_id=449076659]
+z_index = 55
+position = Vector2(-61, -53)
+gizmo_extents = 125.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="nut1" unique_id=172414958]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nut1/StaticBody2D" unique_id=1267569201]
+
+[node name="nut2" type="Marker2D" parent="." unique_id=57013274]
+z_index = 55
+position = Vector2(61, -53)
+gizmo_extents = 125.0
+
+[node name="nut3" type="Marker2D" parent="." unique_id=539801437]
+z_index = 55
+position = Vector2(61, 53)
+gizmo_extents = 125.0
+
+[node name="nut4" type="Marker2D" parent="." unique_id=2076723940]
+z_index = 55
+position = Vector2(-61, 53)
+gizmo_extents = 125.0

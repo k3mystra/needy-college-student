@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cavpk2761eol7"]
+
+[ext_resource type="Script" uid="uid://dygdclml4uw8c" path="res://ProgrammingMiniGame/MergingGame/pr_users.gd" id="1_pmytw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n2ie5"]
+font_size = 245
+
+[node name="pr_users" type="ColorRect" unique_id=1973085673]
+z_index = 1
+anchors_preset = -1
+anchor_right = 0.060000002
+anchor_bottom = 0.045
+offset_right = 926.0689
+offset_bottom = 495.3347
+scale = Vector2(0.11986186, 0.10612956)
+mouse_filter = 2
+color = Color(0.21768701, 0.2747727, 0.24257362, 1)
+script = ExtResource("1_pmytw")
+
+[node name="Label" type="Label" parent="." unique_id=388339693]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -167.0
+offset_right = 320.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_n2ie5")
+
+[node name="Button" type="Button" parent="." unique_id=209699869]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
