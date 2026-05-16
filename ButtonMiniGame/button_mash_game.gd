@@ -110,12 +110,23 @@ func _process(delta: float) -> void:
 func _spawn_spam():
 	var spawnpoint = $spawn
 	var button = button_spam.instantiate()
-	if randi_range(0, 1) == 0:
+	var chance : int
+	if (total_time < prev_total_time/3 + 14):
+		chance = randi_range(0, 3)
+	else:
+		chance = randi_range(0, 1)
+	if chance == 0:
 		spawnpoint.position = Vector2(-896, randf_range(-384, 384))
 		button.dir = 0
-	else:
+	elif chance == 1:
 		spawnpoint.position = Vector2(896, randf_range(-384, 384))
 		button.dir = 1
+	elif chance == 2:
+		spawnpoint.position = Vector2(randf_range(-896, 896), -448)
+		button.dir = 2
+	elif chance == 3:
+		spawnpoint.position = Vector2(randf_range(-896, 896), 448)
+		button.dir = 3
 	button.global_position = spawnpoint.global_position
 	get_parent().add_child(button)
 
