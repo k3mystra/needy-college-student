@@ -140,5 +140,5 @@ func finish_debug():
 				z.global_position = $GitHubWindow/PullRequestWindow/AllSlots.find_child(str(slot_counter)).global_position
 				slot_counter += 1
 	if pull_request_list.size() == 0:
-		ProgrammingMiniGameSignal.mini_game_ended.emit()
+		ProgrammingMiniGameSignal.minigame_finished.emit()
 #func disable_prs():
