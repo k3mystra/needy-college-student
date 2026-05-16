@@ -7,3 +7,4 @@ signal buttonspam_W
 signal buttonspam_L
 
 signal nut_removed
+signal one_nut_reattached

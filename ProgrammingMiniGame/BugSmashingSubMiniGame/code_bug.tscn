@@ -2,22 +2,78 @@
 
 [ext_resource type="Script" uid="uid://xyaesarjbds" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/bug.gd" id="1_1akvc"]
 [ext_resource type="Texture2D" uid="uid://dx2hliqvj5uxd" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/BUG.png" id="2_1xp5h"]
+[ext_resource type="AudioStream" uid="uid://1mmg0kijwcer" path="res://ProgrammingMiniGame/sounds/crawl-loop.ogg" id="3_hby1j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3bv6s"]
 radius = 38.0
 height = 76.0
 
-[node name="Bug" type="Node2D" unique_id=1756963268 groups=["MonitorBugs"]]
+[sub_resource type="Animation" id="Animation_m3xwc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bug:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.7853982]
+}
+
+[sub_resource type="Animation" id="Animation_hby1j"]
+resource_name = "walk"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bug:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.7853982, -0.7853982]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehsla"]
+_data = {
+&"RESET": SubResource("Animation_m3xwc"),
+&"walk": SubResource("Animation_hby1j")
+}
+
+[node name="Bug" type="CharacterBody2D" unique_id=1325801185 groups=["MonitorBugs"]]
 z_index = 1
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_1akvc")
+speed = 6.0
+timer = 0.1
 
 [node name="Bug" type="Sprite2D" parent="." unique_id=61206248]
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("2_1xp5h")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2139924440 groups=["MonitorBugs"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1016643897]
 shape = SubResource("CapsuleShape2D_3bv6s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=553006648]
+libraries/ = SubResource("AnimationLibrary_ehsla")
+speed_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=46401077]
+shape = SubResource("CapsuleShape2D_3bv6s")
+
+[node name="loop" type="AudioStreamPlayer2D" parent="." unique_id=803568738]
+stream = ExtResource("3_hby1j")
+volume_db = -28.0
+autoplay = true
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

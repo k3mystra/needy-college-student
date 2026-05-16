@@ -2,24 +2,29 @@ extends Node2D
 
 @onready var wheel : Wheel = $Wheel
 @onready var all_nuts : Node2D = $all_nuts
+@onready var all_nut_hole : Array = $All_nuthole.get_children()
 
-var removed_nut : int = 0
+var moved_nut : int = 0
 var nut_amount : int 
-
-
 
 func _ready():
 	nut_amount = all_nuts.get_child_count()
 	Global.nut_removed.connect(nut_removed)
 	$Wheel.fix_or_not.connect(show_fixable)
+	Global.one_nut_reattached.connect(nut_attached)
+
+func nut_attached():
+	moved_nut += 1
+	if moved_nut == nut_amount:
+		print("ALL NUT ATTACHED")
 
 func nut_removed():
-	removed_nut += 1
-	if removed_nut == nut_amount:
+	moved_nut += 1
+	if moved_nut == nut_amount:
 		$Wheel.freeze = false
 		$Wheel.activate()
-		$Wheel.apply_impulse(Vector2(randf_range(-50, 50), -100))
-
+		$Wheel.apply_impulse(Vector2(randf_range(-50, 50), -100))	
+		
 func _on_world_side_border_body_entered(body: Node2D) -> void:
 	if body is Wheel:
 		body.hide()
@@ -47,3 +52,7 @@ func show_fixable(b:bool):
 func _on_spanar_button_button_up() -> void:
 	$SpanarButton.hide()
 	wheel.attach()
+	for i in all_nut_hole:
+		var z = i as nuthole
+		z.active = true
+	moved_nut = 0

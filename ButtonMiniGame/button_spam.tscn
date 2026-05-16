@@ -1,7 +1,517 @@
 [gd_scene format=3 uid="uid://dib3i6nrc65tw"]
 
 [ext_resource type="Script" uid="uid://chuumegaat2fo" path="res://ButtonMiniGame/button_spam.gd" id="1_km3y2"]
+[ext_resource type="Texture2D" uid="uid://bkp4gnjbr1kvr" path="res://ButtonMiniGame/assets/blackarm1.png" id="3_ft58d"]
 [ext_resource type="Texture2D" uid="uid://cd5rny8pfj16t" path="res://ButtonMiniGame/placeholder/star.png" id="3_ix4o1"]
+[ext_resource type="Texture2D" uid="uid://boew378aubri3" path="res://ButtonMiniGame/assets/blackarm2.png" id="4_e0jui"]
+[ext_resource type="Texture2D" uid="uid://tg2i3jssb8rf" path="res://ButtonMiniGame/assets/blackarm3.png" id="5_q8ffh"]
+[ext_resource type="Texture2D" uid="uid://bljl27n2gtqwm" path="res://ButtonMiniGame/assets/whitearm1.png" id="6_wivdk"]
+[ext_resource type="Texture2D" uid="uid://dqq6s04wisk7" path="res://ButtonMiniGame/assets/whitearm2.png" id="7_3s8lu"]
+[ext_resource type="Texture2D" uid="uid://cbxc7ehpc464d" path="res://ButtonMiniGame/assets/whitearm3.png" id="8_ayts4"]
+[ext_resource type="Texture2D" uid="uid://3held2hf6qf0" path="res://ButtonMiniGame/assets/blackfist.png" id="9_jlgfx"]
+[ext_resource type="Texture2D" uid="uid://d4a4cjdyhi3dj" path="res://ButtonMiniGame/assets/blackhand.png" id="10_ugmip"]
+[ext_resource type="Texture2D" uid="uid://dfsprufdyxcay" path="res://ButtonMiniGame/assets/whitefist.png" id="11_34q2o"]
+[ext_resource type="Texture2D" uid="uid://cu0bn26c2ff5d" path="res://ButtonMiniGame/assets/whitehand.png" id="12_xc0x1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfdxk"]
+atlas = ExtResource("3_ft58d")
+region = Rect2(0, 0, 1474, 435)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wkva"]
+atlas = ExtResource("4_e0jui")
+region = Rect2(0, 0, 1451, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umthk"]
+atlas = ExtResource("5_q8ffh")
+region = Rect2(0, 0, 1456, 497)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2na5g"]
+atlas = ExtResource("6_wivdk")
+region = Rect2(0, 0, 1474, 435)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp55f"]
+atlas = ExtResource("7_3s8lu")
+region = Rect2(0, 0, 1451, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy6r6"]
+atlas = ExtResource("8_ayts4")
+region = Rect2(0, 0, 1456, 497)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mdhrq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfdxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wkva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umthk")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2na5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp55f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy6r6")
+}],
+"loop": true,
+"name": &"white",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2ka5"]
+atlas = ExtResource("9_jlgfx")
+region = Rect2(0, 0, 287, 311)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0ir5"]
+atlas = ExtResource("10_ugmip")
+region = Rect2(0, 0, 367, 378)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exfdf"]
+atlas = ExtResource("11_34q2o")
+region = Rect2(0, 0, 287, 311)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aee2v"]
+atlas = ExtResource("12_xc0x1")
+region = Rect2(0, 0, 367, 378)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cfdw1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2ka5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0ir5")
+}],
+"loop": true,
+"name": &"black-fist",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exfdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aee2v")
+}],
+"loop": true,
+"name": &"white-fist",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_u4g36"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("resize/arm:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("resize/hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("resize/hand:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.3795708]
+}
+
+[sub_resource type="Animation" id="Animation_atr20"]
+resource_name = "black-fist"
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("resize/arm:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"black"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("resize/arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("resize/hand:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"black-fist"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("resize/hand:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("resize/CPUParticles2D:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("resize/hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-16, 32), Vector2(-48, -48), Vector2(-31.999998, -7.999996)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("resize/hand:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.119007766, -0.52939826, 0.52968735]
+}
+
+[sub_resource type="Animation" id="Animation_jeyax"]
+resource_name = "black-hand"
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("resize/arm:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"black"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("resize/arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("resize/hand:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"black-fist"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("resize/hand:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("resize/CPUParticles2D:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("resize/hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-16, 32), Vector2(-16, -16.000011), Vector2(-16, 8)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("resize/hand:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.119007766, -0.29841915, 0.3526192]
+}
+
+[sub_resource type="Animation" id="Animation_44sr2"]
+resource_name = "white-fist"
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("resize/arm:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"white"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("resize/arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("resize/hand:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"white-fist"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("resize/hand:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("resize/CPUParticles2D:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("resize/hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-16, 32), Vector2(-32, -47.999996), Vector2(-32, -48)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("resize/hand:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.119007766, -0.432594, 0.4810787]
+}
+
+[sub_resource type="Animation" id="Animation_cncg2"]
+resource_name = "white-hand"
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("resize/arm:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"white"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("resize/arm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("resize/hand:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"white-fist"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("resize/hand:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("resize/CPUParticles2D:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("resize/hand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-16, 32), Vector2(0, -32), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("resize/hand:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.119007766, -0.3795708, 0.29675168]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w1i8v"]
+_data = {
+&"RESET": SubResource("Animation_u4g36"),
+&"black-fist": SubResource("Animation_atr20"),
+&"black-hand": SubResource("Animation_jeyax"),
+&"white-fist": SubResource("Animation_44sr2"),
+&"white-hand": SubResource("Animation_cncg2")
+}
 
 [node name="button_spam" type="Node2D" unique_id=614955222]
 script = ExtResource("1_km3y2")
@@ -28,6 +538,7 @@ icon = ExtResource("3_ix4o1")
 flat = true
 
 [node name="Hand" type="Sprite2D" parent="resize" unique_id=2127720019]
+visible = false
 position = Vector2(-2378.8003, 0)
 scale = Vector2(597.3, 18.961304)
 texture = ExtResource("3_ix4o1")
@@ -47,5 +558,22 @@ initial_velocity_max = 168.32
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 color = Color(0, 0, 0, 1)
+
+[node name="arm" type="AnimatedSprite2D" parent="resize" unique_id=300288528]
+position = Vector2(-2144, 0)
+scale = Vector2(-2.805, 0.631)
+sprite_frames = SubResource("SpriteFrames_mdhrq")
+animation = &"black"
+frame = 1
+
+[node name="hand" type="AnimatedSprite2D" parent="resize" unique_id=2035070253]
+position = Vector2(0, -32)
+rotation = -0.3795708
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_cfdw1")
+animation = &"black-fist"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=337111672]
+libraries/ = SubResource("AnimationLibrary_w1i8v")
 
 [connection signal="pressed" from="resize/Button" to="." method="_on_button_pressed"]
