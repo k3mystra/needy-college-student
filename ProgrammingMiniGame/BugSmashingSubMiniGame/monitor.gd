@@ -29,7 +29,7 @@ func _ready() -> void:
 	pc.show()
 	github.hide()
 	github.git_window.hide()
-	pc.blackscreen.show()
+	$PC/MonitorOff.show()
 	ProgrammingMiniGameSignal.start_bug_smashing.connect(func(): $BugSpawnCD.start())
 	ProgrammingMiniGameSignal.end_bug_smashing.connect(stop_bug_game)		
 
