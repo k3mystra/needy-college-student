@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfm8c6eulwp08"
-path="res://.godot/imported/images.jpg-06f42a4ce158dd1c0046975a7de6ae1c.ctex"
+uid="uid://t4m41wq60cmv"
+path="res://.godot/imported/borderleft.png-88ef4b83b71a0b5255410c2b2c6d7078.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DrivingMiniGame/images.jpg"
-dest_files=["res://.godot/imported/images.jpg-06f42a4ce158dd1c0046975a7de6ae1c.ctex"]
+source_file="res://DrivingMiniGame/borderleft.png"
+dest_files=["res://.godot/imported/borderleft.png-88ef4b83b71a0b5255410c2b2c6d7078.ctex"]
 
 [params]
 

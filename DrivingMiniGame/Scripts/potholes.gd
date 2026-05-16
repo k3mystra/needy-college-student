@@ -5,7 +5,7 @@ var CarDashboard
 func _process(delta):
 	position.y += 200 * delta
 	_move_towards(delta)
-	scale += Vector2(2, 2) * delta
+	scale += Vector2(4, 4) * delta
 	
 	if position.y >= 1000:
 		queue_free()

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://d1shadgpu7vcm"]
+
+[ext_resource type="Script" uid="uid://u62vjtk22vtd" path="res://DrivingMiniGame/Scripts/road_scene.gd" id="1_j1l2f"]
+[ext_resource type="Texture2D" uid="uid://t4m41wq60cmv" path="res://DrivingMiniGame/borderleft.png" id="1_shaok"]
+[ext_resource type="Texture2D" uid="uid://opws14mw5yh1" path="res://DrivingMiniGame/dan_road.png" id="2_j1l2f"]
+[ext_resource type="Texture2D" uid="uid://ijlffygqhfv4" path="res://DrivingMiniGame/dan_sky.png" id="3_sx5di"]
+
+[node name="RoadScene" type="Node2D" unique_id=899182019]
+script = ExtResource("1_j1l2f")
+
+[node name="Ref" type="Node2D" parent="." unique_id=1258198214]
+position = Vector2(-3, 17)
+
+[node name="DanSky" type="Sprite2D" parent="Ref" unique_id=1832974850]
+z_index = -2
+position = Vector2(6, 527)
+scale = Vector2(1.655, 1)
+texture = ExtResource("3_sx5di")
+
+[node name="Node2D" type="Node2D" parent="Ref" unique_id=1163439089]
+position = Vector2(0, 527)
+scale = Vector2(0.99, 0.505)
+
+[node name="DanRoad" type="Sprite2D" parent="Ref/Node2D" unique_id=423955318]
+z_index = -1
+position = Vector2(2, 527)
+scale = Vector2(1.665, 1)
+texture = ExtResource("2_j1l2f")
+
+[node name="DanRoad2" type="Sprite2D" parent="Ref/Node2D" unique_id=197030059]
+z_index = -1
+position = Vector2(2, -19.802002)
+scale = Vector2(1.665, 1)
+texture = ExtResource("2_j1l2f")
+
+[node name="Borderright" type="Sprite2D" parent="Ref/Node2D" unique_id=1801417179]
+position = Vector2(1374, 235.64362)
+texture = ExtResource("1_shaok")
+flip_h = true
+
+[node name="Borderleft" type="Sprite2D" parent="Ref/Node2D" unique_id=686607083]
+position = Vector2(-1366, 233.66339)
+texture = ExtResource("1_shaok")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=623353005]
+position = Vector2(632, 533)
+zoom = Vector2(1, 1.03)
+
+[node name="Timer" type="Timer" parent="." unique_id=1298356739]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
