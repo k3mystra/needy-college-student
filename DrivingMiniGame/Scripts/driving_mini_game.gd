@@ -3,7 +3,7 @@ extends Node2D
 var potholeScene = preload("res://DrivingMiniGame/Scenes/potholes.tscn")
 var spawnRange 
 var repairChance
-var minigameTimer = 30
+var minigameTimer = 10
 var timer = 0
 @onready var CarDashboard = $CarDashboard
 @onready var Camera = $CarDashboard/Camera2D

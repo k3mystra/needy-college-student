@@ -17,6 +17,7 @@ extends Node2D
 @onready var particle = $CPUParticles2D
 @onready var animation = $WordHolder
 
+signal minigame_finished
 
 var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x", "c"]
 var letter_amount : int
