@@ -94,9 +94,9 @@ func _process(delta: float) -> void:
 				button_spam_limit = 4
 			else:
 				if randi_range(0, 3) == 0:
-					button_spam_limit += 1 
+					button_spam_limit += 1
 				spam_cooldown = prevspamcooldown + randf_range(-0.4, 0)
-	
+
 	total_time -= 1 * delta
 	_showtime(total_time)
 	_border()

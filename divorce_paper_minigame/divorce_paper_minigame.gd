@@ -17,14 +17,6 @@ func _ready() -> void:
 	put_form()
 
 
-func _on_sign_btn_pressed() -> void:
-	if current_state != game_state.IDLE:
-		return
-
-	sign_document()
-	put_form()
-
-
 func put_form() -> void:
 	current_state = game_state.SWITCHING
 	var doc_instance = doc_scene.instantiate()
@@ -42,12 +34,18 @@ func put_form() -> void:
 
 
 func sign_document() -> void:
-	print("Document signed: " + str(doc_index))
-
 	# Animate position to off screen
 	var tween = get_tree().create_tween()
-	tween.tween_property(current_doc, "position", Vector2(0 - DOC_SPRITE_HALF_WIDTH, screen_size.y / 2), 1.0).set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(current_doc, "position", Vector2(0 - DOC_SPRITE_HALF_WIDTH - 300, screen_size.y / 2), 1.0).set_trans(Tween.TRANS_QUINT)
 
 
 func _on_finish_btn_pressed() -> void:
-	sign_document()
+	if current_state != game_state.IDLE:
+		return
+
+	# print(current_doc.is_signed)
+	# print(current_doc.points_in_sign_rect_count)
+	if current_doc.is_signed:
+		sign_document()
+	else:
+		current_doc.shake()
