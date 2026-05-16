@@ -11,7 +11,7 @@ const DOC_SPRITE_HALF_WIDTH = 300
 var doc_index = 0
 var current_state = game_state.SWITCHING
 var current_doc
-
+signal minigame_finished
 
 func _ready() -> void:
 	put_form()
@@ -47,5 +47,6 @@ func _on_finish_btn_pressed() -> void:
 	# print(current_doc.points_in_sign_rect_count)
 	if current_doc.is_signed:
 		sign_document()
+		minigame_finished.emit()
 	else:
 		current_doc.shake()
