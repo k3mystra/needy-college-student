@@ -8,10 +8,8 @@
 script = ExtResource("1_kg4dr")
 
 [node name="Environment" parent="." unique_id=230811383 instance=ExtResource("1_61hqs")]
-visible = false
 
 [node name="Player" parent="." unique_id=759195438 instance=ExtResource("2_eoo82")]
-visible = false
 position = Vector2(951, 919)
 scale = Vector2(0.54907405, 0.54907405)
 frame_progress = 0.8775456
@@ -29,10 +27,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Boss" type="TextureRect" parent="." unique_id=976634603]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="BossHands" type="ColorRect" parent="." unique_id=358642973]
 offset_right = 40.0
 offset_bottom = 40.0
 
