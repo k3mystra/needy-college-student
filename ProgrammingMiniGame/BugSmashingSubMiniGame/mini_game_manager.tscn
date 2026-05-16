@@ -14,8 +14,8 @@ script = ExtResource("1_h3317")
 position = Vector2(662, 551)
 
 [node name="merge_decision_buttons" parent="." unique_id=1603617584 instance=ExtResource("3_hrsud")]
-position = Vector2(970, 964.99994)
-scale = Vector2(4.845, 4.845)
+z_index = 2
+position = Vector2(970, 927.755)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1985873780]
 z_index = -3

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bx53guja84csu"]
 
 [ext_resource type="Script" uid="uid://xyaesarjbds" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/bug.gd" id="1_1akvc"]
-[ext_resource type="Texture2D" uid="uid://dx2hliqvj5uxd" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/BUG.png" id="2_1xp5h"]
+[ext_resource type="Texture2D" uid="uid://cmfkg8ixpf38m" path="res://ProgrammingMiniGame/BUG.png" id="2_hby1j"]
 [ext_resource type="AudioStream" uid="uid://1mmg0kijwcer" path="res://ProgrammingMiniGame/sounds/crawl-loop.ogg" id="3_hby1j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3bv6s"]
@@ -56,7 +56,7 @@ timer = 0.1
 [node name="Bug" type="Sprite2D" parent="." unique_id=61206248]
 rotation = 0.7853982
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("2_1xp5h")
+texture = ExtResource("2_hby1j")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2139924440 groups=["MonitorBugs"]]
 

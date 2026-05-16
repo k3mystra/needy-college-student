@@ -59,7 +59,6 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_released() and is_held == true:
-		print(67)
 		is_held = false
 		ProgrammingMiniGameSignal.cursor_out.emit()
 		
@@ -99,5 +98,4 @@ func _mouse_enter() -> void:
 
 func _mouse_exit() -> void:
 	if is_held != true:
-		print("fuck")
 		ProgrammingMiniGameSignal.cursor_out.emit()
