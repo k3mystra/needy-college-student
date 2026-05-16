@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://hnydpv58p0ji"]
 
-[ext_resource type="Texture2D" uid="uid://btbk1kect2kev" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/Monitor-export.png" id="1_gvc8r"]
 [ext_resource type="Script" uid="uid://b2l28b63cdvwg" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/monitor.gd" id="1_stov2"]
+[ext_resource type="Texture2D" uid="uid://ds8f2dyead3u2" path="res://ProgrammingMiniGame/MergingGame/monitor.png" id="3_0ei3a"]
 [ext_resource type="PackedScene" uid="uid://bx53guja84csu" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/code_bug.tscn" id="3_37a84"]
+[ext_resource type="Texture2D" uid="uid://b5jj7wnfodvgl" path="res://ProgrammingMiniGame/monitor-on.png" id="3_sydj7"]
 [ext_resource type="PackedScene" uid="uid://yswpw1h7k7gr" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/game_cursor.tscn" id="4_c88er"]
 [ext_resource type="Texture2D" uid="uid://cout7gps41q8k" path="res://ProgrammingMiniGame/MergingGame/github-logo.png" id="5_gkbb6"]
 [ext_resource type="Script" uid="uid://bcpe3qsquwrkl" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/github.gd" id="5_mvjbd"]
 [ext_resource type="Script" uid="uid://cvfaptmep3ega" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/pc.gd" id="6_mvjbd"]
 [ext_resource type="Script" uid="uid://dhfuq4qc2lpdv" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/git_hub_window.gd" id="7_mhud3"]
-[ext_resource type="Texture2D" uid="uid://c4hja1a4vyory" path="res://ProgrammingMiniGame/PC-Sheet.png" id="7_p72re"]
 [ext_resource type="Script" uid="uid://cttjuaj0gcro2" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/github_logo.gd" id="8_64smk"]
 [ext_resource type="Script" uid="uid://douhvdh8unr4j" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/pull_request_window.gd" id="8_enrwd"]
 [ext_resource type="PackedScene" uid="uid://cavpk2761eol7" path="res://ProgrammingMiniGame/MergingGame/pr_users.tscn" id="9_2o845"]
@@ -18,8 +18,14 @@
 [ext_resource type="Texture2D" uid="uid://ctcm4chlv6d1f" path="res://ProgrammingMiniGame/MergingGame/SeanNote.png" id="11_enrwd"]
 [ext_resource type="Texture2D" uid="uid://b8fqr2tbkc03a" path="res://ProgrammingMiniGame/MergingGame/YaroNoteaseprite.png" id="12_2o845"]
 [ext_resource type="Texture2D" uid="uid://7cugdwasic5e" path="res://ProgrammingMiniGame/MergingGame/HaqeemNoteaseprite.png" id="13_n81ul"]
+[ext_resource type="Texture2D" uid="uid://dxlb2aggt1uoy" path="res://ProgrammingMiniGame/pc.png" id="14_0ei3a"]
 [ext_resource type="Texture2D" uid="uid://m5vce1nu7l2t" path="res://ProgrammingMiniGame/MergingGame/JasonNote.png" id="14_kdtwn"]
 [ext_resource type="Texture2D" uid="uid://810y1plmc87" path="res://ProgrammingMiniGame/MergingGame/DaneNote.png" id="15_64smk"]
+[ext_resource type="Texture2D" uid="uid://dt1yucjhnv15" path="res://ProgrammingMiniGame/pc-on.png" id="15_pi2yo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64smk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sydj7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hyui6"]
 font_size = 60
@@ -27,22 +33,22 @@ font_size = 60
 [sub_resource type="LabelSettings" id="LabelSettings_enrwd"]
 font_size = 22
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mhud3"]
-atlas = ExtResource("7_p72re")
-region = Rect2(0, 0, 652, 498)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx4tb"]
+atlas = ExtResource("14_0ei3a")
+region = Rect2(0, 0, 498, 930)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gki41"]
-atlas = ExtResource("7_p72re")
-region = Rect2(652, 0, 652, 498)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fthx"]
+atlas = ExtResource("15_pi2yo")
+region = Rect2(0, 0, 498, 930)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_616jt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mhud3")
+"texture": SubResource("AtlasTexture_yx4tb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gki41")
+"texture": SubResource("AtlasTexture_8fthx")
 }],
 "loop": false,
 "name": &"default",
@@ -57,8 +63,9 @@ script = ExtResource("1_stov2")
 bug = ExtResource("3_37a84")
 
 [node name="MonitorPNG" type="Sprite2D" parent="." unique_id=1367352235]
-scale = Vector2(2, 2)
-texture = ExtResource("1_gvc8r")
+z_index = 1
+scale = Vector2(1, 0.974259)
+texture = ExtResource("3_sydj7")
 metadata/_edit_group_ = true
 
 [node name="ScreenBottomLeft" type="Marker2D" parent="MonitorPNG" unique_id=1502639154]
@@ -73,16 +80,57 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(242, -150)
 scale = Vector2(0.5, 0.5)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="MonitorPNG" unique_id=267101010]
+
+[node name="border" type="CollisionShape2D" parent="MonitorPNG/StaticBody2D" unique_id=1556579087]
+z_index = 25
+position = Vector2(-236, -20)
+scale = Vector2(1.0630323, 16.791016)
+shape = SubResource("RectangleShape2D_64smk")
+
+[node name="border2" type="CollisionShape2D" parent="MonitorPNG/StaticBody2D" unique_id=842466785]
+z_index = 25
+position = Vector2(264, -20)
+scale = Vector2(1.0630323, 16.791016)
+shape = SubResource("RectangleShape2D_64smk")
+
+[node name="border3" type="CollisionShape2D" parent="MonitorPNG/StaticBody2D" unique_id=2082474300]
+z_index = 25
+position = Vector2(8, -160)
+rotation = -1.5707964
+scale = Vector2(1.0630323, 25.231014)
+shape = SubResource("RectangleShape2D_sydj7")
+
+[node name="border4" type="CollisionShape2D" parent="MonitorPNG/StaticBody2D" unique_id=1201421413]
+z_index = 25
+position = Vector2(11.999999, 132)
+rotation = -1.5707964
+scale = Vector2(1.0630323, 24.391016)
+shape = SubResource("RectangleShape2D_sydj7")
+
+[node name="Wallpaper" type="ColorRect" parent="MonitorPNG" unique_id=1149268046]
+z_index = -1
+offset_left = -440.70508
+offset_top = -393.1193
+offset_right = -406.60513
+offset_bottom = -357.2078
+scale = Vector2(25.504595, 15.662924)
+mouse_filter = 2
+color = Color(0.22382358, 0.22382358, 0.22382355, 1)
+
 [node name="AllBugs" type="Node" parent="." unique_id=1001844569]
 
 [node name="BugSpawnCD" type="Timer" parent="." unique_id=449911212]
 
 [node name="GameCursor" parent="." unique_id=184071685 instance=ExtResource("4_c88er")]
+z_index = 4
 
 [node name="Github" type="Node2D" parent="." unique_id=246883637]
-position = Vector2(-360, -235)
+position = Vector2(-326.805, -269.385)
+scale = Vector2(0.85, 0.85)
 script = ExtResource("5_mvjbd")
 pr_user = ExtResource("9_2o845")
+metadata/_edit_group_ = true
 
 [node name="GithubLogo" type="Sprite2D" parent="Github" unique_id=1090451380]
 scale = Vector2(0.3, 0.3)
@@ -254,6 +302,7 @@ autowrap_mode = 2
 [node name="All_prs" type="Node2D" parent="Github/GitHubWindow/PullRequestWindow" unique_id=855671662]
 
 [node name="AllSlots" type="Node2D" parent="Github/GitHubWindow/PullRequestWindow" unique_id=314690731]
+position = Vector2(0.49, 0)
 
 [node name="1" type="Marker2D" parent="Github/GitHubWindow/PullRequestWindow/AllSlots" unique_id=641343242]
 position = Vector2(380.99994, -182)
@@ -334,6 +383,15 @@ offset_bottom = -79.0
 scale = Vector2(25.504595, 15.662924)
 mouse_filter = 2
 color = Color(0.22382358, 0.22382358, 0.22382355, 1)
+
+[node name="DebugScreen2" type="ColorRect" parent="Github/GitHubWindow/Debug" unique_id=1741274947]
+offset_left = -79.05296
+offset_top = -27.782341
+offset_right = -45.656445
+offset_bottom = 3.9148445
+scale = Vector2(25.504595, 15.662924)
+mouse_filter = 2
+color = Color(0.16924527, 0.1692453, 0.16924521, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Github/GitHubWindow/Debug" unique_id=2013037281]
 z_index = 1
@@ -478,40 +536,38 @@ namespace NetworkCore.DataLink
 }"
 
 [node name="PC" type="Node2D" parent="." unique_id=523746768]
+position = Vector2(0, 2)
 script = ExtResource("6_mvjbd")
+metadata/_edit_group_ = true
 
 [node name="pc" type="AnimatedSprite2D" parent="PC" unique_id=1078321037]
-position = Vector2(881.00006, -22)
-scale = Vector2(2.5, 2.5)
+z_index = 2
+position = Vector2(740, -22)
 sprite_frames = SubResource("SpriteFrames_616jt")
 
-[node name="BlackScreen" type="ColorRect" parent="PC" unique_id=885532549]
-offset_left = -494.00006
-offset_top = -354.0
-offset_right = -454.00006
-offset_bottom = -314.0
-scale = Vector2(25.504595, 15.662924)
-mouse_filter = 2
-color = Color(0.012617188, 0.012617188, 0.012617188, 1)
-
-[node name="Button" type="Button" parent="PC" unique_id=892996654]
-offset_left = 1017.0
-offset_top = -454.0
-offset_right = 1025.0
-offset_bottom = -446.0
+[node name="Button" type="Button" parent="PC/pc" unique_id=892996654]
+offset_left = 75.99988
+offset_top = -335.00003
+offset_right = 83.99988
+offset_bottom = -327.00003
 scale = Vector2(12.997968, 12.463431)
 flat = true
 
-[node name="Area2D" type="Area2D" parent="PC" unique_id=1463554738 groups=["MonitorBugs"]]
-position = Vector2(1073, -406)
-scale = Vector2(3.3333333, 3.3333333)
+[node name="Area2D" type="Area2D" parent="PC/pc/Button" unique_id=1463554738 groups=["MonitorBugs"]]
+position = Vector2(4.3083725, 3.9315052)
+scale = Vector2(0.25645036, 0.26744908)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/Area2D" unique_id=1844093006]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/pc/Button/Area2D" unique_id=1844093006]
 position = Vector2(-1.2000002, 0)
 scale = Vector2(0.22, 0.22)
 shape = SubResource("CircleShape2D_gkbb6")
 
+[node name="MonitorOff" type="Sprite2D" parent="PC" unique_id=458497667]
+scale = Vector2(1, 0.974)
+texture = ExtResource("3_0ei3a")
+
 [node name="AllNotes" type="Node2D" parent="." unique_id=190390919]
+visible = false
 z_index = 2
 
 [node name="IzminNote" type="Sprite2D" parent="AllNotes" unique_id=1938233309]
@@ -539,6 +595,8 @@ texture = ExtResource("14_kdtwn")
 position = Vector2(809.29456, 128)
 texture = ExtResource("15_64smk")
 
+[node name="Background" type="Sprite2D" parent="." unique_id=409139136]
+
 [connection signal="timeout" from="BugSpawnCD" to="." method="_on_bug_spawn_cd_timeout"]
 [connection signal="button_up" from="Github/GithubLogo/Button" to="Github" method="_on_button_button_up"]
 [connection signal="mouse_entered" from="Github/GithubLogo/Button" to="Github/GithubLogo" method="_on_button_mouse_entered"]
@@ -549,4 +607,5 @@ texture = ExtResource("15_64smk")
 [connection signal="button_up" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow" method="_on_code_button_button_up"]
 [connection signal="mouse_entered" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow/Code" method="_on_code_button_mouse_entered"]
 [connection signal="mouse_exited" from="Github/GitHubWindow/Code/CodeButton" to="Github/GitHubWindow/Code" method="_on_code_button_mouse_exited"]
-[connection signal="button_up" from="PC/Button" to="PC" method="_on_button_button_up"]
+[connection signal="button_down" from="PC/pc/Button" to="PC" method="_on_button_button_down"]
+[connection signal="button_up" from="PC/pc/Button" to="PC" method="_on_button_button_up"]

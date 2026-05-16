@@ -15,7 +15,9 @@ extends Node2D
 @onready var clock = $AudioStreamPlayer2D
 @onready var bloodParticle = $sliderholder/HSlider/blood
 @onready var particle = $CPUParticles2D
+@onready var animation = $WordHolder
 
+signal minigame_finished
 
 var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x", "c"]
 var letter_amount : int
@@ -30,6 +32,7 @@ var prevsliderpos : Vector2
 var selected_word : String
 var prev_total_time : float
 var intensity = 0.0
+var frame_count : int
 # replace the spam button to the things taht come from the side of the screen
 
 var button_spam = preload("res://ButtonMiniGame/button_spam.tscn")
@@ -42,8 +45,8 @@ var glass = preload("res://ButtonMiniGame/sounds/break.ogg")
 
 
 func _ready() -> void:
+	frame_count = animation.sprite_frames.get_frame_count("anim")
 	circle.hide()
-	circle.self_modulate = Color("00ff00")
 	letter_amount = letter.size()
 	print ("TESTING: Letter chosen is, ", letter[randi_range(0, letter_amount - 1)])
 	print (letter_amount)
@@ -82,12 +85,6 @@ func _process(delta: float) -> void:
 	if anim_timer < 0:
 		_animation()
 		anim_timer = 0.1
-	match circleColor:
-		0: circle.self_modulate = Color("00ff00")
-		1: circle.self_modulate = Color("c1ff00")
-		2: circle.self_modulate = Color("ffff00")
-		3: circle.self_modulate = Color("ff8900")
-		4: circle.self_modulate = Color("e3000d")
 	
 	if (total_time < prev_total_time/2 + 45):
 		spam_cooldown -= 1 * delta
@@ -98,9 +95,9 @@ func _process(delta: float) -> void:
 				button_spam_limit = 4
 			else:
 				if randi_range(0, 3) == 0:
-					button_spam_limit += 1 
+					button_spam_limit += 1
 				spam_cooldown = prevspamcooldown + randf_range(-0.4, 0)
-	
+
 	total_time -= 1 * delta
 	_showtime(total_time)
 	_border()
@@ -110,17 +107,34 @@ func _process(delta: float) -> void:
 func _spawn_spam():
 	var spawnpoint = $spawn
 	var button = button_spam.instantiate()
-	if randi_range(0, 1) == 0:
+	var chance : int
+	if (total_time < prev_total_time/3 + 20):
+		chance = randi_range(0, 3)
+	else:
+		chance = randi_range(0, 1)
+	if chance == 0:
 		spawnpoint.position = Vector2(-896, randf_range(-384, 384))
 		button.dir = 0
-	else:
+	elif chance == 1:
 		spawnpoint.position = Vector2(896, randf_range(-384, 384))
 		button.dir = 1
+	elif chance == 2:
+		spawnpoint.position = Vector2(randf_range(-650, 650), -448)
+		button.dir = 2
+	elif chance == 3:
+		spawnpoint.position = Vector2(randf_range(-650, 650), 448)
+		button.dir = 3
 	button.global_position = spawnpoint.global_position
 	get_parent().add_child(button)
 
 
 func _start():
+	animation.frame = randi_range(0, frame_count - 1)
+	animation.speed_scale = randi_range(1, 3)
+	if randi_range(0, 1) == 0:
+		animation.play()
+	else:
+		animation.play_backwards()
 	allow_count = false
 	circle.position = Vector2(randf_range(-x_range, x_range), randf_range(-y_range, y_range))
 	prevpos = circle.position

@@ -13,6 +13,11 @@ var pull_request_list : Array[PullRequest] = []
 
 var current_selected_pr : PullRequest
 
+# PRELOAD SOUNDS HERE
+var githubopen = preload("res://ProgrammingMiniGame/sounds/open.ogg")
+var merge = preload("res://ProgrammingMiniGame/sounds/merge.ogg")
+var merge_good = preload("res://ProgrammingMiniGame/sounds/mergegood.ogg")
+
 func _ready():
 	ProgrammingMiniGameSignal.all_bug_smashed.connect(finish_debug)
 	ProgrammingMiniGameSignal.pr_user_button_signal.connect(update_pr_tab)
@@ -23,9 +28,19 @@ func _ready():
 		pull_request_list.append(generate_pr())
 	generate_pr_tab()
 
+func play_sound (stream: AudioStream, pitch: float, volume: float):
+	var p = AudioStreamPlayer2D.new()
+	p.stream = stream
+	p.pitch_scale = pitch
+	p.volume_db = 2 + volume
+	add_child(p)
+	p.play()
+	p.finished.connect(p.queue_free)
+
 func execute_merge():
 	var i = randf()
 	if i > current_selected_pr.good_merge_chance:
+		play_sound(merge, 1, 1)
 		#trigger bus smashing game
 		$GitHubWindow/PullRequest.hide()
 		$GitHubWindow/Code.hide()
@@ -34,6 +49,7 @@ func execute_merge():
 		ProgrammingMiniGameSignal.start_bug_smashing.emit()
 		$GitHubWindow/Debug.show()
 	else:
+		play_sound(merge_good, 1, 1)
 		finish_debug()
 		$GitHubWindow/PullRequestWindow.hide()
 		
@@ -43,7 +59,7 @@ func generate_pr() -> PullRequest:
 		return PullRequest.new() 
 	var new_pr = PullRequest.new()
 	while is_pr_already_in_list(new_pr):
-		new_pr = PullRequest.new()		
+		new_pr = PullRequest.new()
 	return new_pr
 
 func is_pr_already_in_list(target_pr: PullRequest) -> bool:
@@ -83,7 +99,7 @@ func _on_button_button_up() -> void:
 		
 		git_window.scale = Vector2.ZERO
 		git_window.show() 
-		
+		play_sound(githubopen, 1, 1)
 		var tween = create_tween()
 		tween.tween_property(
 			git_window, 
@@ -123,4 +139,6 @@ func finish_debug():
 			if z.pr_data == x:
 				z.global_position = $GitHubWindow/PullRequestWindow/AllSlots.find_child(str(slot_counter)).global_position
 				slot_counter += 1
+	if pull_request_list.size() == 0:
+		ProgrammingMiniGameSignal.minigame_finished.emit()
 #func disable_prs():

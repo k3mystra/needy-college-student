@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cku7loy1aqbkm"]
+
+[ext_resource type="Script" uid="uid://drsg6j8qtqtx7" path="res://Main/game_manager.gd" id="3_3lvfb"]
+
+[node name="Main" type="Node2D" unique_id=329834166]
+
+[node name="Minigames" type="Node2D" parent="." unique_id=114535582]
+
+[node name="GameManager" type="Node2D" parent="." unique_id=369863316]
+script = ExtResource("3_3lvfb")

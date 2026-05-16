@@ -8,10 +8,10 @@ font_size = 245
 [node name="pr_users" type="ColorRect" unique_id=1973085673]
 z_index = 1
 anchors_preset = -1
-anchor_right = 0.060000002
-anchor_bottom = 0.045
-offset_right = 926.0689
-offset_bottom = 495.3347
+anchor_right = 0.048
+anchor_bottom = 0.053000003
+offset_right = 683.73303
+offset_bottom = 486.6947
 scale = Vector2(0.11986186, 0.10612956)
 mouse_filter = 2
 color = Color(0.21768701, 0.2747727, 0.24257362, 1)
