@@ -17,13 +17,14 @@ func nut_attached():
 	moved_nut += 1
 	if moved_nut == nut_amount:
 		print("ALL NUT ATTACHED")
+		Global.tyre_game_finished.emit()
 
 func nut_removed():
 	moved_nut += 1
 	if moved_nut == nut_amount:
 		$Wheel.freeze = false
 		$Wheel.activate()
-		$Wheel.apply_impulse(Vector2(randf_range(-50, 50), -100))	
+		$Wheel.apply_impulse(Vector2(randf_range(-50, 50), -100))
 		
 func _on_world_side_border_body_entered(body: Node2D) -> void:
 	if body is Wheel:
@@ -45,7 +46,7 @@ func _on_world_side_border_body_entered(body: Node2D) -> void:
 		
 func show_fixable(b:bool):
 	if b == true:
-		$SpanarButton.show()
+		$SpanarButton.animate_appear()
 	else:
 		$SpanarButton.hide()
 
