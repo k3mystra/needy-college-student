@@ -1,6 +1,5 @@
 extends Node2D
 
-var fixing_car_scene = preload("uid://dcibv5xhvd87x")
 var potholeScene = preload("res://DrivingMiniGame/Scenes/potholes.tscn")
 var spawnRange 
 var repairChance
@@ -45,7 +44,7 @@ func _car_tire_puncture():
 		print("Player now has to repair tire")
 		CarDashboard.potholeHit = false
 		CarDashboard.tireHealth = 3
-		Global.add_car_fixing
+		Global.add_fixing_scene.emit()
 	else:
 		CarDashboard.potholeHit = false
 

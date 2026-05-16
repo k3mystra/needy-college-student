@@ -18,7 +18,7 @@ func nut_attached():
 	if moved_nut == nut_amount:
 		print("ALL NUT ATTACHED")
 		Global.tyre_game_finished.emit()
-
+		
 func nut_removed():
 	moved_nut += 1
 	if moved_nut == nut_amount:
