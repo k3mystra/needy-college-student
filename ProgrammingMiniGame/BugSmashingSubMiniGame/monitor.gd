@@ -14,6 +14,9 @@ var default_spawn_cd : int = 1
 var monitor_x_range : Vector2 = Vector2(-1,-1)
 var monitor_y_range : Vector2 = Vector2(-1,-1)
 
+#PRELOAD SOUNDS HERE
+
+
 func _ready() -> void:
 	monitor_x_range.x = monitor_bottom_left.global_position.x
 	monitor_x_range.y = monitor_bottom_right.global_position.x
@@ -54,3 +57,13 @@ func _on_bug_spawn_cd_timeout() -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	pass # Replace with function body.
+	
+
+func play_sound (stream: AudioStream, pitch: float, volume: float):
+	var p = AudioStreamPlayer2D.new()
+	p.stream = stream
+	p.pitch_scale = pitch
+	p.volume_db = 2 + volume
+	add_child(p)
+	p.play()
+	p.finished.connect(p.queue_free)

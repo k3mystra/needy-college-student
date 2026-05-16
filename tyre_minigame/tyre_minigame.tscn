@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcibv5xhvd87x"]
 
-[ext_resource type="Script" uid="uid://bowrs2rl0oj2w" path="res://tyre_minigame/tyre_minigame.gd" id="1_7ifhr"]
+[ext_resource type="Script" path="res://tyre_minigame/tyre_minigame.gd" id="1_7ifhr"]
 [ext_resource type="Texture2D" uid="uid://c0uv83je6lhg2" path="res://tyre_minigame/axle.png" id="2_dekca"]
 [ext_resource type="Texture2D" uid="uid://cnfs516fmeyrs" path="res://tyre_minigame/car-side.png" id="3_n3ltu"]
 [ext_resource type="Texture2D" uid="uid://bbqjhrw0615fg" path="res://tyre_minigame/dan_road.png" id="4_pdpd1"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://yswpw1h7k7gr" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/game_cursor.tscn" id="7_7ifhr"]
 [ext_resource type="Script" uid="uid://cdwpikon1iihr" path="res://tyre_minigame/nuthole.gd" id="8_v2wwx"]
 [ext_resource type="Texture2D" uid="uid://c6vonodxxw0il" path="res://tyre_minigame/Spanar.png" id="9_6sn50"]
-[ext_resource type="Script" uid="uid://q4tuq6q7bu4l" path="res://tyre_minigame/spanar_button.gd" id="10_n3ltu"]
+[ext_resource type="Script" path="res://tyre_minigame/spanar_button.gd" id="10_n3ltu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7ifhr"]
 rough = true
