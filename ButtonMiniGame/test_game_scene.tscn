@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bi5npciyw0d8c"]
+
+[ext_resource type="PackedScene" uid="uid://dgtk7ho5e4h88" path="res://ButtonMiniGame/button_mash_game.tscn" id="1_d5tae"]
+
+[node name="test_game_scene" type="Node2D" unique_id=606650402]
+
+[node name="ButtonMashGame" parent="." unique_id=1187036442 instance=ExtResource("1_d5tae")]
+position = Vector2(976, 552)

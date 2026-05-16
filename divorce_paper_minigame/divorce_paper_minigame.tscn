@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dnwndmt1ebaxc"]
+
+[ext_resource type="Script" uid="uid://cwa3absbjiwbe" path="res://divorce_paper_minigame/divorce_paper_minigame.gd" id="1_8xd02"]
+[ext_resource type="PackedScene" uid="uid://cxaccl8vxu3ky" path="res://divorce_paper_minigame/document.tscn" id="2_1n01s"]
+
+[node name="DivorcePaperMinigame" type="Node2D" unique_id=245305844]
+script = ExtResource("1_8xd02")
+doc_scene = ExtResource("2_1n01s")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=812748538]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=2059026382]
+offset_left = 1440.0
+offset_right = 1696.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="FinishBtn" type="Button" parent="UI/VBoxContainer" unique_id=1622158629]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Finish"
+
+[connection signal="pressed" from="UI/VBoxContainer/FinishBtn" to="." method="_on_finish_btn_pressed"]

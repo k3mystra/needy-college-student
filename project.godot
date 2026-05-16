@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Kind"
-run/main_scene="uid://ooqmm5rd26wm"
+run/main_scene="uid://bi5npciyw0d8c"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://j87ouds1vwxn"
+ProgrammingMiniGameSignal="*uid://bf00se448xdtj"
 
 [display]
 
@@ -31,12 +36,17 @@ enabled=PackedStringArray()
 
 folder_colors={
 "res://addons/_Godot-IDE_/plugins": "blue",
+"res://addons/_Godot-IDE_/plugins/": "blue",
 "res://addons/_Godot-IDE_/shared_resources/": "teal"
 }
 
 [global_group]
 
 pothole=""
+
+[global_group]
+
+MonitorBugs=""
 
 [physics]
 
