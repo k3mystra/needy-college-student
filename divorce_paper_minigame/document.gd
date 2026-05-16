@@ -13,6 +13,7 @@ var mouse_speed : float
 # PRELOAD SOUNDS HERE
 var down = preload("res://divorce_paper_minigame/sounds/pen_down.ogg")
 
+
 # Sound stuff
 func _process(delta: float) -> void:
 	if mouse_speed > 0:
@@ -22,10 +23,9 @@ func _process(delta: float) -> void:
 
 
 func _draw() -> void:
-	print(sign_strokes.size())
 	for sign_points in sign_strokes:
 		if sign_points.size() < 2:
-			return
+			continue;
 
 		# Literally redraw everything every redraw call
 		# Not performant but fk it
@@ -37,7 +37,7 @@ func _draw() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			current_doc_state = DocState.PEN_DOWN
 			play_sound(down, 1.5, 1)
@@ -46,17 +46,23 @@ func _input(event: InputEvent) -> void:
 			current_doc_state = DocState.IDLE
 			play_sound(down, -0.4, 1)
 	elif event is InputEventMouseMotion:
+		var local_pos = event.position - position
+		var sprite_rect = $Sprite.get_rect() * $Sprite.transform
+
 		match current_doc_state:
 			DocState.IDLE:
 				loop.stop()
 				return
 			DocState.PEN_DOWN:
 				loop.play()
+				if (!sprite_rect.has_point(local_pos)):
+					current_doc_state = DocState.IDLE
+					return
 				mouse_speed = event.velocity.length()
 				# event.position is viewport-coordinate, need to substract our position to get local coordinate
 				# since draw_line() accepts local coords
 				loop.global_position = get_global_mouse_position()
-				add_points_to_current_stroke(event.position - position)
+				add_points_to_current_stroke(local_pos)
 				queue_redraw()
 	else:
 		return

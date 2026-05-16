@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://3wmrll45pxc" path="res://divorce_paper_minigame/sounds/pen_loop.ogg" id="3_egqek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy14"]
-size = Vector2(592, 800)
+size = Vector2(592, 704)
 
 [node name="Document" type="CharacterBody2D" unique_id=1180025037]
 z_index = 100
@@ -15,7 +15,7 @@ script = ExtResource("1_if656")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=364910207]
 z_index = -100
-scale = Vector2(6, 8)
+scale = Vector2(6, 7)
 texture = ExtResource("1_t6y3i")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=232088666]
