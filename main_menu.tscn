@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rn5dku324fbk"]
 
 [ext_resource type="Script" uid="uid://by07kj16nwsh3" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="PackedScene" uid="uid://bie2wgut5q5hk" path="res://foxy/foxyjumpscare.tscn" id="2_7vrkn"]
 
 [node name="main_menu" type="Control" unique_id=956669371]
 layout_mode = 3
@@ -129,3 +130,9 @@ offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="foxyjumpscare" parent="." unique_id=79037854 instance=ExtResource("2_7vrkn")]
+layout_mode = 0
+chance = 1000
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]

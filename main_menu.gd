@@ -34,3 +34,7 @@ func _process(delta: float) -> void: # hard coding this shit cause i could care 
 		label3.rotation_degrees = 0 + randf_range(-intensity, intensity)
 		label4.rotation_degrees = 0 + randf_range(-intensity, intensity)
 		timer = 0.1
+
+
+func _on_play_pressed() -> void:
+	pass # Replace with function body.
