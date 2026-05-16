@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://tyre_minigame/wheel.gd" id="5_8beto"]
 [ext_resource type="Texture2D" uid="uid://b3054jrn44umd" path="res://tyre_minigame/wheel-Sheet.png" id="6_8beto"]
 [ext_resource type="PackedScene" uid="uid://yswpw1h7k7gr" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/game_cursor.tscn" id="7_7ifhr"]
+[ext_resource type="Script" uid="uid://cdwpikon1iihr" path="res://tyre_minigame/nuthole.gd" id="8_v2wwx"]
 [ext_resource type="Texture2D" uid="uid://c6vonodxxw0il" path="res://tyre_minigame/Spanar.png" id="9_6sn50"]
 [ext_resource type="Script" path="res://tyre_minigame/spanar_button.gd" id="10_n3ltu"]
 
@@ -100,32 +101,36 @@ shape = SubResource("CircleShape2D_8beto")
 
 [node name="GameCursor" parent="." unique_id=184071685 instance=ExtResource("7_7ifhr")]
 z_index = 2
-position = Vector2(-61, 38)
+position = Vector2(425, -34)
 
 [node name="All_nuthole" type="Node2D" parent="." unique_id=914376593]
 
-[node name="Area2D" type="Area2D" parent="All_nuthole" unique_id=1987373366]
+[node name="nuthole" type="Area2D" parent="All_nuthole" unique_id=1987373366]
 position = Vector2(-54, -49)
+script = ExtResource("8_v2wwx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/Area2D" unique_id=1042037669]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole" unique_id=1042037669]
 shape = SubResource("CircleShape2D_n3ltu")
 
-[node name="Area2D2" type="Area2D" parent="All_nuthole" unique_id=923593331]
+[node name="nuthole2" type="Area2D" parent="All_nuthole" unique_id=1748739286]
 position = Vector2(53, -50)
+script = ExtResource("8_v2wwx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/Area2D2" unique_id=357750196]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole2" unique_id=1106705542]
 shape = SubResource("CircleShape2D_n3ltu")
 
-[node name="Area2D3" type="Area2D" parent="All_nuthole" unique_id=94497663]
-position = Vector2(-54, 49)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/Area2D3" unique_id=1048661492]
-shape = SubResource("CircleShape2D_n3ltu")
-
-[node name="Area2D4" type="Area2D" parent="All_nuthole" unique_id=1918622432]
+[node name="nuthole3" type="Area2D" parent="All_nuthole" unique_id=1013400071]
 position = Vector2(55, 49)
+script = ExtResource("8_v2wwx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/Area2D4" unique_id=1348711158]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole3" unique_id=326535650]
+shape = SubResource("CircleShape2D_n3ltu")
+
+[node name="nuthole4" type="Area2D" parent="All_nuthole" unique_id=1864315939]
+position = Vector2(-54, 49)
+script = ExtResource("8_v2wwx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole4" unique_id=1423267390]
 shape = SubResource("CircleShape2D_n3ltu")
 
 [node name="all_nuts" type="Node2D" parent="." unique_id=1006119500]
@@ -163,6 +168,15 @@ collision_mask = 2
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_n3ltu")
 
+[node name="WorldSideBorder2" type="Area2D" parent="." unique_id=1136260283]
+position = Vector2(2137, -278)
+rotation = -1.5707964
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSideBorder2" unique_id=1593737741]
+rotation = -6.2831855
+shape = SubResource("WorldBoundaryShape2D_n3ltu")
+
 [node name="TyreSpawnPoint" type="Marker2D" parent="." unique_id=1470077776]
 position = Vector2(2356, -612)
 
@@ -190,7 +204,16 @@ rotation = -1.5707964
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=57430257]
 shape = SubResource("WorldBoundaryShape2D_v2wwx")
 
+[connection signal="body_entered" from="All_nuthole/nuthole" to="All_nuthole/nuthole" method="_on_body_entered"]
+[connection signal="body_exited" from="All_nuthole/nuthole" to="All_nuthole/nuthole" method="_on_body_exited"]
+[connection signal="body_entered" from="All_nuthole/nuthole2" to="All_nuthole/nuthole2" method="_on_body_entered"]
+[connection signal="body_exited" from="All_nuthole/nuthole2" to="All_nuthole/nuthole2" method="_on_body_exited"]
+[connection signal="body_entered" from="All_nuthole/nuthole3" to="All_nuthole/nuthole3" method="_on_body_entered"]
+[connection signal="body_exited" from="All_nuthole/nuthole3" to="All_nuthole/nuthole3" method="_on_body_exited"]
+[connection signal="body_entered" from="All_nuthole/nuthole4" to="All_nuthole/nuthole4" method="_on_body_entered"]
+[connection signal="body_exited" from="All_nuthole/nuthole4" to="All_nuthole/nuthole4" method="_on_body_exited"]
 [connection signal="body_entered" from="WorldSideBorder" to="." method="_on_world_side_border_body_entered"]
+[connection signal="body_entered" from="WorldSideBorder2" to="." method="_on_world_side_border_body_entered"]
 [connection signal="button_up" from="SpanarButton" to="." method="_on_spanar_button_button_up"]
 [connection signal="mouse_entered" from="SpanarButton" to="SpanarButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="SpanarButton" to="SpanarButton" method="_on_mouse_exited"]
