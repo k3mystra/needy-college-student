@@ -11,11 +11,9 @@ var timer = 0
 @onready var DrivingSound = $DrivingSound
 signal minigame_finished
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_car_tire_puncture()
 	
@@ -41,14 +39,15 @@ func _car_tire_puncture():
 	if CarDashboard.potholeHit:
 		Camera.shakeCamera = true
 		_crash_sound()
-	
+
 	if CarDashboard.tireHealth <= 0:
 		print("Player now has to repair tire")
 		CarDashboard.potholeHit = false
 		CarDashboard.tireHealth = 3
+		Global.add_fixing_scene.emit()
 	else:
 		CarDashboard.potholeHit = false
-			
+
 func _crash_sound():
 	CrashSound.play(0.60)
 	await get_tree().create_timer(1.55).timeout
