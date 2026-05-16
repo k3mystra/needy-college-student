@@ -7,7 +7,6 @@ var fixable : bool = false
 signal fix_or_not(b:bool)
 var fixed : bool = false
 
-
 @export var drag_responsiveness : float = 5.0 
 @onready var WheelPng : AnimatedSprite2D = $WheelPng
 
