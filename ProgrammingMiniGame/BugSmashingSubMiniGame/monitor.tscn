@@ -78,6 +78,7 @@ scale = Vector2(0.5, 0.5)
 [node name="BugSpawnCD" type="Timer" parent="." unique_id=449911212]
 
 [node name="GameCursor" parent="." unique_id=184071685 instance=ExtResource("4_c88er")]
+z_index = 4
 
 [node name="Github" type="Node2D" parent="." unique_id=246883637]
 position = Vector2(-360, -235)

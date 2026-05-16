@@ -38,7 +38,6 @@ size = Vector2(1.5, 1.5)
 script = ExtResource("1_xqrrg")
 
 [node name="Mouse" type="AnimatedSprite2D" parent="." unique_id=501632041]
-z_index = 2
 position = Vector2(24, 40)
 sprite_frames = SubResource("SpriteFrames_3pqra")
 animation = &"Hand"

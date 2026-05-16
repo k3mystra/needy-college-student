@@ -14,6 +14,5 @@ func _on_button_button_up() -> void:
 		var tween = create_tween()
 		tween.tween_property($BlackScreen, "modulate:a", 0.0, 
 		1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-		# Emits the signal after the tween finishes animating
 		await tween.finished
 		turn_on.emit()
