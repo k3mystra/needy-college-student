@@ -46,7 +46,6 @@ var glass = preload("res://ButtonMiniGame/sounds/break.ogg")
 func _ready() -> void:
 	frame_count = animation.sprite_frames.get_frame_count("anim")
 	circle.hide()
-	circle.self_modulate = Color("00ff00")
 	letter_amount = letter.size()
 	print ("TESTING: Letter chosen is, ", letter[randi_range(0, letter_amount - 1)])
 	print (letter_amount)
@@ -85,12 +84,6 @@ func _process(delta: float) -> void:
 	if anim_timer < 0:
 		_animation()
 		anim_timer = 0.1
-	match circleColor:
-		0: circle.self_modulate = Color("00ff00")
-		1: circle.self_modulate = Color("c1ff00")
-		2: circle.self_modulate = Color("ffff00")
-		3: circle.self_modulate = Color("ff8900")
-		4: circle.self_modulate = Color("e3000d")
 	
 	if (total_time < prev_total_time/2 + 45):
 		spam_cooldown -= 1 * delta
