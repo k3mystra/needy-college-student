@@ -33,6 +33,7 @@ autostart = true
 [node name="DrivingSound" type="AudioStreamPlayer" parent="." unique_id=1076430095]
 stream = ExtResource("6_ec07q")
 autoplay = true
+parameters/looping = true
 
 [node name="CrashSound" type="AudioStreamPlayer" parent="." unique_id=1503554604]
 stream = ExtResource("6_jnmp8")
