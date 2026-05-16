@@ -1,28 +1,43 @@
 [gd_scene format=3 uid="uid://cxaccl8vxu3ky"]
 
 [ext_resource type="Script" uid="uid://4sd5ubxukw0y" path="res://divorce_paper_minigame/document.gd" id="1_if656"]
-[ext_resource type="Texture2D" uid="uid://bnwglx7ynjjsn" path="res://placeholder/white-square.png" id="1_t6y3i"]
+[ext_resource type="Texture2D" uid="uid://dfyialfb40h7j" path="res://divorce_paper_minigame/divorce_paper.png" id="2_egqek"]
 [ext_resource type="AudioStream" uid="uid://3wmrll45pxc" path="res://divorce_paper_minigame/sounds/pen_loop.ogg" id="3_egqek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy14"]
-size = Vector2(592, 704)
+size = Vector2(424, 576)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_egqek"]
 
 [node name="Document" type="CharacterBody2D" unique_id=1180025037]
 z_index = 100
 z_as_relative = false
 input_pickable = true
 script = ExtResource("1_if656")
+stroke_width = 8.0
+shake_movement_amount = 50
+shake_duration = 0.5
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=364910207]
 z_index = -100
-scale = Vector2(6, 7)
-texture = ExtResource("1_t6y3i")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_egqek")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=232088666]
 z_index = -100
+position = Vector2(4, -8)
 shape = SubResource("RectangleShape2D_cyy14")
 
 [node name="loop" type="AudioStreamPlayer2D" parent="." unique_id=360595504]
 stream = ExtResource("3_egqek")
 volume_db = 8.0
 pitch_scale = 1.7
+
+[node name="SignBoxStart" type="Node2D" parent="." unique_id=483154447]
+position = Vector2(-40, 272)
+
+[node name="SignBoxEnd" type="Node2D" parent="." unique_id=1897454694]
+position = Vector2(272, 384)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=837392413]
+libraries/document_anims = SubResource("AnimationLibrary_egqek")
