@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btbk1kect2kev"
-path="res://.godot/imported/Monitor-export.png-eb418b872fc57cb4bdc28732c439a35b.ctex"
+uid="uid://ctcm4chlv6d1f"
+path="res://.godot/imported/SeanNote.png-103ac626836c9045e2e17a509d2e54c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ProgrammingMiniGame/Monitor-export.png"
-dest_files=["res://.godot/imported/Monitor-export.png-eb418b872fc57cb4bdc28732c439a35b.ctex"]
+source_file="res://ProgrammingMiniGame/MergingGame/SeanNote.png"
+dest_files=["res://.godot/imported/SeanNote.png-103ac626836c9045e2e17a509d2e54c0.ctex"]
 
 [params]
 
