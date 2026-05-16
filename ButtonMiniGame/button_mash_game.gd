@@ -102,6 +102,9 @@ func _process(delta: float) -> void:
 	_showtime(total_time)
 	_border()
 	_follow_word()
+	
+	if total_time <= 0:
+		minigame_finished.emit()
 
 
 func _spawn_spam():
