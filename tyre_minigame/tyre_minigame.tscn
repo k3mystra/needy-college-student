@@ -1,11 +1,62 @@
 [gd_scene format=3 uid="uid://dcibv5xhvd87x"]
 
-[ext_resource type="Texture2D" uid="uid://drutthh52cwvc" path="res://tyre_minigame/wheel.png" id="1_r4ky5"]
+[ext_resource type="Script" path="res://tyre_minigame/tyre_minigame.gd" id="1_7ifhr"]
 [ext_resource type="Texture2D" uid="uid://c0uv83je6lhg2" path="res://tyre_minigame/axle.png" id="2_dekca"]
-[ext_resource type="Texture2D" uid="uid://d3l3mx3puj6jt" path="res://tyre_minigame/car-part-filler.png" id="3_s8o2b"]
-[ext_resource type="Texture2D" uid="uid://p7mbswyjt08r" path="res://tyre_minigame/car-part.png" id="3_yxo34"]
+[ext_resource type="Texture2D" uid="uid://cnfs516fmeyrs" path="res://tyre_minigame/car-side.png" id="3_n3ltu"]
+[ext_resource type="Texture2D" uid="uid://bbqjhrw0615fg" path="res://tyre_minigame/dan_road.png" id="4_pdpd1"]
+[ext_resource type="PackedScene" uid="uid://dyr7eyy1lfmhq" path="res://tyre_minigame/nut_object.tscn" id="5_6bhow"]
+[ext_resource type="Script" uid="uid://b0p0tkprwjyaq" path="res://tyre_minigame/wheel.gd" id="5_8beto"]
+[ext_resource type="Texture2D" uid="uid://dm44y6po7y1ny" path="res://tyre_minigame/flattire.png" id="5_v2wwx"]
+[ext_resource type="Texture2D" uid="uid://caqdwdun0kr6l" path="res://tyre_minigame/tire.png" id="6_pdpd1"]
+[ext_resource type="PackedScene" uid="uid://yswpw1h7k7gr" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/game_cursor.tscn" id="7_7ifhr"]
+[ext_resource type="Script" uid="uid://cdwpikon1iihr" path="res://tyre_minigame/nuthole.gd" id="8_v2wwx"]
+[ext_resource type="Texture2D" uid="uid://c6vonodxxw0il" path="res://tyre_minigame/Spanar.png" id="9_6sn50"]
+[ext_resource type="Script" path="res://tyre_minigame/spanar_button.gd" id="10_n3ltu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7ifhr"]
+rough = true
+bounce = 0.55
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0deg7"]
+atlas = ExtResource("5_v2wwx")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wof12"]
+atlas = ExtResource("6_pdpd1")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6sn50"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0deg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wof12")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8beto"]
+radius = 467.9669
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3ltu"]
+radius = 30.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8beto"]
+friction = 100.15
+rough = true
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6bhow"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n3ltu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v2wwx"]
 
 [node name="tyre" type="Node2D" unique_id=1530019945]
+script = ExtResource("1_7ifhr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=614448098]
 
@@ -13,49 +64,155 @@
 position = Vector2(0, -49)
 
 [node name="Axle" type="Sprite2D" parent="car" unique_id=546825411]
+position = Vector2(0, 48.999996)
 scale = Vector2(7.525, 7.525)
 texture = ExtResource("2_dekca")
 
-[node name="CarPart" type="Sprite2D" parent="car" unique_id=183607048]
-position = Vector2(0, -8)
-scale = Vector2(7.525, 7.525)
-texture = ExtResource("3_yxo34")
+[node name="CarSide" type="Sprite2D" parent="car" unique_id=698152064]
+z_index = -2
+position = Vector2(47, -151)
+scale = Vector2(2, 2)
+texture = ExtResource("3_n3ltu")
 
-[node name="CarPartFiller" type="Sprite2D" parent="car" unique_id=69577314]
-position = Vector2(-1019, -366)
-scale = Vector2(19.777779, 12)
-texture = ExtResource("3_s8o2b")
+[node name="DanRoad" type="Sprite2D" parent="car" unique_id=1878712667]
+z_index = -3
+position = Vector2(-3, 64)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_pdpd1")
 
-[node name="CarPartFiller2" type="Sprite2D" parent="car" unique_id=625019051]
-position = Vector2(1019, -366)
-scale = Vector2(19.777779, 12)
-texture = ExtResource("3_s8o2b")
+[node name="Wheel" type="RigidBody2D" parent="." unique_id=1587171699]
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_7ifhr")
+freeze = true
+script = ExtResource("5_8beto")
+metadata/_edit_group_ = true
 
-[node name="Wheel" type="Sprite2D" parent="." unique_id=1092437986]
+[node name="WheelPng" type="AnimatedSprite2D" parent="Wheel" unique_id=672035962]
 z_index = 1
-scale = Vector2(7.525, 7.525)
-texture = ExtResource("1_r4ky5")
+scale = Vector2(1.8, 1.8)
+sprite_frames = SubResource("SpriteFrames_6sn50")
 
-[node name="nut1" type="Marker2D" parent="." unique_id=449076659]
-z_index = 55
-position = Vector2(-61, -53)
-gizmo_extents = 125.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel" unique_id=913810844]
+z_index = 1
+position = Vector2(9, 19)
+shape = SubResource("CircleShape2D_8beto")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="nut1" unique_id=172414958]
+[node name="GameCursor" parent="." unique_id=184071685 instance=ExtResource("7_7ifhr")]
+z_index = 2
+position = Vector2(425, -34)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="nut1/StaticBody2D" unique_id=1267569201]
+[node name="All_nuthole" type="Node2D" parent="." unique_id=914376593]
 
-[node name="nut2" type="Marker2D" parent="." unique_id=57013274]
-z_index = 55
-position = Vector2(61, -53)
-gizmo_extents = 125.0
+[node name="nuthole" type="Area2D" parent="All_nuthole" unique_id=1987373366]
+position = Vector2(-58, -29)
+script = ExtResource("8_v2wwx")
 
-[node name="nut3" type="Marker2D" parent="." unique_id=539801437]
-z_index = 55
-position = Vector2(61, 53)
-gizmo_extents = 125.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole" unique_id=1042037669]
+shape = SubResource("CircleShape2D_n3ltu")
 
-[node name="nut4" type="Marker2D" parent="." unique_id=2076723940]
-z_index = 55
-position = Vector2(-61, 53)
-gizmo_extents = 125.0
+[node name="nuthole2" type="Area2D" parent="All_nuthole" unique_id=1748739286]
+position = Vector2(68, -30)
+script = ExtResource("8_v2wwx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole2" unique_id=1106705542]
+shape = SubResource("CircleShape2D_n3ltu")
+
+[node name="nuthole3" type="Area2D" parent="All_nuthole" unique_id=1013400071]
+position = Vector2(68, 86)
+script = ExtResource("8_v2wwx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole3" unique_id=326535650]
+shape = SubResource("CircleShape2D_n3ltu")
+
+[node name="nuthole4" type="Area2D" parent="All_nuthole" unique_id=1864315939]
+position = Vector2(-58, 85)
+script = ExtResource("8_v2wwx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="All_nuthole/nuthole4" unique_id=1423267390]
+shape = SubResource("CircleShape2D_n3ltu")
+
+[node name="all_nuts" type="Node2D" parent="." unique_id=1006119500]
+metadata/_edit_lock_ = true
+
+[node name="NutObject" parent="all_nuts" unique_id=838063495 instance=ExtResource("5_6bhow")]
+z_index = 1
+position = Vector2(-58, -29)
+
+[node name="NutObject2" parent="all_nuts" unique_id=127017659 instance=ExtResource("5_6bhow")]
+z_index = 1
+position = Vector2(68, -30)
+
+[node name="NutObject3" parent="all_nuts" unique_id=230435973 instance=ExtResource("5_6bhow")]
+z_index = 1
+position = Vector2(-58, 85)
+
+[node name="NutObject4" parent="all_nuts" unique_id=726142569 instance=ExtResource("5_6bhow")]
+z_index = 1
+position = Vector2(68, 86)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=139357829]
+collision_layer = 3
+physics_material_override = SubResource("PhysicsMaterial_8beto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1436701900]
+position = Vector2(-76, 508)
+shape = SubResource("WorldBoundaryShape2D_6bhow")
+
+[node name="WorldSideBorder" type="Area2D" parent="." unique_id=240176147]
+position = Vector2(-2012, -95)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSideBorder" unique_id=526692303]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_n3ltu")
+
+[node name="WorldSideBorder2" type="Area2D" parent="." unique_id=1136260283]
+position = Vector2(2137, -278)
+rotation = -1.5707964
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldSideBorder2" unique_id=1593737741]
+rotation = -6.2831855
+shape = SubResource("WorldBoundaryShape2D_n3ltu")
+
+[node name="TyreSpawnPoint" type="Marker2D" parent="." unique_id=1470077776]
+position = Vector2(2356, -612)
+
+[node name="SpanarButton" type="TextureButton" parent="." unique_id=900597014]
+visible = false
+offset_left = -775.0
+offset_top = 36.0
+offset_right = -391.0
+offset_bottom = 420.0
+rotation = 0.43791497
+texture_normal = ExtResource("9_6sn50")
+script = ExtResource("10_n3ltu")
+
+[node name="Area2D" type="StaticBody2D" parent="." unique_id=1734740209]
+position = Vector2(-939, 55)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=166002323]
+shape = SubResource("WorldBoundaryShape2D_v2wwx")
+
+[node name="Area2D2" type="StaticBody2D" parent="." unique_id=1229542065]
+position = Vector2(930, 117)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=57430257]
+shape = SubResource("WorldBoundaryShape2D_v2wwx")
+
+[connection signal="body_entered" from="All_nuthole/nuthole" to="All_nuthole/nuthole" method="_on_body_entered"]
+[connection signal="body_exited" from="All_nuthole/nuthole" to="All_nuthole/nuthole" method="_on_body_exited"]
+[connection signal="body_entered" from="All_nuthole/nuthole2" to="All_nuthole/nuthole2" method="_on_body_entered"]
+[connection signal="body_exited" from="All_nuthole/nuthole2" to="All_nuthole/nuthole2" method="_on_body_exited"]
+[connection signal="body_entered" from="All_nuthole/nuthole3" to="All_nuthole/nuthole3" method="_on_body_entered"]
+[connection signal="body_exited" from="All_nuthole/nuthole3" to="All_nuthole/nuthole3" method="_on_body_exited"]
+[connection signal="body_entered" from="All_nuthole/nuthole4" to="All_nuthole/nuthole4" method="_on_body_entered"]
+[connection signal="body_exited" from="All_nuthole/nuthole4" to="All_nuthole/nuthole4" method="_on_body_exited"]
+[connection signal="body_entered" from="WorldSideBorder" to="." method="_on_world_side_border_body_entered"]
+[connection signal="body_entered" from="WorldSideBorder2" to="." method="_on_world_side_border_body_entered"]
+[connection signal="button_up" from="SpanarButton" to="." method="_on_spanar_button_button_up"]
+[connection signal="mouse_entered" from="SpanarButton" to="SpanarButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SpanarButton" to="SpanarButton" method="_on_mouse_exited"]
