@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dyr7eyy1lfmhq"]
+
+[ext_resource type="Script" uid="uid://c8dddp6ndvo6y" path="res://tyre_minigame/nut_object.gd" id="1_xk048"]
+[ext_resource type="Texture2D" uid="uid://6lhco1067c13" path="res://tyre_minigame/nuts.png" id="2_odq3w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xk048"]
+bounce = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6bhow"]
+radius = 23.021729
+
+[node name="NutObject" type="RigidBody2D" unique_id=838063495]
+mass = 4.0
+physics_material_override = SubResource("PhysicsMaterial_xk048")
+script = ExtResource("1_xk048")
+
+[node name="Nuts" type="Sprite2D" parent="." unique_id=913856819]
+scale = Vector2(5, 5)
+texture = ExtResource("2_odq3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1476348064]
+z_index = 1
+shape = SubResource("CircleShape2D_6bhow")

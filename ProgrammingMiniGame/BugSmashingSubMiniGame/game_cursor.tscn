@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://yswpw1h7k7gr"]
+
+[ext_resource type="Script" uid="uid://baaj8j17dhu6l" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/game_cursor.gd" id="1_xqrrg"]
+[ext_resource type="Texture2D" uid="uid://33latdij3j7q" path="res://ProgrammingMiniGame/windows-2-0/arrow.png" id="2_wdaei"]
+[ext_resource type="Texture2D" uid="uid://c5sxpbkqemopr" path="res://ProgrammingMiniGame/windows-2-0/hand.png" id="3_2b4ak"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqrrg"]
+atlas = ExtResource("3_2b4ak")
+region = Rect2(0, 0, 64, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cjpw"]
+atlas = ExtResource("2_wdaei")
+region = Rect2(0, 0, 48, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3pqra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqrrg")
+}],
+"loop": true,
+"name": &"Hand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cjpw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqrrg"]
+size = Vector2(1.5, 1.5)
+
+[node name="GameCursor" type="Node2D" unique_id=184071685]
+script = ExtResource("1_xqrrg")
+
+[node name="Mouse" type="AnimatedSprite2D" parent="." unique_id=501632041]
+position = Vector2(24, 40)
+sprite_frames = SubResource("SpriteFrames_3pqra")
+animation = &"Hand"
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1444960569]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1545918395]
+position = Vector2(0.75, 0.75)
+shape = SubResource("RectangleShape2D_xqrrg")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

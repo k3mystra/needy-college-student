@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://5pbgdqctex1l"]
+
+[ext_resource type="Script" uid="uid://bkevcshyusnpx" path="res://DrivingMiniGame/Scripts/car_dashboard.gd" id="1_d7gq5"]
+[ext_resource type="Texture2D" uid="uid://vl81e7vrj1ic" path="res://DrivingMiniGame/dan_carseat.png" id="2_pmyov"]
+[ext_resource type="Texture2D" uid="uid://d381wx1seh637" path="res://DrivingMiniGame/wheelfront.png" id="3_2kqul"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hgjn"]
+size = Vector2(32.30608, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jaalo"]
+size = Vector2(289.5, 198.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55fhc"]
+size = Vector2(272.5, 193)
+
+[node name="CarDashboard" type="CharacterBody2D" unique_id=624995954]
+script = ExtResource("1_d7gq5")
+
+[node name="DanCarseat" type="Sprite2D" parent="." unique_id=1700865012]
+position = Vector2(185, 541)
+texture = ExtResource("2_pmyov")
+
+[node name="DrivingWheel" type="Sprite2D" parent="." unique_id=1374035036]
+position = Vector2(-273, 979)
+texture = ExtResource("3_2kqul")
+
+[node name="CarWidthCollider" type="CollisionShape2D" parent="." unique_id=2068832888]
+position = Vector2(183.2025, 1003)
+scale = Vector2(59.419, 7.4)
+shape = SubResource("RectangleShape2D_5hgjn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=587969635]
+
+[node name="LeftWheelCollider" type="CollisionShape2D" parent="Area2D" unique_id=1423224965]
+position = Vector2(-635.75, 979.25)
+shape = SubResource("RectangleShape2D_jaalo")
+
+[node name="RightWheelCollider" type="CollisionShape2D" parent="Area2D" unique_id=946337406]
+position = Vector2(1006.25, 981.5)
+shape = SubResource("RectangleShape2D_55fhc")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
