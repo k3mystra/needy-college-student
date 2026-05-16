@@ -5,6 +5,8 @@ var spawnRange
 var repairChance
 @onready var CarDashboard = $CarDashboard
 @onready var Camera = $CarDashboard/Camera2D
+@onready var CrashSound = $CrashSound
+@onready var DrivingSound = $DrivingSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	_car_tire_puncture()
 
 func _on_timer_timeout() -> void:
@@ -26,15 +29,9 @@ func _spawnPotholes(pos):
 	add_child(scene_to_instantiate)
 
 func _car_tire_puncture():
-	#if CarDashboard.potholeHit == true:	
-		#repairChance = randi_range(0, 10)
-		##if repairChance <= 2:
-			##print("Player now has to repair tire")
-			##CarDashboard.potholeHit = false
-		##else:
-			##CarDashboard.potholeHit = false
 	if CarDashboard.potholeHit:
 		Camera.shakeCamera = true
+		_crash_sound()
 	
 	if CarDashboard.tireHealth <= 0:
 		print("Player now has to repair tire")
@@ -43,3 +40,7 @@ func _car_tire_puncture():
 	else:
 		CarDashboard.potholeHit = false
 			
+func _crash_sound():
+	CrashSound.play(0.60)
+	await get_tree().create_timer(1.55).timeout
+	CrashSound.stop()

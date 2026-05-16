@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://n7u5iqb0stpd" path="res://DrivingMiniGame/Scenes/car_boundary.tscn" id="3_agv8p"]
 [ext_resource type="Script" uid="uid://bkhrtjpinu0f8" path="res://DrivingMiniGame/Scripts/camera_2d.gd" id="3_h0y7q"]
 [ext_resource type="PackedScene" uid="uid://d1shadgpu7vcm" path="res://DrivingMiniGame/Scenes/road_scene.tscn" id="4_agv8p"]
+[ext_resource type="AudioStream" uid="uid://tl80njn6fptm" path="res://DrivingMiniGame/freesound_community-inside-car-noise-while-driving-29978.mp3" id="6_ec07q"]
+[ext_resource type="AudioStream" uid="uid://bekulsqu3t5n3" path="res://DrivingMiniGame/freesound_community-car-accident-real-interior-46387.mp3" id="6_jnmp8"]
 
 [node name="DrivingMiniGame" type="Node2D" unique_id=51446634]
 script = ExtResource("1_21l2p")
@@ -28,7 +30,11 @@ position = Vector2(1324, 0)
 wait_time = 3.0
 autostart = true
 
-[node name="Node2D" type="Node2D" parent="." unique_id=896591501]
-position = Vector2(1738, 513)
+[node name="DrivingSound" type="AudioStreamPlayer" parent="." unique_id=1076430095]
+stream = ExtResource("6_ec07q")
+autoplay = true
+
+[node name="CrashSound" type="AudioStreamPlayer" parent="." unique_id=1503554604]
+stream = ExtResource("6_jnmp8")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
