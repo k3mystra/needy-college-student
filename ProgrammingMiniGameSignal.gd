@@ -13,3 +13,5 @@ signal end_bug_smashing
 signal all_bug_smashed
 
 signal pr_user_button_signal(pr:PullRequest)
+
+signal mini_game_ended
