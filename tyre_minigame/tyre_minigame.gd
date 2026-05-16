@@ -3,6 +3,7 @@ extends Node2D
 @onready var wheel : Wheel = $Wheel
 @onready var all_nuts : Node2D = $all_nuts
 @onready var all_nut_hole : Array = $All_nuthole.get_children()
+signal minigame_finished
 
 var moved_nut : int = 0
 var nut_amount : int 
@@ -17,7 +18,8 @@ func nut_attached():
 	moved_nut += 1
 	if moved_nut == nut_amount:
 		print("ALL NUT ATTACHED")
-		Global.tyre_game_finished.emit()
+		#Global.tyre_game_finished.emit()
+		minigame_finished.emit()
 		
 func nut_removed():
 	moved_nut += 1
