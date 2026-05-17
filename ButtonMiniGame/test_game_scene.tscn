@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bi5npciyw0d8c"]
 
 [ext_resource type="PackedScene" uid="uid://dgtk7ho5e4h88" path="res://ButtonMiniGame/button_mash_game.tscn" id="1_d5tae"]
-[ext_resource type="Script" path="res://ButtonMiniGame/test_game_scene.gd" id="1_w2yl0"]
+[ext_resource type="Script" uid="uid://cqbg3p8mwiqdc" path="res://ButtonMiniGame/test_game_scene.gd" id="1_w2yl0"]
 [ext_resource type="Texture2D" uid="uid://dmsv86vrco7nm" path="res://ButtonMiniGame/assets/bossroom.png" id="2_lj83u"]
 
 [sub_resource type="Gradient" id="Gradient_lj83u"]

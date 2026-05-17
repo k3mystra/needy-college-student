@@ -55,7 +55,8 @@ func _ready() -> void:
 	prevcooldown = cooldown
 	prevspamcooldown = spam_cooldown
 	prevsliderpos = sliderholder.position
-	prev_total_time = total_time
+	Global.total_time = total_time # 60
+	prev_total_time = total_time # 60
 	Global.buttonspam_L.connect(_buttonspamL)
 	Global.buttonspam_W.connect(_buttonspamW)
 	animationPlayer.play("heart")
@@ -88,7 +89,7 @@ func _process(delta: float) -> void:
 		_animation()
 		anim_timer = 0.1
 	
-	if (total_time < prev_total_time/2 + 45):
+	if (Global.total_time < prev_total_time/2 + 20):
 		spam_cooldown -= 1 * delta
 		if spam_cooldown < 0:
 			if Global.total_button_spam < button_spam_limit:
@@ -99,13 +100,15 @@ func _process(delta: float) -> void:
 				if randi_range(0, 3) == 0:
 					button_spam_limit += 1
 				spam_cooldown = prevspamcooldown + randf_range(-0.4, 0)
-
-	total_time -= 1 * delta
-	_showtime(total_time)
+	print ("Time is ", Global.total_time)
+	if Global.total_time > 0:
+		Global.total_time -= 1 * delta
+		
+	_showtime(Global.total_time)
 	_border()
 	_follow_word()
 	
-	if total_time <= 0:
+	if Global.total_time <= 0:
 		minigame_finished.emit()
 	_update_grabberPos()
 
@@ -114,7 +117,7 @@ func _spawn_spam():
 	var spawnpoint = $spawn
 	var button = button_spam.instantiate()
 	var chance : int
-	if (total_time < prev_total_time/3 + 20):
+	if (Global.total_time < prev_total_time/3 + 20):
 		chance = randi_range(0, 3)
 	else:
 		chance = randi_range(0, 1)
