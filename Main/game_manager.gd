@@ -5,7 +5,7 @@ extends Node2D
 var minigames = [
 	preload("res://DrivingMiniGame/Scenes/driving_mini_game.tscn"),
 	preload("res://ProgrammingMiniGame/BugSmashingSubMiniGame/mini_game_manager.tscn"),
-	preload("res://ButtonMiniGame/button_mash_game.tscn"),
+	preload("res://ButtonMiniGame/test_game_scene.tscn"),
 	preload("res://divorce_paper_minigame/divorce_paper_minigame.tscn"),
 	preload("res://memory_pick_minigame/memory_pick.tscn")
 ]
