@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MemoryData" format=3 uid="uid://424l4sxj2gbw"]
+
+[ext_resource type="Script" uid="uid://dyoe3d5thysfy" path="res://memory_pick_minigame/memory_data.gd" id="1_whfk0"]
+[ext_resource type="Texture2D" uid="uid://hwsjw2e0t12w" path="res://memory_pick_minigame/memories/propose.png" id="2_whfk0"]
+
+[resource]
+script = ExtResource("1_whfk0")
+sprite = ExtResource("2_whfk0")
+metadata/_custom_type_script = "uid://dyoe3d5thysfy"
