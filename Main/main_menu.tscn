@@ -1,20 +1,21 @@
 [gd_scene format=3 uid="uid://rn5dku324fbk"]
 
-[ext_resource type="Script" uid="uid://by07kj16nwsh3" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://by07kj16nwsh3" path="res://Main/main_menu.gd" id="1_bprq1"]
 [ext_resource type="PackedScene" uid="uid://bie2wgut5q5hk" path="res://foxy/foxyjumpscare.tscn" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://dhpnpl5bicafv" path="res://Main/city.png" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://drsg6j8qtqtx7" path="res://Main/game_manager.gd" id="4_bprq1"]
 
-[node name="main_menu" type="Control" unique_id=956669371]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_06t4h")
-intensity = 2.0
+[node name="MainMenu" type="Node" unique_id=2063295927]
+script = ExtResource("1_bprq1")
+intensity = 5.5
 
-[node name="play" type="Button" parent="." unique_id=184206121]
-layout_mode = 1
+[node name="UI" type="CanvasLayer" parent="." unique_id=1034741868]
+
+[node name="bg" type="Sprite2D" parent="UI" unique_id=1263798923]
+position = Vector2(960, 536)
+texture = ExtResource("2_fu7sn")
+
+[node name="play" type="Button" parent="UI" unique_id=184206121]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -29,8 +30,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 55
 text = "   PLAY   "
 
-[node name="quit" type="Button" parent="." unique_id=1481745291]
-layout_mode = 1
+[node name="quit" type="Button" parent="UI" unique_id=1481745291]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -45,10 +45,10 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 55
 text = "  QUIT   "
 
-[node name="title" type="Node2D" parent="." unique_id=1361978320]
+[node name="title" type="Node2D" parent="UI" unique_id=1361978320]
 position = Vector2(960, 344)
 
-[node name="Label" type="Label" parent="title" unique_id=1482450962]
+[node name="Label" type="Label" parent="UI/title" unique_id=1482450962]
 z_index = 2
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,11 +61,11 @@ offset_right = -71.0
 offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 65
 text = "K"
 
-[node name="Label2" type="Label" parent="title" unique_id=442549849]
+[node name="Label2" type="Label" parent="UI/title" unique_id=442549849]
 z_index = 2
 anchors_preset = 8
 anchor_left = 0.5
@@ -78,11 +78,11 @@ offset_right = -7.0
 offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 65
 text = "I"
 
-[node name="Label3" type="Label" parent="title" unique_id=393341527]
+[node name="Label3" type="Label" parent="UI/title" unique_id=393341527]
 z_index = 2
 anchors_preset = 8
 anchor_left = 0.5
@@ -95,11 +95,11 @@ offset_right = 59.0
 offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 65
 text = "N"
 
-[node name="Label4" type="Label" parent="title" unique_id=533013440]
+[node name="Label4" type="Label" parent="UI/title" unique_id=533013440]
 z_index = 2
 anchors_preset = 8
 anchor_left = 0.5
@@ -112,11 +112,11 @@ offset_right = 120.0
 offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 65
 text = "D"
 
-[node name="ColorRect" type="ColorRect" parent="title" unique_id=531985008]
+[node name="ColorRect" type="ColorRect" parent="UI/title" unique_id=531985008]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -131,8 +131,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="foxyjumpscare" parent="." unique_id=79037854 instance=ExtResource("2_7vrkn")]
-layout_mode = 0
-chance = 1000
+[node name="foxyjumpscare" parent="UI" unique_id=79037854 instance=ExtResource("2_7vrkn")]
+offset_left = 928.0
+offset_top = 584.0
+offset_right = 928.0
+offset_bottom = 584.0
+chance = 100
 
-[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[node name="GM" type="Node2D" parent="." unique_id=1783966698]
+script = ExtResource("4_bprq1")
+
+[connection signal="pressed" from="UI/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/quit" to="." method="_on_quit_pressed"]
