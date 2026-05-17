@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bie2wgut5q5hk" path="res://foxy/foxyjumpscare.tscn" id="2_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://dhpnpl5bicafv" path="res://Main/city.png" id="2_fu7sn"]
 [ext_resource type="Script" uid="uid://drsg6j8qtqtx7" path="res://Main/game_manager.gd" id="4_bprq1"]
+[ext_resource type="Texture2D" uid="uid://b3n6oenbjgujp" path="res://bee.png" id="4_l00uc"]
 
 [node name="MainMenu" type="Node" unique_id=2063295927]
 script = ExtResource("1_bprq1")
@@ -137,6 +138,22 @@ offset_top = 584.0
 offset_right = 928.0
 offset_bottom = 584.0
 chance = 100
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="UI" unique_id=506336500]
+z_index = 15
+position = Vector2(2052, 348)
+amount = 100
+texture = ExtResource("4_l00uc")
+lifetime = 60.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 247.98)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 700.0
+scale_amount_min = 0.05
+scale_amount_max = 0.2
 
 [node name="GM" type="Node2D" parent="." unique_id=1783966698]
 script = ExtResource("4_bprq1")
