@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Kind"
-run/main_scene="uid://rn5dku324fbk"
+run/main_scene="uid://bbwhabk2w38qe"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,7 @@ ProgrammingMiniGameSignal="*uid://bf00se448xdtj"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=2
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
