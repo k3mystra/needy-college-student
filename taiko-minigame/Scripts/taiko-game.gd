@@ -8,9 +8,9 @@ var rng = RandomNumberGenerator.new()
 const BPM := 72.05
 
 const BEAT_SEC := 70.0 / BPM
-const SONG_DURATION := 73.0
+const SONG_DURATION := 2.0
 const HIT_WINDOW := 0.4
-var LOOK_AHEAD := 2.1   # seconds ahead to spawn notes
+var LOOK_AHEAD := 2.1   # seconds ahead to spawn notes. reduce to speed up and vice versa.
 
 # --- MAPS --------------------------------------------------------------
 # Each map is a different "song" / difficulty pattern.
@@ -123,9 +123,7 @@ var feedback_timer := 0.0
 @onready var background:  TextureRect = $Background
 @onready var monitor: TextureRect = $Monitor
 @onready var lane_color: ColorRect = $RhythmLane/LaneColor
-#@onready var monitor_text: RichTextLabel = $MonitorText
 @onready var boss: TextureRect = $Boss
-#@onready var desk: TextureRect = $Desk
 @onready var stress_ball: TextureRect = $StressBall
 @onready var rhythm_lane: Control  = $RhythmLane
 @onready var hit_zone: ColorRect = $RhythmLane/HitZone
@@ -139,15 +137,15 @@ var feedback_timer := 0.0
 @onready var heavy_hit: AudioStreamPlayer2D = $HeavyHit
 @onready var miss_sound: AudioStreamPlayer2D = $MissSound
 @onready var music: AudioStreamPlayer2D = $BGMusic
+@onready var f_key: TextureRect = $KEY_F
+@onready var j_key: TextureRect = $KEY_J
 
 # --- COLOURS ------------------------------------------------------------------
 const C_BG          := Color(0.10, 0.10, 0.10)
-#const C_MONITOR     := Color(0.08, 0.12, 0.18)
 const C_SUIT        := Color(0.15, 0.15, 0.17)
-#const C_DESK        := Color(0.18, 0.13, 0.10)
 const C_NOTE_SMALL  := Color(0.032, 0.457, 0.822, 1.0)
 const C_NOTE_BIG    := Color(1.0, 0.177, 0.2, 1.0)
-const C_HITZONE     := Color(0.22, 0.22, 0.251, 0.592)
+const C_HITZONE     := Color(0.22, 0.22, 0.251, 0.0)
 const C_LANE        := Color(0.14, 0.14, 0.16)
 const C_TEXT        := Color(0.666, 0.666, 0.685, 1.0)
 const C_MISS        := Color(0.904, 0.47, 0.484, 1.0)
@@ -162,41 +160,38 @@ func _build_scene() -> void:
 	var vp: Vector2 = Vector2(1920, 1080)
 	
 	background.texture = load("res://taiko-minigame/Assets/taiko-office-fpv.png")
-	background.size    = vp
+	background.size = vp
 
-	#monitor.color    = C_MONITOR
 	monitor.texture = load("res://taiko-minigame/Assets/monitor-taiko.png")
-	monitor.size     = Vector2(vp.x * 0.55, vp.y * 0.65)
+	monitor.size = Vector2(vp.x * 0.55, vp.y * 0.65)
 	monitor.position = Vector2(vp.x * 0.13, vp.y * 0.15)
-
-	#monitor_text.size     = monitor.size - Vector2(16, 16)
-	#monitor_text.position = monitor.position + Vector2(8, 8)
-	#monitor_text.add_theme_color_override("default_color", C_TEXT * 0.8)
 	
 	lane_color.color = Color(0.161, 0.161, 0.161, 0.271)
 	lane_color.size = Vector2(1920,150)
 	lane_color.position = Vector2(-96,-20)
 
 	boss.texture  = load("res://taiko-minigame/Assets/taiko-boss.png")
-	boss.size     = Vector2(vp.x * 0.28, vp.y * 0.42)
+	boss.size = Vector2(vp.x * 0.28, vp.y * 0.42)
 	boss.position = Vector2(vp.x * 0.10, vp.y * 0.05)
 
-	#desk.texture  = load("res://taiko-minigame/Assets/taiko-office-fpv.png/")
-	#desk.size     = Vector2(vp.x, vp.y * 0.18)
-	#desk.position = Vector2(0, vp.y * 0.72)
-
 	stress_ball.texture  = load("res://taiko-minigame/Assets/taiko-loose.png")
-	stress_ball.size     = Vector2(30, 30)
+	stress_ball.size  = Vector2(30, 30)
 	stress_ball.position = Vector2(-700, 400)
 
-	rhythm_lane.size     = Vector2(vp.x * 0.90, 72)
+	rhythm_lane.size = Vector2(vp.x * 0.90, 72)
 	rhythm_lane.position = Vector2(vp.x * 0.05, vp.y * 0.62)
+	
+	f_key.texture = load("res://taiko-minigame/Assets/KEY_F.png")
+	f_key.position = Vector2(0,400)
 
-	hit_zone.color    = C_HITZONE
-	hit_zone.size     = Vector2(170, 120)
-	hit_zone.position = Vector2(182,-15)
+	j_key.texture = load("res://taiko-minigame/Assets/KEY_J.png")
+	j_key.position = Vector2(200,400)
 
-	speech_panel.size   = Vector2(370, 100)
+	hit_zone.color = C_HITZONE
+	hit_zone.size = Vector2(190, 120)
+	hit_zone.position = Vector2(170,-15)
+
+	speech_panel.size = Vector2(370, 100)
 	speech_panel.position = Vector2(vp.x - 375, 12)
 	speech_panel.hide()
 
@@ -233,11 +228,6 @@ func _music_play() -> void:
 func _music_stop() -> void:
 	music.stop()
 	
-func _get_note_type() -> int:
-	var entry  = active_chart[chart_index]
-	var note_type = entry[1]
-	return note_type
-	
 # --- INPUT --------------------------------------------------------------------
 func _input(event: InputEvent) -> void:
 	if not is_playing:
@@ -247,10 +237,10 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
-			KEY_F: _attempt_hit(0, _get_note_type())
-			KEY_J: _attempt_hit(1, _get_note_type())
+			KEY_F: _attempt_hit(0)
+			KEY_J: _attempt_hit(1)
 
-func _attempt_hit(hit, type: int) -> void:
+func _attempt_hit(hit: int) -> void:
 	var best_note = null
 	var best_dist := 9999.0
 	
@@ -270,47 +260,49 @@ func _attempt_hit(hit, type: int) -> void:
 				best_note = note_data
 
 	if best_note != null:
-		if type == 0:
+		var type: int = best_note["type"]  # read type from the note itself
+		# light hit logic
+		if type == 0 && hit == 1:
 			best_note["hit"] = true
 			best_note["node"].queue_free()
 			combo += 1
 			score += 100 + (combo * 10)
 			_show_feedback("HIT", C_HIT)
-			if hit == 0:
-				_animate_squeeze()
-				_light_hit()
-			else:
-				_animate_squash()
-				_show_feedback("MISS", C_MISS)
-				_miss_sound()
-				if LOOK_AHEAD > 0.8:
-					LOOK_AHEAD -= 0.05
-				else:
-					pass
-				combo = 0
-				combo_label.text = "0"
+			_animate_squeeze()
+			_light_hit()
 		
-		if type == 1:
+		#heavy hit logic
+		elif type == 1 && hit == 0:
 			best_note["hit"] = true
 			best_note["node"].queue_free()
 			combo += 1
 			score += 100 + (combo * 10)
 			_show_feedback("HIT", C_HIT)
-			if hit == 1:
-				_animate_squash()
-				_heavy_hit()
-			else:
-				_animate_squeeze()
-				_show_feedback("MISS", C_MISS)
-				_miss_sound()
-				if LOOK_AHEAD > 0.8:
-					LOOK_AHEAD -= 0.05
-				else:
-					pass
-				combo = 0
-				combo_label.text = "0"
+			_animate_squash()
+			_heavy_hit()
+			
+		elif (type == 0 && hit == 1) || (type == 1 && hit == 0):
+			_show_feedback("MISS", C_MISS)
+			_animate_squash()
+			_miss_sound()
+			if LOOK_AHEAD > 0.9:
+				LOOK_AHEAD -= 0.05
+			combo = 0
+			combo_label.text = "0"
+			
+		# mis-press logic
+		else:
+			_animate_squeeze()
+			_show_feedback("MISS", C_MISS)
+			_miss_sound()
+			if LOOK_AHEAD > 0.9:
+				LOOK_AHEAD -= 0.08
+			combo = 0
+			combo_label.text = "0"
 		
 		combo_label.text = str(combo) if combo > 0 else ""
+		
+	# missed hit logic
 	else:
 		_show_feedback("MISS", C_MISS)
 		_miss_sound()
@@ -323,7 +315,7 @@ func _attempt_hit(hit, type: int) -> void:
 
 # --- GAME LOOP ----------------------------
 func _start_game() -> void:
-	# Pick a random map each run
+	# Pick a random map each run. For main game, will only use MAP_EVEN_LUNCH
 	var pick: int   = rng.randi_range(0, MAPS.size() - 1)
 	active_map_name = MAPS[pick][0]
 	active_chart    = MAPS[pick][1]
@@ -468,16 +460,13 @@ func _end_game() -> void:
 	_music_stop()
 	
 	is_playing = false
-	#for note_data in active_notes:
-		#note_data["node"].queue_free()
-	#active_notes.clear()
 
 	var total: int = active_chart.size()
 	var accuracy := 0.0
 	if total > 0:
 		accuracy = float(total - misses) / float(total) * 100.0
 
-	feedback_label.add_theme_color_override("font_color", C_TEXT)
+	feedback_label.add_theme_color_override("font_color", Color(0.78, 0.216, 0.22, 1.0))
 	feedback_label.add_theme_font_size_override("font_size", 22)
 	feedback_label.set_position(Vector2(600,375))
 	feedback_label.text = (

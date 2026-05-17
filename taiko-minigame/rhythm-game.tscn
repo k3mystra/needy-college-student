@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dfcrmv2bf74wc" path="res://taiko-minigame/Scenes/heavy_hit.tscn" id="4_kg4dr"]
 [ext_resource type="PackedScene" uid="uid://clh5ciqajkra7" path="res://taiko-minigame/Scenes/miss_sound.tscn" id="5_o5xju"]
 [ext_resource type="PackedScene" uid="uid://b1t21vtbouaum" path="res://taiko-minigame/Scenes/bg_music.tscn" id="6_uhg6v"]
+[ext_resource type="PackedScene" uid="uid://byol0pmqrg1cl" path="res://taiko-minigame/Scenes/key_f.tscn" id="7_pq22m"]
+[ext_resource type="PackedScene" uid="uid://dxd2gu3c6ey6s" path="res://taiko-minigame/Scenes/key_j.tscn" id="8_jetsq"]
 
 [node name="RhythmGame" type="Node2D" unique_id=672249060]
 script = ExtResource("1_kg4dr")
@@ -85,3 +87,7 @@ theme_override_fonts/font = ExtResource("2_eoo82")
 
 [node name="BGMusic" parent="." unique_id=1415994776 instance=ExtResource("6_uhg6v")]
 volume_db = 2.578
+
+[node name="KEY_F" parent="." unique_id=1293502066 instance=ExtResource("7_pq22m")]
+
+[node name="KEY_J" parent="." unique_id=386503282 instance=ExtResource("8_jetsq")]
