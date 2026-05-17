@@ -18,11 +18,20 @@ var changeLevel:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_level(levelProgression)
+	Global.add_fixing_scene.connect(_on_sub_minigame_requested)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
+func _on_sub_minigame_requested(scene: PackedScene):
+	if current_level:
+		current_level.queue_free()
+
+	current_level = scene.instantiate()
+	current_level.minigame_finished.connect(_on_minigame_finished)
+
+	MinigameContainer.add_child(current_level)
 
 func _on_minigame_finished():
 	levelProgression += 1
