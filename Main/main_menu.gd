@@ -41,3 +41,7 @@ func _on_play_pressed() -> void:
 	$UI.process_mode = Node.PROCESS_MODE_DISABLED
 	$GM.start_game()
 	print("Initiate Self Destruct")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
