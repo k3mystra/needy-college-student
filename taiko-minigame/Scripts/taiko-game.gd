@@ -157,6 +157,8 @@ const C_MISS        := Color(0.904, 0.47, 0.484, 1.0)
 const C_HIT         := Color(0.294, 0.464, 0.28, 1.0)
 
 # --- SETUP --------------------------------------------------------------------
+signal minigame_finished
+
 func _ready() -> void:
 	_build_scene()
 	_show_intro()
@@ -366,6 +368,7 @@ func _process(delta: float) -> void:
 		feedback_label.text = ""
 
 	if song_time >= SONG_DURATION:
+		is_playing = false
 		_end_game()
 
 func _spawn_notes() -> void:
@@ -484,8 +487,6 @@ func _show_feedback(text: String, color: Color) -> void:
 func _end_game() -> void:
 	_music_stop()
 	
-	is_playing = false
-	
 	var total: int = active_chart.size()
 	var accuracy := 0.0
 	if total > 0:
@@ -498,3 +499,8 @@ func _end_game() -> void:
 		"Lunch is over.\n\n\nNothing went in \nyour head.\n\n\nNor your stomach."
 		% [int(accuracy)]
 		)
+	await get_tree().create_timer(3.0).timeout
+	_next_game()
+	
+func _next_game():
+	minigame_finished.emit()
