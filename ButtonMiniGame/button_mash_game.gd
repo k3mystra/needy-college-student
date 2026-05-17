@@ -18,6 +18,7 @@ extends Node2D
 @onready var animation = $WordHolder
 @onready var animationPlayer = $AnimationPlayer
 
+signal minigame_finished
 
 var letter = ["w", "a", "s", "d", "q", "e", "r", "f", "z", "x", "c"]
 var letter_amount : int
@@ -96,13 +97,16 @@ func _process(delta: float) -> void:
 				button_spam_limit = 4
 			else:
 				if randi_range(0, 3) == 0:
-					button_spam_limit += 1 
+					button_spam_limit += 1
 				spam_cooldown = prevspamcooldown + randf_range(-0.4, 0)
-	
+
 	total_time -= 1 * delta
 	_showtime(total_time)
 	_border()
 	_follow_word()
+	
+	if total_time <= 0:
+		minigame_finished.emit()
 	_update_grabberPos()
 
 

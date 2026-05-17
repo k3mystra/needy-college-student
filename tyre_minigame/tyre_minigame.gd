@@ -3,6 +3,7 @@ extends Node2D
 @onready var wheel : Wheel = $Wheel
 @onready var all_nuts : Node2D = $all_nuts
 @onready var all_nut_hole : Array = $All_nuthole.get_children()
+signal minigame_finished
 
 var moved_nut : int = 0
 var nut_amount : int 
@@ -17,13 +18,15 @@ func nut_attached():
 	moved_nut += 1
 	if moved_nut == nut_amount:
 		print("ALL NUT ATTACHED")
-
+		#Global.tyre_game_finished.emit()
+		minigame_finished.emit()
+		
 func nut_removed():
 	moved_nut += 1
 	if moved_nut == nut_amount:
 		$Wheel.freeze = false
 		$Wheel.activate()
-		$Wheel.apply_impulse(Vector2(randf_range(-50, 50), -100))	
+		$Wheel.apply_impulse(Vector2(randf_range(-50, 50), -100))
 		
 func _on_world_side_border_body_entered(body: Node2D) -> void:
 	if body is Wheel:
@@ -45,7 +48,7 @@ func _on_world_side_border_body_entered(body: Node2D) -> void:
 		
 func show_fixable(b:bool):
 	if b == true:
-		$SpanarButton.show()
+		$SpanarButton.animate_appear()
 	else:
 		$SpanarButton.hide()
 
