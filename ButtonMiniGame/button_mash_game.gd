@@ -17,6 +17,7 @@ extends Node2D
 @onready var particle = $CPUParticles2D
 @onready var animation = $WordHolder
 @onready var animationPlayer = $AnimationPlayer
+@onready var box = $WordHolder/Textbox
 
 signal minigame_finished
 
@@ -34,6 +35,8 @@ var selected_word : String
 var prev_total_time : float
 var intensity = 0.0
 var frame_count : int
+var boxcolor = 0
+
 # replace the spam button to the things taht come from the side of the screen
 
 var button_spam = preload("res://ButtonMiniGame/button_spam.tscn")
@@ -62,6 +65,14 @@ func _ready() -> void:
 	animationPlayer.play("heart")
 
 func _process(delta: float) -> void:
+	match boxcolor:
+		0: box.self_modulate = Color("00ff00")
+		1: box.self_modulate = Color("c1ff00")
+		2: box.self_modulate = Color("ffff00")
+		3: box.self_modulate = Color("ff8900")
+		4: box.self_modulate = Color("e3000d")
+	var target_color = remap(timer, 2, 0, 0, 4.99)
+	boxcolor = int(floor(target_color))
 	if allow_count:
 		clock.stop()
 		cooldown -= 1 * delta
