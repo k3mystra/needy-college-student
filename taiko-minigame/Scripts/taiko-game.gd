@@ -157,6 +157,8 @@ const C_MISS        := Color(0.904, 0.47, 0.484, 1.0)
 const C_HIT         := Color(0.294, 0.464, 0.28, 1.0)
 
 # --- SETUP --------------------------------------------------------------------
+signal minigame_finished
+
 func _ready() -> void:
 	_build_scene()
 	_show_intro()
@@ -498,3 +500,7 @@ func _end_game() -> void:
 		"Lunch is over.\n\n\nNothing went in \nyour head.\n\n\nNor your stomach."
 		% [int(accuracy)]
 		)
+	await get_tree().create_timer(4.0).timeout
+	_next_game()
+func _next_game():
+	minigame_finished.emit()
