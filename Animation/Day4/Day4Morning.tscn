@@ -398,7 +398,6 @@ animations = [{
 
 [node name="Day4Morning" type="Node2D" unique_id=924066834]
 modulate = Color(18.892, 18.892, 18.892, 1)
-position = Vector2(960, 536)
 script = ExtResource("1_d0l4l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1060206103]
@@ -456,3 +455,5 @@ texture = ExtResource("8_yjror")
 [node name="DoorAnim" type="AnimatedSprite2D" parent="." unique_id=2080755525]
 z_index = 5
 sprite_frames = SubResource("SpriteFrames_biwab")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2114615154]

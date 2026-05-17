@@ -47,7 +47,6 @@ _data = {
 }
 
 [node name="Day_3_Night" type="Node2D" unique_id=293966554]
-position = Vector2(960, 536)
 scale = Vector2(1, 0.99189484)
 script = ExtResource("1_8kmd5")
 
@@ -77,3 +76,5 @@ libraries/ = SubResource("AnimationLibrary_dg51a")
 [node name="NightHome" type="Sprite2D" parent="." unique_id=199389551]
 z_index = 15
 texture = ExtResource("6_2bwhw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1383780]

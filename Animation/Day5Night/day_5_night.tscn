@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6xjysu6y5vft"]
 
 [ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="1_e4ooa"]
+[ext_resource type="Script" uid="uid://btyuyqpeqrbr3" path="res://Animation/Day5Night/day_5_night.gd" id="1_wtepc"]
 [ext_resource type="Texture2D" uid="uid://blqgbirlwhi" path="res://Animation/Mirror-Shadow.png" id="2_hh231"]
 [ext_resource type="SpriteFrames" uid="uid://jh6nf1y46ph2" path="res://Animation/Day5Night/crying_sf.tres" id="3_ij08t"]
 [ext_resource type="Texture2D" uid="uid://byv7a15laywgd" path="res://Animation/Mirror.png" id="4_kser0"]
@@ -87,6 +88,7 @@ _data = {
 }
 
 [node name="Day5Morning" type="Node2D" unique_id=1026891684]
+script = ExtResource("1_wtepc")
 
 [node name="MirrorRoom" type="Node2D" parent="." unique_id=848904289]
 
@@ -113,3 +115,5 @@ texture = ExtResource("6_wtepc")
 
 [node name="House" type="Sprite2D" parent="." unique_id=1045335488]
 texture = ExtResource("6_l8f35")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=162105066]
