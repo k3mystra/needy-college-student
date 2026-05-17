@@ -12,7 +12,7 @@ const SONG_DURATION := 73.0
 const HIT_WINDOW := 0.4
 var LOOK_AHEAD := 2.1   # seconds ahead to spawn notes. reduce to speed up and vice versa.
 
-# --- MAPS --------------------------------------------------------------
+# --- MAPS -------------------------------------------------
 # Each map is a different "song" / difficulty pattern.
 # Format per entry: [beat_number, note_type]
 # note_type: 0 = small (F key), 1 = big (J key)
@@ -86,7 +86,7 @@ const MAP_EVEN_LUNCH: Array = [
 	[56, 0], [57, 0], [57.5, 1], [58, 0],
 	[60, 1], [61, 0], [62, 0], [62.5, 0],
 	[64, 1], [65, 0], [65.5, 1], [66, 0],
-	[68, 1], [70, 0], [71, 1], [72, 0], [73, 0]
+	[68, 1], [70, 0], [71, 1], [72, 0], [73, 0],
 ]
 
 # Array for the maps. Add more here.
@@ -97,11 +97,16 @@ const MAPS: Array = [
 	["Even During Lunch...", MAP_EVEN_LUNCH],
 ]
 
-# --- BUZZWORDS ----------------------------------------------------------------
+# --- WORDS ----------------------------------------------------------------
 const BUZZWORDS: Array[String] = [
-	"synergy", "bandwidth", "faster",
-	"clawdbot", "pivot", "ideate",
-	 "align", "AI", "value-add", "scalable", "agile",
+	"Synergy", "Bandwidth", "Faster",
+	"Clawdbot", "Pivot", "Ideate",
+	 "Align", "AI", "Value", "Credits", "agile",
+]
+
+const SPEECHWORDS: Array[String] = [
+	"Boss: So.. per my last email...", "Boss: No, do this instead..",
+	"Boss: Done by 5pm or its OT yea", "Boss: This Sunday, you need.."
 ]
 
 # --- RUNTIME STATE ------------------------------------------------------------
@@ -121,7 +126,7 @@ var feedback_timer := 0.0
 
 # --- NODE REFERENCES ----------------------------------------------------------
 @onready var background:  TextureRect = $Background
-@onready var monitor: TextureRect = $Monitor
+@onready var monitor_taiko: TextureRect = $Monitor
 @onready var lane_color: ColorRect = $RhythmLane/LaneColor
 @onready var boss: TextureRect = $Boss
 @onready var stress_ball: TextureRect = $StressBall
@@ -162,9 +167,9 @@ func _build_scene() -> void:
 	background.texture = load("res://taiko-minigame/Assets/taiko-office-fpv.png")
 	background.size = vp
 
-	monitor.texture = load("res://taiko-minigame/Assets/monitor-taiko.png")
-	monitor.size = Vector2(vp.x * 0.55, vp.y * 0.65)
-	monitor.position = Vector2(vp.x * 0.13, vp.y * 0.15)
+	monitor_taiko.texture = load("res://taiko-minigame/Assets/monitor-taiko.png")
+	monitor_taiko.size = Vector2(vp.x * 0.55, vp.y * 0.65)
+	monitor_taiko.position = Vector2(vp.x * 0.13, vp.y * 0.15)
 	
 	lane_color.color = Color(0.161, 0.161, 0.161, 0.271)
 	lane_color.size = Vector2(1920,150)
@@ -182,17 +187,17 @@ func _build_scene() -> void:
 	rhythm_lane.position = Vector2(vp.x * 0.05, vp.y * 0.62)
 	
 	f_key.texture = load("res://taiko-minigame/Assets/KEY_F.png")
-	f_key.position = Vector2(0,400)
+	f_key.position = Vector2(-10,400)
 
 	j_key.texture = load("res://taiko-minigame/Assets/KEY_J.png")
-	j_key.position = Vector2(200,400)
+	j_key.position = Vector2(210,400)
 
 	hit_zone.color = C_HITZONE
 	hit_zone.size = Vector2(190, 120)
 	hit_zone.position = Vector2(170,-15)
 
-	speech_panel.size = Vector2(370, 100)
-	speech_panel.position = Vector2(vp.x - 375, 12)
+	speech_panel.size = Vector2(470, 100)
+	speech_panel.position = Vector2(vp.x - 475, 12)
 	speech_panel.hide()
 
 	lunch_clock.add_theme_font_size_override("font_size", 15)
@@ -203,7 +208,7 @@ func _build_scene() -> void:
 	feedback_label.add_theme_color_override("font_color", C_HIT)
 	feedback_label.text = ""
 
-	combo_label.position = Vector2(1050, vp.y * 0.50)
+	combo_label.position = Vector2(1080, vp.y * 0.50)
 	combo_label.add_theme_font_size_override("font_size", 20)
 	combo_label.add_theme_color_override("font_color", C_TEXT)
 	combo_label.text = "0"
@@ -234,13 +239,19 @@ func _input(event: InputEvent) -> void:
 		if event is InputEventKey and event.keycode == KEY_ENTER and event.pressed:
 			_start_game()
 		return
-
+		
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_F: _attempt_hit(0)
 			KEY_J: _attempt_hit(1)
 
 func _attempt_hit(hit: int) -> void:
+		# key press animation
+	if hit == 0:
+		_animate_f_key()
+	elif hit == 1:
+		_animate_j_key()
+	
 	var best_note = null
 	var best_dist := 9999.0
 	
@@ -261,6 +272,7 @@ func _attempt_hit(hit: int) -> void:
 
 	if best_note != null:
 		var type: int = best_note["type"]  # read type from the note itself
+		
 		# light hit logic
 		if type == 0 && hit == 1:
 			best_note["hit"] = true
@@ -286,7 +298,7 @@ func _attempt_hit(hit: int) -> void:
 			_animate_squash()
 			_miss_sound()
 			if LOOK_AHEAD > 0.9:
-				LOOK_AHEAD -= 0.05
+				LOOK_AHEAD -= 0.1
 			combo = 0
 			combo_label.text = "0"
 			
@@ -296,7 +308,7 @@ func _attempt_hit(hit: int) -> void:
 			_show_feedback("MISS", C_MISS)
 			_miss_sound()
 			if LOOK_AHEAD > 0.9:
-				LOOK_AHEAD -= 0.08
+				LOOK_AHEAD -= 0.1
 			combo = 0
 			combo_label.text = "0"
 		
@@ -315,7 +327,7 @@ func _attempt_hit(hit: int) -> void:
 
 # --- GAME LOOP ----------------------------
 func _start_game() -> void:
-	# Pick a random map each run. For main game, will only use MAP_EVEN_LUNCH
+	# Pick a random map each run. For actual game, will only use MAP_EVEN_LUNCH
 	var pick: int   = rng.randi_range(0, MAPS.size() - 1)
 	active_map_name = MAPS[pick][0]
 	active_chart    = MAPS[pick][1]
@@ -339,16 +351,16 @@ func _process(delta: float) -> void:
 	if not is_playing:
 		return
 
-	song_time       += delta
+	song_time += delta
 	lunch_remaining -= delta
-	speech_timer     -= delta
-	feedback_timer  -= delta
+	speech_timer -= delta
+	feedback_timer -= delta
 
 	_spawn_notes()
 	_scroll_notes(delta)
 	_cull_missed_notes()
 	_update_lunch_clock()
-	_handle_slack()
+	_handle_speech()
 
 	if feedback_timer <= 0.0:
 		feedback_label.text = ""
@@ -376,8 +388,9 @@ func _create_note(beat_time: float, type: int) -> void:
 
 	var note := Label.new()
 	note.text = word
+	note.add_theme_font_override("font", preload("res://taiko-minigame/Assets/VCR_OSD_MONO_1.001.ttf"))
 	note.add_theme_color_override("font_color", C_NOTE_BIG if type == 1 else C_NOTE_SMALL)
-	note.add_theme_font_size_override("font_size", 30 if type == 1 else 25)
+	note.add_theme_font_size_override("font_size", 32 if type == 1 else 27)
 
 	var start_x: float = lane_w - 20.0
 	var start_y: float = lane_h * 0.25 if type == 0 else lane_h * 0.55
@@ -428,25 +441,37 @@ func _animate_squeeze() -> void:
 	stress_ball.texture = load("res://taiko-minigame/Assets/taiko-squeeze.png")
 	await get_tree().create_timer(0.3).timeout
 	stress_ball.texture = load("res://taiko-minigame/Assets/taiko-loose.png")
+
+func _animate_f_key() -> void:
+	f_key.texture = load("res://taiko-minigame/Assets/KEY_F_PRESS.png")
+	await get_tree().create_timer(0.1).timeout
+	f_key.texture = load("res://taiko-minigame/Assets/KEY_F.png")
+	
+func _animate_j_key() -> void:
+	j_key.texture = load("res://taiko-minigame/Assets/KEY_J_PRESS.png")
+	await get_tree().create_timer(0.1).timeout
+	j_key.texture = load("res://taiko-minigame/Assets/KEY_J.png")
 	
 func _animate_squash() -> void:
 	stress_ball.texture = load("res://taiko-minigame/Assets/taiko-squash.png")
 	await get_tree().create_timer(0.3).timeout
 	stress_ball.texture = load("res://taiko-minigame/Assets/taiko-loose.png")
 
-func _handle_slack() -> void:
-	var setslacksize := LabelSettings.new()
-	setslacksize.set_font_size(25)
-	$BossMessage/BossSpeech.label_settings = setslacksize
+func _handle_speech() -> void:
+	var setspeechsize := LabelSettings.new()
+	setspeechsize.set_font_size(25)
+	$BossMessage/BossSpeech.label_settings = setspeechsize
+	var speech_words = SPEECHWORDS[randi() % SPEECHWORDS.size()]
+	
 	if speech_timer <= 0.0 and not speech_visible:
-		speech_label.text = "Boss: So.. per my last email..."
+		speech_label.text = speech_words
 		speech_panel.show()
 		speech_visible = true
-		speech_timer   = 25.0
+		speech_timer   = 10.0
 	elif speech_timer <= 0.0 and speech_visible:
 		speech_panel.hide()
 		speech_visible = false
-		speech_timer   = 20.0
+		speech_timer   = 10.0
 
 func _show_feedback(text: String, color: Color) -> void:
 	feedback_label.text = text
@@ -460,7 +485,7 @@ func _end_game() -> void:
 	_music_stop()
 	
 	is_playing = false
-
+	
 	var total: int = active_chart.size()
 	var accuracy := 0.0
 	if total > 0:
@@ -472,4 +497,4 @@ func _end_game() -> void:
 	feedback_label.text = (
 		"Lunch is over.\n\n\nNothing went in \nyour head.\n\n\nNor your stomach."
 		% [int(accuracy)]
-	)
+		)
