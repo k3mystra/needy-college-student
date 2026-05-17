@@ -18,7 +18,6 @@ func _process(delta: float) -> void:
 	timer -= 1 * delta
 	if timer < 0:
 		rand_chance = randi_range(1, chance)
-		print ("chance is ", rand_chance)
 		if rand_chance == 1:
 			_jumpscare()
 		timer = 1
