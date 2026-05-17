@@ -1,0 +1,349 @@
+[gd_scene format=3 uid="uid://cpx70bjxfjwe8"]
+
+[ext_resource type="Script" uid="uid://tfcrpa77m6g" path="res://Animation/Day4/day_4_morning.gd" id="1_d0l4l"]
+[ext_resource type="Texture2D" uid="uid://dhgbiefswbjhl" path="res://Animation/wife1.png" id="2_k7te8"]
+[ext_resource type="Texture2D" uid="uid://crssa1t15btct" path="res://Animation/wife2.png" id="3_t5l7g"]
+[ext_resource type="Texture2D" uid="uid://c6fnjom1i28us" path="res://Animation/wife3.png" id="4_ex7mu"]
+[ext_resource type="Texture2D" uid="uid://c3lkmwivqepxh" path="res://Animation/guy1.png" id="5_ex7mu"]
+[ext_resource type="Texture2D" uid="uid://cud3lp143ur5g" path="res://Animation/guy2.png" id="6_twg2c"]
+[ext_resource type="Texture2D" uid="uid://b37k6ol3qp1u1" path="res://Animation/Morning-Home.png" id="7_twg2c"]
+[ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="8_yjror"]
+[ext_resource type="Texture2D" uid="uid://blqgbirlwhi" path="res://Animation/Mirror-Shadow.png" id="9_0qwtu"]
+[ext_resource type="Texture2D" uid="uid://byv7a15laywgd" path="res://Animation/Mirror.png" id="10_uekfw"]
+[ext_resource type="Texture2D" uid="uid://df4r1fr043blx" path="res://Animation/Mirror-LIGHT.png" id="11_6qna7"]
+[ext_resource type="Texture2D" uid="uid://cfhgsyi0l1bj8" path="res://Animation/ADULT.png" id="12_a3g1y"]
+[ext_resource type="Script" uid="uid://dx0cigemhxrpd" path="res://Animation/Day4/adult.gd" id="13_x0p43"]
+[ext_resource type="Texture2D" uid="uid://cq5lb276kwv1v" path="res://Animation/PRESCHOOL.png" id="14_0qwtu"]
+
+[sub_resource type="Animation" id="Animation_o5v8m"]
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wife:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.6333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Husband:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.6666666),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Morning:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mirror:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mirror/Adult:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wife:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(18.892, 18.892, 18.892, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mirror/Preschool:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mirror/Adult:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_twg2c"]
+resource_name = "new_animation"
+length = 30.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wife:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.0333333, 5.0333333, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Husband:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.0333333, 14.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Morning:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mirror:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 15.066667, 17),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mirror/Adult:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(18, 19.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wife:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(9.700035, 11.766666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(22, 22.3, 22.35),
+"transitions": PackedFloat32Array(3.3635871, 1, 10.556052),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(18.892, 18.892, 18.892, 1), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mirror/Preschool:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(21.999998, 22.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mirror/Adult:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(21.800001, 22.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5v8m"]
+_data = {
+&"RESET": SubResource("Animation_o5v8m"),
+&"new_animation": SubResource("Animation_twg2c")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr23c"]
+atlas = ExtResource("2_k7te8")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssslu"]
+atlas = ExtResource("3_t5l7g")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajrqk"]
+atlas = ExtResource("4_ex7mu")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jj0bi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr23c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssslu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajrqk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 90.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj0bi"]
+atlas = ExtResource("5_ex7mu")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjror"]
+atlas = ExtResource("6_twg2c")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qwtu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj0bi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjror")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Day4Morning" type="Node2D" unique_id=924066834]
+modulate = Color(18.892, 18.892, 18.892, 1)
+script = ExtResource("1_d0l4l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1060206103]
+libraries/ = SubResource("AnimationLibrary_o5v8m")
+
+[node name="Wife" type="AnimatedSprite2D" parent="." unique_id=2084426700]
+modulate = Color(1, 1, 1, 0)
+sprite_frames = SubResource("SpriteFrames_jj0bi")
+frame = 2
+
+[node name="Husband" type="AnimatedSprite2D" parent="." unique_id=1572610091]
+sprite_frames = SubResource("SpriteFrames_0qwtu")
+frame = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=998568630]
+
+[node name="Morning" type="Sprite2D" parent="." unique_id=509913376]
+visible = false
+texture = ExtResource("7_twg2c")
+
+[node name="Mirror" type="Node2D" parent="." unique_id=1157629331]
+z_index = 1
+
+[node name="HomeBg" type="Sprite2D" parent="Mirror" unique_id=1264403377]
+texture = ExtResource("8_yjror")
+
+[node name="MirrorShadow" type="Sprite2D" parent="Mirror" unique_id=421068679]
+z_index = 1
+texture = ExtResource("9_0qwtu")
+
+[node name="Mirror" type="Sprite2D" parent="Mirror" unique_id=1550562631]
+z_index = 3
+texture = ExtResource("10_uekfw")
+
+[node name="MirrorLight" type="Sprite2D" parent="Mirror" unique_id=1920430331]
+z_index = 1
+texture = ExtResource("11_6qna7")
+
+[node name="Adult" type="Sprite2D" parent="Mirror" unique_id=1822087825]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+position = Vector2(-5, 8)
+texture = ExtResource("12_a3g1y")
+script = ExtResource("13_x0p43")
+
+[node name="Preschool" type="Sprite2D" parent="Mirror" unique_id=916937956]
+z_index = 2
+position = Vector2(12, -16)
+texture = ExtResource("14_0qwtu")

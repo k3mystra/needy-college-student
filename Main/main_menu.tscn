@@ -7,6 +7,7 @@
 
 [node name="MainMenu" type="Node" unique_id=2063295927]
 script = ExtResource("1_bprq1")
+intensity = 5.5
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1034741868]
 
@@ -141,3 +142,4 @@ chance = 100
 script = ExtResource("4_bprq1")
 
 [connection signal="pressed" from="UI/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/quit" to="." method="_on_quit_pressed"]
