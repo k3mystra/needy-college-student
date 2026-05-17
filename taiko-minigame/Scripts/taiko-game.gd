@@ -8,7 +8,7 @@ var rng = RandomNumberGenerator.new()
 const BPM := 72.05
 
 const BEAT_SEC := 70.0 / BPM
-const SONG_DURATION := 2.0
+const SONG_DURATION := 73.0
 const HIT_WINDOW := 0.4
 var LOOK_AHEAD := 2.1   # seconds ahead to spawn notes. reduce to speed up and vice versa.
 
