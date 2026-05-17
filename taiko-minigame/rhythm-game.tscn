@@ -1,32 +1,25 @@
 [gd_scene format=3 uid="uid://dhqi2c7ac5jfd"]
 
-[ext_resource type="PackedScene" uid="uid://bxgjki6i3b2wb" path="res://taiko-minigame/Scenes/Environment.tscn" id="1_61hqs"]
 [ext_resource type="Script" uid="uid://diwxf7evl0hao" path="res://taiko-minigame/Scripts/taiko-game.gd" id="1_kg4dr"]
-[ext_resource type="PackedScene" uid="uid://d2tmy48hvegf8" path="res://taiko-minigame/Scenes/Player.tscn" id="2_eoo82"]
+[ext_resource type="FontFile" uid="uid://o80jy2pi1uah" path="res://taiko-minigame/Assets/digitalix.ttf" id="2_eoo82"]
+[ext_resource type="PackedScene" uid="uid://bxvxpfrd1qh61" path="res://taiko-minigame/Scenes/light_hit.tscn" id="3_ynb65"]
+[ext_resource type="PackedScene" uid="uid://dfcrmv2bf74wc" path="res://taiko-minigame/Scenes/heavy_hit.tscn" id="4_kg4dr"]
+[ext_resource type="PackedScene" uid="uid://clh5ciqajkra7" path="res://taiko-minigame/Scenes/miss_sound.tscn" id="5_o5xju"]
+[ext_resource type="PackedScene" uid="uid://b1t21vtbouaum" path="res://taiko-minigame/Scenes/bg_music.tscn" id="6_uhg6v"]
 
-[node name="Node2D" type="Node2D" unique_id=672249060]
+[node name="RhythmGame" type="Node2D" unique_id=672249060]
 script = ExtResource("1_kg4dr")
-
-[node name="Environment" parent="." unique_id=230811383 instance=ExtResource("1_61hqs")]
-
-[node name="Player" parent="." unique_id=759195438 instance=ExtResource("2_eoo82")]
-position = Vector2(951, 919)
-scale = Vector2(0.54907405, 0.54907405)
-frame_progress = 0.8775456
 
 [node name="Background" type="TextureRect" parent="." unique_id=1941382148]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Monitor" type="ColorRect" parent="." unique_id=1925003078]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MonitorText" type="RichTextLabel" parent="." unique_id=1858192267]
+[node name="Monitor" type="TextureRect" parent="." unique_id=548116981]
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Boss" type="TextureRect" parent="." unique_id=976634603]
+z_index = 2
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -36,6 +29,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="StressBall" type="TextureRect" parent="." unique_id=1987198173]
+z_index = 1
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -46,17 +40,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HitZone" type="ColorRect" parent="RhythmLane" unique_id=1245865437]
+z_index = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LaneColor" type="ColorRect" parent="RhythmLane" unique_id=782901468]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="NoteContainer" type="Node2D" parent="." unique_id=651505376]
+z_index = 1
 
-[node name="SlackMessage" type="Panel" parent="." unique_id=1700391194]
+[node name="BossMessage" type="Panel" parent="." unique_id=1700391194]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SlackLabel" type="Label" parent="SlackMessage" unique_id=1050440883]
+[node name="BossSpeech" type="Label" parent="BossMessage" unique_id=1050440883]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
@@ -64,11 +65,23 @@ offset_bottom = 23.0
 [node name="LunchClock" type="Label" parent="." unique_id=312137527]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_eoo82")
 
 [node name="FeedbackLabel" type="Label" parent="." unique_id=221004638]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_eoo82")
 
 [node name="ComboLabel" type="Label" parent="." unique_id=1754691610]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_eoo82")
+
+[node name="LightHit" parent="." unique_id=1509070345 instance=ExtResource("3_ynb65")]
+
+[node name="HeavyHit" parent="." unique_id=730798112 instance=ExtResource("4_kg4dr")]
+
+[node name="MissSound" parent="." unique_id=872589822 instance=ExtResource("5_o5xju")]
+
+[node name="BGMusic" parent="." unique_id=1415994776 instance=ExtResource("6_uhg6v")]
+volume_db = 2.578

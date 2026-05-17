@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bxvxpfrd1qh61"]
+
+[ext_resource type="AudioStream" uid="uid://c06ijcvwcxawu" path="res://taiko-minigame/Assets/563191__fmaudio__squeezing-sponge-filled-with-water-rapidly-5.wav" id="1_4wuuo"]
+
+[node name="LightHit" type="AudioStreamPlayer2D" unique_id=1509070345]
+stream = ExtResource("1_4wuuo")
+volume_db = 10.0
+max_polyphony = 3

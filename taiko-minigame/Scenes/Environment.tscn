@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dutv5qn5gv0qa" path="res://taiko-minigame/Assets/taiko-office-fpv.png" id="1_fqmn3"]
 [ext_resource type="Texture2D" uid="uid://br0h0u3bpe7ag" path="res://taiko-minigame/Assets/taiko-boss.png" id="2_moc4h"]
-[ext_resource type="Texture2D" uid="uid://dju43xiwqm7x2" path="res://taiko-minigame/Assets/Monitor_Taiko.png" id="3_tl8dn"]
+[ext_resource type="Texture2D" uid="uid://dju43xiwqm7x2" path="res://taiko-minigame/Assets/monitor-taiko.png" id="3_tl8dn"]
 
 [node name="Environment" type="Node2D" unique_id=230811383]
 

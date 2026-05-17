@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dfcrmv2bf74wc"]
+
+[ext_resource type="AudioStream" uid="uid://bhahoe461ugeb" path="res://taiko-minigame/Assets/589835__mrfossy__sfx_squelch_slayer_214.wav" id="1_nbrkf"]
+
+[node name="HeavyHit" type="AudioStreamPlayer2D" unique_id=730798112]
+stream = ExtResource("1_nbrkf")
+volume_db = 10.0
