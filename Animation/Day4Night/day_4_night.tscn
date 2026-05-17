@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://cc3s7ydostqag"]
+
+[ext_resource type="Script" uid="uid://4wdjb4hw5t00" path="res://Animation/Day4Night/day_4_night.gd" id="1_xrbty"]
+[ext_resource type="Texture2D" uid="uid://blamydeii0ugd" path="res://Animation/Night-Home.png" id="2_pbf5s"]
+[ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="3_h3odh"]
+[ext_resource type="Texture2D" uid="uid://blqgbirlwhi" path="res://Animation/Mirror-Shadow.png" id="4_bgcgb"]
+[ext_resource type="Texture2D" uid="uid://byv7a15laywgd" path="res://Animation/Mirror.png" id="5_54k2k"]
+[ext_resource type="Texture2D" uid="uid://df4r1fr043blx" path="res://Animation/Mirror-LIGHT.png" id="6_joxh6"]
+[ext_resource type="Texture2D" uid="uid://cfhgsyi0l1bj8" path="res://Animation/ADULT.png" id="7_htrsn"]
+[ext_resource type="Texture2D" uid="uid://cq5lb276kwv1v" path="res://Animation/PRESCHOOL.png" id="8_4x1nf"]
+
+[sub_resource type="Animation" id="Animation_ip4qr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NightHome:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dir2o"]
+resource_name = "new_animation"
+length = 7.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NightHome:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3.05),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w2ad4"]
+_data = {
+&"RESET": SubResource("Animation_ip4qr"),
+&"new_animation": SubResource("Animation_dir2o")
+}
+
+[node name="Day4Night" type="Node2D" unique_id=296290291]
+script = ExtResource("1_xrbty")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1946769363]
+libraries/ = SubResource("AnimationLibrary_w2ad4")
+
+[node name="NightHome" type="Sprite2D" parent="." unique_id=1640808050]
+modulate = Color(1, 1, 1, 0)
+z_index = 6
+position = Vector2(960, 540)
+texture = ExtResource("2_pbf5s")
+
+[node name="Mirror" type="Node2D" parent="." unique_id=2020968034]
+z_index = 1
+position = Vector2(960, 540)
+
+[node name="HomeBg" type="Sprite2D" parent="Mirror" unique_id=1799374633]
+texture = ExtResource("3_h3odh")
+
+[node name="MirrorShadow" type="Sprite2D" parent="Mirror" unique_id=997020262]
+z_index = 1
+texture = ExtResource("4_bgcgb")
+
+[node name="Mirror" type="Sprite2D" parent="Mirror" unique_id=834766211]
+z_index = 3
+texture = ExtResource("5_54k2k")
+
+[node name="MirrorLight" type="Sprite2D" parent="Mirror" unique_id=57637493]
+z_index = 1
+texture = ExtResource("6_joxh6")
+
+[node name="Adult" type="Sprite2D" parent="Mirror" unique_id=1001387604]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+position = Vector2(-5, 8)
+texture = ExtResource("7_htrsn")
+
+[node name="Preschool" type="Sprite2D" parent="Mirror" unique_id=72515910]
+z_index = 2
+position = Vector2(12, -16)
+texture = ExtResource("8_4x1nf")
