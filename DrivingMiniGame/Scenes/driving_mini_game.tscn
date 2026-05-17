@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://yhxks8x73vf1" path="res://DrivingMiniGame/Scripts/driving_mini_game.gd" id="1_21l2p"]
 [ext_resource type="PackedScene" uid="uid://5pbgdqctex1l" path="res://DrivingMiniGame/Scenes/CarDashboard.tscn" id="2_h0y7q"]
 [ext_resource type="PackedScene" uid="uid://n7u5iqb0stpd" path="res://DrivingMiniGame/Scenes/car_boundary.tscn" id="3_agv8p"]
-[ext_resource type="Script" uid="uid://bkhrtjpinu0f8" path="res://DrivingMiniGame/Scripts/camera_2d.gd" id="3_h0y7q"]
 [ext_resource type="PackedScene" uid="uid://d1shadgpu7vcm" path="res://DrivingMiniGame/Scenes/road_scene.tscn" id="4_agv8p"]
 [ext_resource type="AudioStream" uid="uid://tl80njn6fptm" path="res://DrivingMiniGame/freesound_community-inside-car-noise-while-driving-29978.mp3" id="6_ec07q"]
 [ext_resource type="AudioStream" uid="uid://bekulsqu3t5n3" path="res://DrivingMiniGame/freesound_community-car-accident-real-interior-46387.mp3" id="6_jnmp8"]
@@ -14,11 +13,6 @@ script = ExtResource("1_21l2p")
 [node name="CarDashboard" parent="." unique_id=624995954 instance=ExtResource("2_h0y7q")]
 z_index = 1
 position = Vector2(1728, -6)
-
-[node name="Camera2D" type="Camera2D" parent="CarDashboard" unique_id=1118085567]
-position = Vector2(182, 546)
-zoom = Vector2(1.03, 1.03)
-script = ExtResource("3_h0y7q")
 
 [node name="RoadScene" parent="." unique_id=899182019 instance=ExtResource("4_agv8p")]
 position = Vector2(1729, 0)

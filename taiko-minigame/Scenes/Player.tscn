@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d2tmy48hvegf8"]
+
+[ext_resource type="Texture2D" uid="uid://c32g3g8b202j0" path="res://taiko-minigame/Assets/taiko-loose.png" id="1_2ebo4"]
+[ext_resource type="Texture2D" uid="uid://7y53ngpowsd5" path="res://taiko-minigame/Assets/taiko-squeeze.png" id="2_yshpc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xp70q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2ebo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yshpc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Hand" type="AnimatedSprite2D" unique_id=1856708344]
+position = Vector2(-1, 13)
+scale = Vector2(1.337963, 1.337963)
+sprite_frames = SubResource("SpriteFrames_xp70q")
+frame_progress = 0.43304792

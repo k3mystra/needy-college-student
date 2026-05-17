@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="MemoryData" format=3 uid="uid://btx18a2j2elw7"]
+[gd_resource type="Resource" script_class="MemoryData" format=3 uid="uid://v6urr3wke5na"]
 
 [ext_resource type="Script" uid="uid://dyoe3d5thysfy" path="res://memory_pick_minigame/memory_data.gd" id="1_mtn0y"]
-[ext_resource type="Texture2D" uid="uid://dlfvvfkeu6w4t" path="res://placeholder/green-square.png" id="2_mtn0y"]
+[ext_resource type="Texture2D" uid="uid://fwm2gyc5snmf" path="res://placeholder/green-square.png" id="2_mtn0y"]
 
 [resource]
 script = ExtResource("1_mtn0y")

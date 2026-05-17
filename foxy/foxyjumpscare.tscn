@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bie2wgut5q5hk"]
 
-[ext_resource type="Script" uid="uid://y7110e5byfqu" path="res://foxyjumpscare.gd" id="1_3ba02"]
+[ext_resource type="Script" uid="uid://y7110e5byfqu" path="res://foxy/foxyjumpscare.gd" id="1_3ba02"]
 [ext_resource type="Texture2D" uid="uid://cpfndwatsb44x" path="res://foxy/foxy.png" id="2_ule1n"]
 [ext_resource type="AudioStream" uid="uid://dhlkcrlwkn6tr" path="res://foxy/foxy.mp3" id="3_susc4"]
 

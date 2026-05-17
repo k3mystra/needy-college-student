@@ -27,6 +27,8 @@ func _on_keep_btn_pressed() -> void:
 		resist_action()
 		return
 
+	var tween = get_tree().create_tween()
+	tween.tween_property(current_memory, "position", Vector2(0 - MEMORY_SPRITE_HALF_WIDTH - 300, screen_size.y / 2), 1.0).set_trans(Tween.TRANS_QUINT)
 	cycle_memory()
 
 
@@ -39,11 +41,14 @@ func _on_discard_btn_pressed() -> void:
 		resist_action()
 		return
 
+	current_memory.fade()
+	cycle_memory()
+
 
 func cycle_memory() -> void:
 	current_state = memory_pick_state.SWITCHING
 	var memory_instance = memory_scene.instantiate()
-	memory_instance.position = Vector2(screen_size.x + MEMORY_SPRITE_HALF_WIDTH, screen_size.y / 2)
+	memory_instance.position = Vector2(screen_size.x + MEMORY_SPRITE_HALF_WIDTH + 300, screen_size.y / 2)
 	memory_instance.set_memory_data(memory_data_array[memory_index])
 	current_memory = memory_instance
 	add_child(memory_instance)

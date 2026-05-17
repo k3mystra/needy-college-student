@@ -47,3 +47,8 @@ func get_is_memory_wanted() -> bool:
 func shake() -> void:
 	# Apparently you have to refer to the animation by its library too, like a folder
 	$AnimationPlayer.play(MEMORY_ANIMATION_LIB_NAME + "/" + SHAKE_ANIM_NAME)
+
+
+func fade() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property($Sprite, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0).set_trans(Tween.TRANS_QUINT)
