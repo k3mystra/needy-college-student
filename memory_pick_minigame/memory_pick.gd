@@ -62,7 +62,7 @@ func cycle_memory() -> void:
 	if memory_index == memory_data_array.size():
 		end_game()
 	else:
-		current_state = memory_pick_state.SWITCHING
+		current_state = memory_pick_state.IDLE
 
 
 func resist_action() -> void:
