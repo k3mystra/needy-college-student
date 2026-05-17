@@ -5,12 +5,23 @@ extends Node2D
 var minigames = [
 	preload("res://Animation/Day1/day_1_morning.tscn"),
 	preload("res://DrivingMiniGame/Scenes/driving_mini_game.tscn"),
+	preload("res://Animation/cutscenes/driving_to_office.tscn"),
 	preload("res://ProgrammingMiniGame/BugSmashingSubMiniGame/mini_game_manager.tscn"),
 	preload("res://Animation/Day1Night/day_1_night.tscn"),
+	preload("res://Animation/Day2/day_2_morning.tscn"),
+	preload("res://DrivingMiniGame/Scenes/driving_mini_game.tscn"),
+	preload("res://Animation/cutscenes/driving_to_office.tscn"),
 	preload("res://taiko-minigame/rhythm-game.tscn"),
+	preload("res://Animation/Day4Night/day_2_night_diagnosis.tscn"),
+	preload("res://Animation/Day3/day_3_morning.tscn"),
 	preload("res://ButtonMiniGame/test_game_scene.tscn"),
+	preload("res://Animation/Day3Night/day_3_night.tscn"),
+	preload("res://Animation/Day4/Day4Morning.tscn"),
 	preload("res://divorce_paper_minigame/divorce_paper_minigame.tscn"),
-	preload("res://memory_pick_minigame/memory_pick.tscn")
+	preload("res://Animation/Day4Night/day_4_night.tscn"),
+	preload("res://Animation/Day5/day_5_morning.tscn"),
+	preload("res://memory_pick_minigame/memory_pick.tscn"),
+	preload("res://Animation/Day5Night/day_5_night.tscn")
 ]
 
 var current_level

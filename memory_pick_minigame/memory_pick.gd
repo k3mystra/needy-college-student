@@ -12,7 +12,7 @@ const MEMORY_SPRITE_HALF_WIDTH = 300
 var memory_index = 0
 var current_state = memory_pick_state.SWITCHING
 var current_memory
-
+signal minigame_finished
 
 func _ready() -> void:
 	cycle_memory()
@@ -69,3 +69,4 @@ func resist_action() -> void:
 
 func end_game() -> void:
 	current_state = memory_pick_state.END
+	minigame_finished.emit()
