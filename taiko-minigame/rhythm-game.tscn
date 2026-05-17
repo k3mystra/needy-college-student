@@ -84,6 +84,7 @@ theme_override_fonts/font = ExtResource("2_eoo82")
 [node name="LightHit" parent="." unique_id=1509070345 instance=ExtResource("3_ynb65")]
 
 [node name="HeavyHit" parent="." unique_id=730798112 instance=ExtResource("4_kg4dr")]
+volume_db = 3.5
 
 [node name="MissSound" parent="." unique_id=872589822 instance=ExtResource("5_o5xju")]
 
