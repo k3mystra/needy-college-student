@@ -64,6 +64,8 @@ func cycle_memory() -> void:
 	current_state = memory_pick_state.IDLE
 
 
+
+
 func resist_action() -> void:
 	current_memory.shake()
 

@@ -142,7 +142,7 @@ chance = 100
 [node name="CPUParticles2D" type="CPUParticles2D" parent="UI" unique_id=506336500]
 z_index = 15
 position = Vector2(2052, 348)
-amount = 100
+amount = 1
 texture = ExtResource("4_l00uc")
 lifetime = 60.0
 emission_shape = 3
