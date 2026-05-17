@@ -63,6 +63,8 @@ func cycle_memory() -> void:
 		end_game()
 
 
+
+
 func resist_action() -> void:
 	current_memory.shake()
 

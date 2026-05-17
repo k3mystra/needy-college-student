@@ -4,6 +4,8 @@ var is_wanted: bool
 
 var rng = RandomNumberGenerator.new()
 
+signal minigame_finished
+
 @export var shake_max_offset: float = 5
 @export var shake_movement_amount: int = 10
 @export var shake_duration: float = 2
