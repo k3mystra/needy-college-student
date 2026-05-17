@@ -4,5 +4,5 @@
 
 [node name="BGMusic" type="AudioStreamPlayer2D" unique_id=1415994776]
 stream = ExtResource("1_wyjxl")
-volume_db = 0.833
+volume_db = -7.4
 parameters/looping = true

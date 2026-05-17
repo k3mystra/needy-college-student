@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfa71vobclgfk"
-path="res://.godot/imported/monitor-taiko-v1.png-d383b1eb6f7a6d9b6ef931448165054b.ctex"
+uid="uid://wiy74t4nao0o"
+path="res://.godot/imported/KEY_F_PRESS.png-9a497fe898de7fac9e35950f55105a8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://taiko-minigame/Assets/monitor-taiko-v1.png"
-dest_files=["res://.godot/imported/monitor-taiko-v1.png-d383b1eb6f7a6d9b6ef931448165054b.ctex"]
+source_file="res://taiko-minigame/Assets/KEY_F_PRESS.png"
+dest_files=["res://.godot/imported/KEY_F_PRESS.png-9a497fe898de7fac9e35950f55105a8a.ctex"]
 
 [params]
 
