@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clh5ciqajkra7"]
 
-[ext_resource type="AudioStream" uid="uid://bridlfu2qyyyp" path="res://taiko-minigame/Assets/freesound_community-8-bit-explosion-95847.mp3" id="1_2bxqc"]
+[ext_resource type="AudioStream" uid="uid://d173fqne7ieb7" path="res://taiko-minigame/Assets/766616__stavsounds__keyboard_clicky_19.ogg" id="1_2bxqc"]
 
 [node name="MissSound" type="AudioStreamPlayer2D" unique_id=872589822]
 stream = ExtResource("1_2bxqc")
