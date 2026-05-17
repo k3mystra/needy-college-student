@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cieus6mltkkkq"]
+
+[ext_resource type="Texture2D" uid="uid://cmnek0rww60wb" path="res://Animation/door1.png" id="1_dtvhc"]
+[ext_resource type="Texture2D" uid="uid://gfgwtj43n2hk" path="res://Animation/door2.png" id="2_xh8bv"]
+[ext_resource type="Texture2D" uid="uid://b5fto8vju1nig" path="res://Animation/door3.png" id="3_jtslb"]
+[ext_resource type="Texture2D" uid="uid://c7ae1odyxk2x7" path="res://Animation/door4.png" id="4_wi2n7"]
+[ext_resource type="Texture2D" uid="uid://brlulfw2p38n1" path="res://Animation/door5.png" id="5_f81to"]
+[ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="6_xh8bv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ect02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dtvhc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xh8bv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jtslb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wi2n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f81to")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DoorOpeningAnim" type="Node2D" unique_id=726595125]
+
+[node name="DoorAnim" type="AnimatedSprite2D" parent="." unique_id=456697541]
+sprite_frames = SubResource("SpriteFrames_ect02")
+frame_progress = 0.3109606
+
+[node name="HomeBg" type="Sprite2D" parent="." unique_id=1775297059]
+z_index = -1
+texture = ExtResource("6_xh8bv")

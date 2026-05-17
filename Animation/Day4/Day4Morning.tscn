@@ -14,9 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://cfhgsyi0l1bj8" path="res://Animation/ADULT.png" id="12_a3g1y"]
 [ext_resource type="Script" uid="uid://dx0cigemhxrpd" path="res://Animation/Day4/adult.gd" id="13_x0p43"]
 [ext_resource type="Texture2D" uid="uid://cq5lb276kwv1v" path="res://Animation/PRESCHOOL.png" id="14_0qwtu"]
+[ext_resource type="Texture2D" uid="uid://cmnek0rww60wb" path="res://Animation/door1.png" id="15_rpymf"]
+[ext_resource type="Texture2D" uid="uid://gfgwtj43n2hk" path="res://Animation/door2.png" id="16_bdxra"]
+[ext_resource type="Texture2D" uid="uid://b5fto8vju1nig" path="res://Animation/door3.png" id="17_bhka8"]
+[ext_resource type="Texture2D" uid="uid://c7ae1odyxk2x7" path="res://Animation/door4.png" id="18_2wd2g"]
+[ext_resource type="Texture2D" uid="uid://brlulfw2p38n1" path="res://Animation/door5.png" id="19_046h5"]
 
 [sub_resource type="Animation" id="Animation_o5v8m"]
-length = 20.0
+length = 30.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,6 +130,42 @@ tracks/8/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DoorAnim:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HomeBg:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DoorAnim:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_twg2c"]
 resource_name = "new_animation"
@@ -173,10 +214,10 @@ tracks/3/path = NodePath("Mirror:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15.066667, 17),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 15.066667, 17, 24.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, false, true]
+"values": [false, false, true, false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -221,10 +262,10 @@ tracks/7/path = NodePath("Mirror/Preschool:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(21.999998, 22.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(21.999998, 22.3, 24.45),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, true, false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -237,6 +278,42 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DoorAnim:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(28.099998, 28.3, 28.5, 28.699999, 28.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HomeBg:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.1, 27.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DoorAnim:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.05, 27.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o5v8m"]
@@ -296,6 +373,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_biwab"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_rpymf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_bdxra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_bhka8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_2wd2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_046h5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Day4Morning" type="Node2D" unique_id=924066834]
 modulate = Color(18.892, 18.892, 18.892, 1)
 position = Vector2(960, 536)
@@ -348,3 +448,11 @@ script = ExtResource("13_x0p43")
 z_index = 2
 position = Vector2(12, -16)
 texture = ExtResource("14_0qwtu")
+
+[node name="HomeBg" type="Sprite2D" parent="." unique_id=177237520]
+z_index = 5
+texture = ExtResource("8_yjror")
+
+[node name="DoorAnim" type="AnimatedSprite2D" parent="." unique_id=2080755525]
+z_index = 5
+sprite_frames = SubResource("SpriteFrames_biwab")
