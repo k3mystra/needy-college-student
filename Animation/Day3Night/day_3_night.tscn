@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cv5d5ssw5ig5n"]
 
+[ext_resource type="Script" uid="uid://cmacy0dao0cov" path="res://Animation/Day3Night/day_3_night.gd" id="1_8kmd5"]
 [ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="1_keknx"]
 [ext_resource type="Texture2D" uid="uid://blqgbirlwhi" path="res://Animation/Mirror-Shadow.png" id="2_psrnu"]
 [ext_resource type="Texture2D" uid="uid://byv7a15laywgd" path="res://Animation/Mirror.png" id="3_2bwhw"]
@@ -48,6 +49,7 @@ _data = {
 [node name="Day_3_Night" type="Node2D" unique_id=293966554]
 position = Vector2(960, 536)
 scale = Vector2(1, 0.99189484)
+script = ExtResource("1_8kmd5")
 
 [node name="MirrorTemplate" type="Node2D" parent="." unique_id=1276931843]
 
