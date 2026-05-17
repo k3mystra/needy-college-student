@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Kind"
-run/main_scene="uid://ooqmm5rd26wm"
+run/main_scene="uid://rn5dku324fbk"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

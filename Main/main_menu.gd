@@ -1,11 +1,11 @@
-extends Control
+extends Node
 
 @export var intensity : float
 
-@onready var label1 = $title/Label
-@onready var label2 = $title/Label2
-@onready var label3 = $title/Label3
-@onready var label4 = $title/Label4
+@onready var label1 = $UI/title/Label
+@onready var label2 = $UI/title/Label2
+@onready var label3 = $UI/title/Label3
+@onready var label4 = $UI/title/Label4
 
 var prevpos_1 : Vector2
 var prevpos_2 : Vector2
@@ -20,10 +20,10 @@ func _ready() -> void:
 	prevpos_3 = label3.position
 	prevpos_4 = label4.position
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void: # hard coding this shit cause i could care less
 	timer -= 1 * delta
-	print("time is ", timer)
 	if timer < 0:
 		label1.position = prevpos_1 + Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity))
 		label2.position = prevpos_2 + Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity))
@@ -37,4 +37,7 @@ func _process(delta: float) -> void: # hard coding this shit cause i could care 
 
 
 func _on_play_pressed() -> void:
-	pass # Replace with function body.
+	$UI.hide()
+	$UI.process_mode = Node.PROCESS_MODE_DISABLED
+	$GM.start_game()
+	print("Initiate Self Destruct")
