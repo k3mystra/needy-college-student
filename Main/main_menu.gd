@@ -13,6 +13,8 @@ var prevpos_3 : Vector2
 var prevpos_4 : Vector2
 var timer = 0.1
 
+signal minigame_finished
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	prevpos_1 = label1.position
@@ -40,6 +42,7 @@ func _on_play_pressed() -> void:
 	$UI.hide()
 	$UI.process_mode = Node.PROCESS_MODE_DISABLED
 	$GM.start_game()
+	minigame_finished.emit()
 	print("Initiate Self Destruct")
 
 
