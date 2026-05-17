@@ -1,0 +1,301 @@
+[gd_scene format=3 uid="uid://b0qows1qe2clm"]
+
+[ext_resource type="Texture2D" uid="uid://dfkihjyw0ge7b" path="res://Animation/hospital-bg.png" id="1_mtwb8"]
+[ext_resource type="Texture2D" uid="uid://6n6u87ucwqts" path="res://Animation/diagnosis.png" id="2_ti8gx"]
+[ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="3_m72be"]
+[ext_resource type="Texture2D" uid="uid://blqgbirlwhi" path="res://Animation/Mirror-Shadow.png" id="4_f6imk"]
+[ext_resource type="Texture2D" uid="uid://byv7a15laywgd" path="res://Animation/Mirror.png" id="5_2ggy6"]
+[ext_resource type="Texture2D" uid="uid://df4r1fr043blx" path="res://Animation/Mirror-LIGHT.png" id="6_wxoo2"]
+[ext_resource type="Texture2D" uid="uid://cfhgsyi0l1bj8" path="res://Animation/ADULT.png" id="7_813j4"]
+[ext_resource type="Texture2D" uid="uid://cq5lb276kwv1v" path="res://Animation/PRESCHOOL.png" id="8_dgx0s"]
+[ext_resource type="Texture2D" uid="uid://cvwsj3yutvskp" path="res://Animation/ADULT-SICK.png" id="9_m8a0e"]
+[ext_resource type="Texture2D" uid="uid://blamydeii0ugd" path="res://Animation/Night-Home.png" id="10_ti8gx"]
+
+[sub_resource type="Animation" id="Animation_0aqm7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mirror/Adult:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(18.892, 18.892, 18.892, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mirror/Adult:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mirror/AdultSick:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hospital:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hospital/Diagnosis:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 540)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hospital:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mirror:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.011764706, 0.011764706, 0.011764706, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("NightHome:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_y3gdj"]
+resource_name = "new_animation"
+length = 15.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mirror/Adult:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(7, 7.05, 7.1000004, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(18.892, 18.892, 18.892, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mirror/Adult:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7.05, 7.1000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mirror/AdultSick:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7.05, 7.1000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hospital:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(9, 9.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hospital/Diagnosis:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(10.333334, 13.666667),
+"transitions": PackedFloat32Array(0.32987705, 1),
+"update": 0,
+"values": [Vector2(960, -312), Vector2(960, 540)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hospital:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(9.5, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.011764706, 0.011764706, 0.011764706, 1), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mirror:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(9.333334, 9.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.011764706, 0.011764706, 0.011764706, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("NightHome:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.5, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bar3k"]
+_data = {
+&"RESET": SubResource("Animation_0aqm7"),
+&"new_animation": SubResource("Animation_y3gdj")
+}
+
+[node name="Day2night" type="Node2D" unique_id=562574514]
+modulate = Color(18.892, 18.892, 18.892, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2012804708]
+libraries/ = SubResource("AnimationLibrary_bar3k")
+
+[node name="Hospital" type="Node2D" parent="." unique_id=1315374244]
+
+[node name="HospitalBg" type="Sprite2D" parent="Hospital" unique_id=1854216970]
+z_index = 5
+position = Vector2(960, 540)
+texture = ExtResource("1_mtwb8")
+
+[node name="Diagnosis" type="Sprite2D" parent="Hospital" unique_id=1690378214]
+z_index = 7
+position = Vector2(960, 540)
+texture = ExtResource("2_ti8gx")
+
+[node name="Mirror" type="Node2D" parent="." unique_id=1746065704]
+modulate = Color(0.011764706, 0.011764706, 0.011764706, 1)
+z_index = 1
+position = Vector2(960, 540)
+
+[node name="HomeBg" type="Sprite2D" parent="Mirror" unique_id=434331766]
+texture = ExtResource("3_m72be")
+
+[node name="MirrorShadow" type="Sprite2D" parent="Mirror" unique_id=467578222]
+z_index = 1
+texture = ExtResource("4_f6imk")
+
+[node name="Mirror" type="Sprite2D" parent="Mirror" unique_id=613643652]
+z_index = 3
+texture = ExtResource("5_2ggy6")
+
+[node name="MirrorLight" type="Sprite2D" parent="Mirror" unique_id=526119459]
+z_index = 1
+texture = ExtResource("6_wxoo2")
+
+[node name="Adult" type="Sprite2D" parent="Mirror" unique_id=1609542240]
+visible = false
+z_index = 1
+position = Vector2(-5, 8)
+texture = ExtResource("7_813j4")
+
+[node name="Preschool" type="Sprite2D" parent="Mirror" unique_id=545630563]
+visible = false
+z_index = 2
+position = Vector2(12, -16)
+texture = ExtResource("8_dgx0s")
+
+[node name="AdultSick" type="Sprite2D" parent="Mirror" unique_id=778163421]
+z_index = 1
+texture = ExtResource("9_m8a0e")
+
+[node name="NightHome" type="Sprite2D" parent="." unique_id=895208529]
+z_index = 4
+position = Vector2(960, 540)
+texture = ExtResource("10_ti8gx")
