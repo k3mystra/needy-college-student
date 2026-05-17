@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://rn5dku324fbk"]
 
-[ext_resource type="Script" path="res://Main/main_menu.gd" id="1_bprq1"]
+[ext_resource type="Script" uid="uid://by07kj16nwsh3" path="res://Main/main_menu.gd" id="1_bprq1"]
 [ext_resource type="PackedScene" uid="uid://bie2wgut5q5hk" path="res://foxy/foxyjumpscare.tscn" id="2_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://dhpnpl5bicafv" path="res://Main/city.png" id="2_fu7sn"]
 [ext_resource type="Script" uid="uid://drsg6j8qtqtx7" path="res://Main/game_manager.gd" id="4_bprq1"]
-[ext_resource type="Texture2D" uid="uid://b3n6oenbjgujp" path="res://bee.png" id="4_l00uc"]
+[ext_resource type="Texture2D" uid="uid://da31i20w1juei" path="res://Main/bee.png" id="4_l00uc"]
 
 [node name="MainMenu" type="Node" unique_id=2063295927]
 script = ExtResource("1_bprq1")
