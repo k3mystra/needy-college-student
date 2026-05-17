@@ -10,6 +10,9 @@ var fixed : bool = false
 @export var drag_responsiveness : float = 5.0 
 @onready var WheelPng : AnimatedSprite2D = $WheelPng
 
+# PRELOAD SOUNDS HERE
+var thud = preload("res://tyre_minigame/sounds/wheel_impact.ogg")
+
 func activate():
 	input_pickable = true
 
@@ -42,7 +45,6 @@ func _input(event: InputEvent) -> void:
 
 func goes_into_screen_from_right_toleft():
 	linear_velocity.x = -500
-	
 func attach() -> void:
 	fixed = true
 	freeze = true
@@ -61,3 +63,17 @@ func attach() -> void:
 
 func _on_attachment_complete() -> void:
 	print("Wheel attached successfully!")
+
+
+func _on_impact_checker_body_entered(body: Node2D) -> void:
+	play_sound(thud, randf_range(0.6, 2), 1)
+	
+func play_sound (stream: AudioStream, pitch: float, volume: float):
+	var p = AudioStreamPlayer2D.new()
+	p.stream = stream
+	p.pitch_scale = pitch
+	p.volume_db = 2 + volume
+	p.global_position = global_position
+	get_tree().current_scene.add_child(p)
+	p.play()
+	p.finished.connect(p.queue_free)

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dm44y6po7y1ny" path="res://tyre_minigame/flattire.png" id="5_v2wwx"]
 [ext_resource type="Texture2D" uid="uid://caqdwdun0kr6l" path="res://tyre_minigame/tire.png" id="6_pdpd1"]
 [ext_resource type="PackedScene" uid="uid://yswpw1h7k7gr" path="res://ProgrammingMiniGame/BugSmashingSubMiniGame/game_cursor.tscn" id="7_7ifhr"]
-[ext_resource type="Script" uid="uid://cdwpikon1iihr" path="res://tyre_minigame/nuthole.gd" id="8_v2wwx"]
+[ext_resource type="Script" path="res://tyre_minigame/nuthole.gd" id="8_v2wwx"]
 [ext_resource type="Script" uid="uid://q4tuq6q7bu4l" path="res://tyre_minigame/spanar_button.gd" id="10_n3ltu"]
 [ext_resource type="Texture2D" uid="uid://buichqbtkq05u" path="res://tyre_minigame/wrench1.png" id="11_0deg7"]
 [ext_resource type="Texture2D" uid="uid://fkr8t65jkl0g" path="res://tyre_minigame/wrench-export.png" id="12_7eah8"]
@@ -42,6 +42,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8beto"]
 radius = 467.9669
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0deg7"]
+radius = 501.2245
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n3ltu"]
 radius = 30.0
@@ -98,6 +101,11 @@ sprite_frames = SubResource("SpriteFrames_6sn50")
 z_index = 1
 position = Vector2(9, 19)
 shape = SubResource("CircleShape2D_8beto")
+
+[node name="impactChecker" type="Area2D" parent="Wheel" unique_id=542903589]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/impactChecker" unique_id=732991541]
+shape = SubResource("CircleShape2D_0deg7")
 
 [node name="GameCursor" parent="." unique_id=184071685 instance=ExtResource("7_7ifhr")]
 z_index = 2
@@ -207,6 +215,7 @@ rotation = -1.5707964
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=57430257]
 shape = SubResource("WorldBoundaryShape2D_v2wwx")
 
+[connection signal="body_entered" from="Wheel/impactChecker" to="Wheel" method="_on_impact_checker_body_entered"]
 [connection signal="body_entered" from="All_nuthole/nuthole" to="All_nuthole/nuthole" method="_on_body_entered"]
 [connection signal="body_exited" from="All_nuthole/nuthole" to="All_nuthole/nuthole" method="_on_body_exited"]
 [connection signal="body_entered" from="All_nuthole/nuthole2" to="All_nuthole/nuthole2" method="_on_body_entered"]
