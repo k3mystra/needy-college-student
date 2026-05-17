@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://btaljgottpp1m" path="res://ButtonMiniGame/assets/mouth1.png" id="4_d72tk"]
 [ext_resource type="PackedScene" uid="uid://bie2wgut5q5hk" path="res://foxy/foxyjumpscare.tscn" id="4_vnqqn"]
 [ext_resource type="Texture2D" uid="uid://bfmk60fybdnk" path="res://ButtonMiniGame/assets/mouth3.png" id="5_18xqy"]
+[ext_resource type="Texture2D" uid="uid://bawntpla5st66" path="res://ButtonMiniGame/assets/heart.png" id="7_w2ii7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mllj5"]
 atlas = ExtResource("2_wc1nl")
@@ -78,6 +79,45 @@ metadata/_snap_count = 2
 
 [sub_resource type="Gradient" id="Gradient_7810j"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_d72tk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sliderholder/HSlider/heart:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.215, 0.215)]
+}
+
+[sub_resource type="Animation" id="Animation_18xqy"]
+resource_name = "heart"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sliderholder/HSlider/heart:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.135, 0.135), Vector2(0.215, 0.215)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mllj5"]
+_data = {
+&"RESET": SubResource("Animation_d72tk"),
+&"heart": SubResource("Animation_18xqy")
+}
 
 [node name="ButtonMashGame" type="Node2D" unique_id=1187036442]
 script = ExtResource("1_yoxds")
@@ -155,6 +195,11 @@ angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 color = Color(0.73333335, 0, 0, 1)
 
+[node name="heart" type="Sprite2D" parent="sliderholder/HSlider" unique_id=1646548822]
+position = Vector2(5, 15.434998)
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("7_w2ii7")
+
 [node name="time" type="Label" parent="sliderholder" unique_id=174154018]
 z_index = 44
 anchors_preset = 8
@@ -213,3 +258,6 @@ color_initial_ramp = SubResource("Gradient_7810j")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=370932546]
 
 [node name="foxyjumpscare" parent="." unique_id=79037854 instance=ExtResource("4_vnqqn")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=527440806]
+libraries/ = SubResource("AnimationLibrary_mllj5")

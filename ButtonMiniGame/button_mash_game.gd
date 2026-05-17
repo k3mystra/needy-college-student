@@ -16,6 +16,7 @@ extends Node2D
 @onready var bloodParticle = $sliderholder/HSlider/blood
 @onready var particle = $CPUParticles2D
 @onready var animation = $WordHolder
+@onready var animationPlayer = $AnimationPlayer
 
 signal minigame_finished
 
@@ -57,6 +58,7 @@ func _ready() -> void:
 	prev_total_time = total_time
 	Global.buttonspam_L.connect(_buttonspamL)
 	Global.buttonspam_W.connect(_buttonspamW)
+	animationPlayer.play("heart")
 
 func _process(delta: float) -> void:
 	if allow_count:
@@ -105,6 +107,7 @@ func _process(delta: float) -> void:
 	
 	if total_time <= 0:
 		minigame_finished.emit()
+	_update_grabberPos()
 
 
 func _spawn_spam():
@@ -231,3 +234,19 @@ func _follow_word():
 func _showtime(seconds: float):
 	var time = $sliderholder/time
 	time.text = str(int(seconds))
+
+func _update_grabberPos():
+	var heart = $sliderholder/HSlider/heart
+	var slider_ratio = (slider.value - slider.min_value) / (slider.max_value - slider.min_value)
+	
+	var target_speed = remap(slider.value, 0, 150, 1, 5)
+	animationPlayer.speed_scale = target_speed
+	
+	# 2. Get the actual pixel width of the slider track
+	var track_width = slider.size.x
+	
+	# 3. Move your custom scene along the X axis to match
+	heart.position.x = slider.position.x + (track_width * slider_ratio) + 610
+	
+	# Keep the Y axis locked to the center line of your slider
+	heart.position.y = slider.position.y + (slider.size.y / 2)
