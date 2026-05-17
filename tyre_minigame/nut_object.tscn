@@ -3,12 +3,16 @@
 [ext_resource type="Script" uid="uid://c8dddp6ndvo6y" path="res://tyre_minigame/nut_object.gd" id="1_xk048"]
 [ext_resource type="Texture2D" uid="uid://blsh7etifg3q0" path="res://tyre_minigame/nail.png" id="2_odq3w"]
 [ext_resource type="Texture2D" uid="uid://cd5rny8pfj16t" path="res://ButtonMiniGame/placeholder/star.png" id="3_odq3w"]
+[ext_resource type="AudioStream" uid="uid://fpwg1mhkrv16" path="res://tyre_minigame/sounds/nut.ogg" id="4_osbgs"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xk048"]
 bounce = 0.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6bhow"]
 radius = 23.021729
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_osbgs"]
+radius = 28.0
 
 [node name="NutObject" type="RigidBody2D" unique_id=838063495]
 mass = 4.0
@@ -36,3 +40,14 @@ initial_velocity_max = 260.33
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 color = Color(10.90614, 10.90614, 9.520846, 1)
+
+[node name="turn" type="AudioStreamPlayer2D" parent="." unique_id=1807348132]
+stream = ExtResource("4_osbgs")
+
+[node name="impactcheck" type="Area2D" parent="." unique_id=1125799352]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="impactcheck" unique_id=1876434555]
+shape = SubResource("CircleShape2D_osbgs")
+
+[connection signal="body_entered" from="impactcheck" to="." method="_on_impactcheck_body_entered"]

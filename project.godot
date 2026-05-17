@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Kind"
-run/main_scene="uid://bi5npciyw0d8c"
+run/main_scene="uid://dcibv5xhvd87x"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -30,7 +30,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/_Godot-IDE_/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 

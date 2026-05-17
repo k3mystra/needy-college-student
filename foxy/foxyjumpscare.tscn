@@ -125,7 +125,5 @@ frame = 13
 frame_progress = 1.0
 speed_scale = 5.0
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1453591962]
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1835562133]
 stream = ExtResource("3_susc4")
