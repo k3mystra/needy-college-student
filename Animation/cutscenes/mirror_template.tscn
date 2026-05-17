@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dluoarky2ph0j"]
+
+[ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="1_kppor"]
+[ext_resource type="Texture2D" uid="uid://blqgbirlwhi" path="res://Animation/Mirror-Shadow.png" id="2_c3bpb"]
+[ext_resource type="Texture2D" uid="uid://byv7a15laywgd" path="res://Animation/Mirror.png" id="3_kjm7k"]
+[ext_resource type="Texture2D" uid="uid://df4r1fr043blx" path="res://Animation/Mirror-LIGHT.png" id="4_vbu21"]
+
+[node name="MirrorTemplate" type="CanvasLayer" unique_id=1183800141]
+
+[node name="HomeBg" type="Sprite2D" parent="." unique_id=820315277]
+texture = ExtResource("1_kppor")
+
+[node name="MirrorShadow" type="Sprite2D" parent="." unique_id=1075506358]
+texture = ExtResource("2_c3bpb")
+
+[node name="Mirror" type="Sprite2D" parent="." unique_id=864206392]
+texture = ExtResource("3_kjm7k")
+
+[node name="MirrorLight" type="Sprite2D" parent="." unique_id=731381662]
+texture = ExtResource("4_vbu21")
