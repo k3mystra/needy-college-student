@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b1t21vtbouaum"]
+
+[ext_resource type="AudioStream" uid="uid://mdydcixoeiq3" path="res://taiko-minigame/Assets/freesound_community-piano-bass-melody-loop-27124.mp3" id="1_wyjxl"]
+
+[node name="BGMusic" type="AudioStreamPlayer2D" unique_id=1415994776]
+stream = ExtResource("1_wyjxl")
+volume_db = 0.833
+parameters/looping = true

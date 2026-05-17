@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c4b5bx7p1erbe"]
+
+[ext_resource type="Texture2D" uid="uid://b3goxbbgfrgex" path="res://taiko-minigame/Assets/speech1.png" id="1_qqg2g"]
+[ext_resource type="Texture2D" uid="uid://84unlmdsa6nx" path="res://taiko-minigame/Assets/speech2.png" id="2_fa8sg"]
+[ext_resource type="Texture2D" uid="uid://c1s1n84x0toc2" path="res://taiko-minigame/Assets/speech3.png" id="3_3vqsk"]
+
+[node name="Node2D" type="Node2D" unique_id=701775321]
+
+[node name="Speech1" type="Sprite2D" parent="." unique_id=1514321476]
+position = Vector2(321, 512)
+texture = ExtResource("1_qqg2g")
+
+[node name="Speech2" type="Sprite2D" parent="." unique_id=859809165]
+position = Vector2(321, 512)
+texture = ExtResource("2_fa8sg")
+
+[node name="Speech3" type="Sprite2D" parent="." unique_id=57842353]
+position = Vector2(321, 512)
+texture = ExtResource("3_3vqsk")
