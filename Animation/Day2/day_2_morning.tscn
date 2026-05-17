@@ -1,0 +1,217 @@
+[gd_scene format=3 uid="uid://degran4t7ggy5"]
+
+[ext_resource type="Script" uid="uid://uvv0v2uui1g8" path="res://Animation/Day2/day_2_morning.gd" id="1_inqr6"]
+[ext_resource type="Texture2D" uid="uid://b37k6ol3qp1u1" path="res://Animation/Morning-Home.png" id="1_ke4la"]
+[ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="2_inqr6"]
+[ext_resource type="Texture2D" uid="uid://cmnek0rww60wb" path="res://Animation/door1.png" id="3_fblhi"]
+[ext_resource type="Texture2D" uid="uid://gfgwtj43n2hk" path="res://Animation/door2.png" id="4_uo5ql"]
+[ext_resource type="Texture2D" uid="uid://b5fto8vju1nig" path="res://Animation/door3.png" id="5_o3dk2"]
+[ext_resource type="Texture2D" uid="uid://c7ae1odyxk2x7" path="res://Animation/door4.png" id="6_jddaj"]
+[ext_resource type="Texture2D" uid="uid://brlulfw2p38n1" path="res://Animation/door5.png" id="7_ob12l"]
+[ext_resource type="Texture2D" uid="uid://blqgbirlwhi" path="res://Animation/Mirror-Shadow.png" id="8_h807c"]
+[ext_resource type="Texture2D" uid="uid://byv7a15laywgd" path="res://Animation/Mirror.png" id="9_s2y2w"]
+[ext_resource type="Texture2D" uid="uid://df4r1fr043blx" path="res://Animation/Mirror-LIGHT.png" id="10_eddl4"]
+[ext_resource type="Texture2D" uid="uid://b1svbsfwkerve" path="res://Animation/WIFE-KID.png" id="11_6tjgm"]
+[ext_resource type="Texture2D" uid="uid://cfhgsyi0l1bj8" path="res://Animation/ADULT.png" id="12_lq0x0"]
+
+[sub_resource type="Animation" id="Animation_inqr6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("House:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mirror:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorAnim:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DoorAnim:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HomeBg:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ke4la"]
+resource_name = "new_animation"
+length = 8.866667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("House:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 2.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mirror:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorAnim:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.733333, 6.5, 6.6000004, 6.7, 6.8, 6.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DoorAnim:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(6, 8.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HomeBg:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6.0333333, 8.733334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_inqr6"]
+_data = {
+&"RESET": SubResource("Animation_inqr6"),
+&"new_animation": SubResource("Animation_ke4la")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uv6kw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fblhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uo5ql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o3dk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jddaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ob12l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="day_2_morning" type="Node2D" unique_id=1635749010]
+script = ExtResource("1_inqr6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=292108107]
+libraries/ = SubResource("AnimationLibrary_inqr6")
+
+[node name="House" type="Sprite2D" parent="." unique_id=1490872904]
+texture = ExtResource("1_ke4la")
+
+[node name="HomeBg" type="Sprite2D" parent="." unique_id=1338690959]
+visible = false
+z_index = 5
+texture = ExtResource("2_inqr6")
+
+[node name="DoorAnim" type="AnimatedSprite2D" parent="." unique_id=2111356390]
+visible = false
+z_index = 5
+sprite_frames = SubResource("SpriteFrames_uv6kw")
+
+[node name="Mirror" type="Node2D" parent="." unique_id=155605607]
+visible = false
+z_index = 1
+
+[node name="HomeBg" type="Sprite2D" parent="Mirror" unique_id=737363187]
+texture = ExtResource("2_inqr6")
+
+[node name="MirrorShadow" type="Sprite2D" parent="Mirror" unique_id=337768912]
+z_index = 1
+texture = ExtResource("8_h807c")
+
+[node name="Mirror" type="Sprite2D" parent="Mirror" unique_id=422445907]
+z_index = 3
+texture = ExtResource("9_s2y2w")
+
+[node name="MirrorLight" type="Sprite2D" parent="Mirror" unique_id=1940116643]
+z_index = 1
+texture = ExtResource("10_eddl4")
+
+[node name="WifeKid" type="Sprite2D" parent="Mirror" unique_id=2040385589]
+z_index = 2
+texture = ExtResource("11_6tjgm")
+
+[node name="Adult" type="Sprite2D" parent="Mirror" unique_id=334965399]
+z_index = 1
+texture = ExtResource("12_lq0x0")
