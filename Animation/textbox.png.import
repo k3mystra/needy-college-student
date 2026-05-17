@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhb630hah36y0"
-path="res://.godot/imported/untitled.png-d95a7169a20b2528f1bf47a49b81c4a9.ctex"
+uid="uid://txsxmbfy0vp2"
+path="res://.godot/imported/textbox.png-8721829bea2eea86c8b2c584817687ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ButtonMiniGame/assets/untitled.png"
-dest_files=["res://.godot/imported/untitled.png-d95a7169a20b2528f1bf47a49b81c4a9.ctex"]
+source_file="res://Animation/textbox.png"
+dest_files=["res://.godot/imported/textbox.png-8721829bea2eea86c8b2c584817687ea.ctex"]
 
 [params]
 
