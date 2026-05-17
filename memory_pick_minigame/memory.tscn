@@ -9,13 +9,13 @@
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_krw84"]
 
 [node name="Memory" type="CharacterBody2D" unique_id=125748727]
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_uye3s")
 shake_max_offset = 10.0
 shake_movement_amount = 20
 shake_duration = 0.3
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1137044363]
-scale = Vector2(6, 4)
 texture = ExtResource("1_m5p8x")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1098724773]

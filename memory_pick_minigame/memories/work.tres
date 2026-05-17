@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MemoryData" format=3 uid="uid://shemyn8uh5nk"]
+
+[ext_resource type="Script" uid="uid://dyoe3d5thysfy" path="res://memory_pick_minigame/memory_data.gd" id="1_nqce7"]
+[ext_resource type="Texture2D" uid="uid://xhbrohpx2voo" path="res://memory_pick_minigame/memories/work.png" id="2_nqce7"]
+
+[resource]
+script = ExtResource("1_nqce7")
+sprite = ExtResource("2_nqce7")
+is_wanted = true
+metadata/_custom_type_script = "uid://dyoe3d5thysfy"
