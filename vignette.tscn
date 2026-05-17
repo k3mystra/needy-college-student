@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://4ms1vv5lkjee"]
+
+[sub_resource type="Gradient" id="Gradient_1n01s"]
+offsets = PackedFloat32Array(0, 0.26687115, 0.5674847, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0.012617188, 0.012617188, 0.012617188, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g321x"]
+gradient = SubResource("Gradient_1n01s")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 4
+
+[node name="vignette" type="TextureRect" unique_id=764106120]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 5
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_g321x")
