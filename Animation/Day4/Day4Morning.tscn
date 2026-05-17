@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://cpx70bjxfjwe8"]
+
+[ext_resource type="Script" uid="uid://tfcrpa77m6g" path="res://Animation/Day4/day_4_morning.gd" id="1_d0l4l"]
+[ext_resource type="Texture2D" uid="uid://dhgbiefswbjhl" path="res://Animation/wife1.png" id="2_k7te8"]
+[ext_resource type="Texture2D" uid="uid://crssa1t15btct" path="res://Animation/wife2.png" id="3_t5l7g"]
+[ext_resource type="Texture2D" uid="uid://c6fnjom1i28us" path="res://Animation/wife3.png" id="4_ex7mu"]
+[ext_resource type="Texture2D" uid="uid://c3lkmwivqepxh" path="res://Animation/guy1.png" id="5_ex7mu"]
+[ext_resource type="Texture2D" uid="uid://cud3lp143ur5g" path="res://Animation/guy2.png" id="6_twg2c"]
+[ext_resource type="Texture2D" uid="uid://b37k6ol3qp1u1" path="res://Animation/Morning-Home.png" id="7_twg2c"]
+
+[sub_resource type="Animation" id="Animation_o5v8m"]
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wife:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.6333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Husband:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.6666666),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wife:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Morning:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_twg2c"]
+resource_name = "new_animation"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wife:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.0333333, 5.0333333, 8.033333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Husband:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.0333333, 14.033333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wife:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.0333333, 11.033333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Morning:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5v8m"]
+_data = {
+&"RESET": SubResource("Animation_o5v8m"),
+&"new_animation": SubResource("Animation_twg2c")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr23c"]
+atlas = ExtResource("2_k7te8")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssslu"]
+atlas = ExtResource("3_t5l7g")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajrqk"]
+atlas = ExtResource("4_ex7mu")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jj0bi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr23c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssslu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajrqk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 90.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj0bi"]
+atlas = ExtResource("5_ex7mu")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjror"]
+atlas = ExtResource("6_twg2c")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qwtu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj0bi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjror")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Day4Morning" type="Node2D" unique_id=924066834]
+position = Vector2(960, 540)
+script = ExtResource("1_d0l4l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1060206103]
+libraries/ = SubResource("AnimationLibrary_o5v8m")
+
+[node name="Wife" type="AnimatedSprite2D" parent="." unique_id=2084426700]
+sprite_frames = SubResource("SpriteFrames_jj0bi")
+
+[node name="Husband" type="AnimatedSprite2D" parent="." unique_id=1572610091]
+sprite_frames = SubResource("SpriteFrames_0qwtu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=998568630]
+
+[node name="Morning" type="Sprite2D" parent="." unique_id=509913376]
+visible = false
+texture = ExtResource("7_twg2c")

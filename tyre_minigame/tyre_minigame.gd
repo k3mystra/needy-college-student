@@ -40,7 +40,7 @@ func _on_world_side_border_body_entered(body: Node2D) -> void:
 		PhysicsServer2D.body_set_state(body.get_rid(), PhysicsServer2D.BODY_STATE_TRANSFORM, target_transform)
 		
 		# 3. Tell the Physics Server directly to assign its new moving velocity (-500 or your choice)
-		PhysicsServer2D.body_set_state(body.get_rid(), PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY, Vector2(-500, 0))
+		PhysicsServer2D.body_set_state(body.get_rid(), PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY, Vector2(-1500, 0))
 		
 		body.show()	
 		body.WheelPng.frame = 1
