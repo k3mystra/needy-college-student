@@ -4,7 +4,7 @@ extends Node2D
 signal minigame_finished 
 
 func _ready() -> void:
-	animation.play("new_animation")
+	animation.play("day_5_night")
 	await animation.animation_finished
 	minigame_finished.emit()
 	

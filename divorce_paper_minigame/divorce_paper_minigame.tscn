@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwa3absbjiwbe" path="res://divorce_paper_minigame/divorce_paper_minigame.gd" id="1_8xd02"]
 [ext_resource type="PackedScene" uid="uid://cxaccl8vxu3ky" path="res://divorce_paper_minigame/document.tscn" id="2_1n01s"]
+[ext_resource type="PackedScene" uid="uid://4ms1vv5lkjee" path="res://vignette.tscn" id="3_g321x"]
 
 [node name="DivorcePaperMinigame" type="Node2D" unique_id=245305844]
 script = ExtResource("1_8xd02")
@@ -19,5 +20,7 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Finish"
+
+[node name="vignette" parent="UI" unique_id=764106120 instance=ExtResource("3_g321x")]
 
 [connection signal="pressed" from="UI/VBoxContainer/FinishBtn" to="." method="_on_finish_btn_pressed"]

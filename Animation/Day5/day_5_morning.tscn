@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cqrtiaxy2t3ut"]
 
+[ext_resource type="Script" uid="uid://c05s5in1mxpl0" path="res://Animation/Day5/day_5_morning.gd" id="1_q71mo"]
 [ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="1_tvsax"]
 [ext_resource type="Texture2D" uid="uid://blqgbirlwhi" path="res://Animation/Mirror-Shadow.png" id="2_4viv5"]
 [ext_resource type="Texture2D" uid="uid://byv7a15laywgd" path="res://Animation/Mirror.png" id="3_t6lmy"]
@@ -69,6 +70,7 @@ _data = {
 }
 
 [node name="Day5Morning" type="Node2D" unique_id=1026891684]
+script = ExtResource("1_q71mo")
 
 [node name="MirrorRoom" type="Node2D" parent="." unique_id=848904289]
 
@@ -94,3 +96,5 @@ texture = ExtResource("5_2r8s5")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1537528443]
 root_node = NodePath("../MirrorRoom")
 libraries/ = SubResource("AnimationLibrary_21nal")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1106965516]

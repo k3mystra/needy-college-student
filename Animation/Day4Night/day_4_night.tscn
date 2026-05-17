@@ -89,3 +89,6 @@ texture = ExtResource("7_htrsn")
 z_index = 2
 position = Vector2(12, -16)
 texture = ExtResource("8_4x1nf")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=931386346]
+position = Vector2(959, 538)

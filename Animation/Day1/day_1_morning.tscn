@@ -216,3 +216,5 @@ texture = ExtResource("11_oj7bt")
 [node name="Adult" type="Sprite2D" parent="Mirror" unique_id=1180091738]
 z_index = 1
 texture = ExtResource("12_27wf0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2124158517]
