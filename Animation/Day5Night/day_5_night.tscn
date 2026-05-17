@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://b6xjysu6y5vft"]
+
+[ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="1_e4ooa"]
+[ext_resource type="Texture2D" uid="uid://blqgbirlwhi" path="res://Animation/Mirror-Shadow.png" id="2_hh231"]
+[ext_resource type="SpriteFrames" uid="uid://jh6nf1y46ph2" path="res://Animation/Day5Night/crying_sf.tres" id="3_ij08t"]
+[ext_resource type="Texture2D" uid="uid://byv7a15laywgd" path="res://Animation/Mirror.png" id="4_kser0"]
+[ext_resource type="Texture2D" uid="uid://df4r1fr043blx" path="res://Animation/Mirror-LIGHT.png" id="5_o4ylh"]
+[ext_resource type="Texture2D" uid="uid://b37k6ol3qp1u1" path="res://Animation/Morning-Home.png" id="6_l8f35"]
+[ext_resource type="Texture2D" uid="uid://bvh8dbcmqib6e" path="res://Animation/NIGHT-OVERLAY.png" id="6_wtepc"]
+
+[sub_resource type="Animation" id="Animation_21nal"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../House:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crine:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2r8s5"]
+resource_name = "day_5_morning"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../House:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4cuqs"]
+resource_name = "day_5_morning"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../House:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crine:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8.0125475, 8.5, 9, 9.5, 10, 10.500001, 11, 11.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21nal"]
+_data = {
+&"RESET": SubResource("Animation_21nal"),
+&"day_5_morning": SubResource("Animation_2r8s5"),
+&"day_5_night": SubResource("Animation_4cuqs")
+}
+
+[node name="Day5Morning" type="Node2D" unique_id=1026891684]
+
+[node name="MirrorRoom" type="Node2D" parent="." unique_id=848904289]
+
+[node name="HomeBg" type="Sprite2D" parent="MirrorRoom" unique_id=820315277]
+texture = ExtResource("1_e4ooa")
+
+[node name="MirrorShadow" type="Sprite2D" parent="MirrorRoom" unique_id=1075506358]
+texture = ExtResource("2_hh231")
+
+[node name="Crine" type="AnimatedSprite2D" parent="MirrorRoom" unique_id=2069724108]
+sprite_frames = ExtResource("3_ij08t")
+
+[node name="Mirror" type="Sprite2D" parent="MirrorRoom" unique_id=864206392]
+texture = ExtResource("4_kser0")
+
+[node name="MirrorLight" type="Sprite2D" parent="MirrorRoom" unique_id=731381662]
+texture = ExtResource("5_o4ylh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MirrorRoom" unique_id=1537528443]
+libraries/ = SubResource("AnimationLibrary_21nal")
+
+[node name="NightOverlay" type="Sprite2D" parent="MirrorRoom" unique_id=694086945]
+texture = ExtResource("6_wtepc")
+
+[node name="House" type="Sprite2D" parent="." unique_id=1045335488]
+texture = ExtResource("6_l8f35")
