@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0qows1qe2clm"]
 
-[ext_resource type="Script" uid="uid://df6rgvmguq01d" path="res://Animation/Day4Night/day_2_night_diagnosis.gd" id="1_i1xwy"]
+[ext_resource type="Script" path="res://Animation/Day4Night/day_2_night_diagnosis.gd" id="1_i1xwy"]
 [ext_resource type="Texture2D" uid="uid://dfkihjyw0ge7b" path="res://Animation/hospital-bg.png" id="2_24dw0"]
 [ext_resource type="Texture2D" uid="uid://6n6u87ucwqts" path="res://Animation/diagnosis.png" id="3_45e0f"]
 [ext_resource type="Texture2D" uid="uid://bfdq4rd7sqpqb" path="res://Animation/Home-BG.png" id="4_cie7y"]
@@ -158,7 +158,7 @@ tracks/2/path = NodePath("Mirror/Adult:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(7.05, 7.1000004),
+"times": PackedFloat32Array(0, 7.1000004),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -170,7 +170,7 @@ tracks/3/path = NodePath("Mirror/AdultSick:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(7.05, 7.1000004),
+"times": PackedFloat32Array(0, 7.1000004),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -182,7 +182,7 @@ tracks/4/path = NodePath("Hospital:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(9, 9.5),
+"times": PackedFloat32Array(1, 9.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -206,7 +206,7 @@ tracks/6/path = NodePath("Hospital:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(9.5, 10),
+"times": PackedFloat32Array(9.5, 10.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.011764706, 0.011764706, 0.011764706, 1), Color(1, 1, 1, 1)]
@@ -218,10 +218,10 @@ tracks/7/path = NodePath("Mirror:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(9.333334, 9.5),
+"times": PackedFloat32Array(9.333334, 10.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.011764706, 0.011764706, 0.011764706, 1)]
+"values": [Color(1, 1, 1, 1), Color(0.011764706, 0.011764706, 0.011764706, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -263,7 +263,7 @@ texture = ExtResource("3_45e0f")
 
 [node name="Mirror" type="Node2D" parent="." unique_id=1746065704]
 modulate = Color(0.011764706, 0.011764706, 0.011764706, 1)
-z_index = 1
+z_index = 80
 position = Vector2(960, 540)
 
 [node name="HomeBg" type="Sprite2D" parent="Mirror" unique_id=434331766]
@@ -298,7 +298,7 @@ z_index = 1
 texture = ExtResource("10_w57e0")
 
 [node name="NightHome" type="Sprite2D" parent="." unique_id=895208529]
-z_index = 4
+z_index = 100
 position = Vector2(960, 540)
 texture = ExtResource("11_bb5bb")
 
