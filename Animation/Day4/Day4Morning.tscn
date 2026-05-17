@@ -298,6 +298,7 @@ animations = [{
 
 [node name="Day4Morning" type="Node2D" unique_id=924066834]
 modulate = Color(18.892, 18.892, 18.892, 1)
+position = Vector2(960, 536)
 script = ExtResource("1_d0l4l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1060206103]
