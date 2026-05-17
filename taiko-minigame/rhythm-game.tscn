@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://diwxf7evl0hao" path="res://taiko-minigame/Scripts/taiko-game.gd" id="1_kg4dr"]
 [ext_resource type="FontFile" uid="uid://o80jy2pi1uah" path="res://taiko-minigame/Assets/digitalix.ttf" id="2_eoo82"]
+[ext_resource type="FontFile" uid="uid://biomfxmmaxye8" path="res://taiko-minigame/Assets/VCR_OSD_MONO_1.001.ttf" id="2_jetsq"]
 [ext_resource type="PackedScene" uid="uid://bxvxpfrd1qh61" path="res://taiko-minigame/Scenes/light_hit.tscn" id="3_ynb65"]
 [ext_resource type="PackedScene" uid="uid://dfcrmv2bf74wc" path="res://taiko-minigame/Scenes/heavy_hit.tscn" id="4_kg4dr"]
 [ext_resource type="PackedScene" uid="uid://clh5ciqajkra7" path="res://taiko-minigame/Scenes/miss_sound.tscn" id="5_o5xju"]
@@ -63,6 +64,7 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_jetsq")
 
 [node name="LunchClock" type="Label" parent="." unique_id=312137527]
 offset_right = 40.0
@@ -82,11 +84,12 @@ theme_override_fonts/font = ExtResource("2_eoo82")
 [node name="LightHit" parent="." unique_id=1509070345 instance=ExtResource("3_ynb65")]
 
 [node name="HeavyHit" parent="." unique_id=730798112 instance=ExtResource("4_kg4dr")]
+volume_db = 3.5
 
 [node name="MissSound" parent="." unique_id=872589822 instance=ExtResource("5_o5xju")]
 
 [node name="BGMusic" parent="." unique_id=1415994776 instance=ExtResource("6_uhg6v")]
-volume_db = 2.578
+volume_db = -4.367
 
 [node name="KEY_F" parent="." unique_id=1293502066 instance=ExtResource("7_pq22m")]
 
