@@ -467,11 +467,11 @@ func _handle_speech() -> void:
 		speech_label.text = speech_words
 		speech_panel.show()
 		speech_visible = true
-		speech_timer   = 10.0
+		speech_timer   = 7.0
 	elif speech_timer <= 0.0 and speech_visible:
 		speech_panel.hide()
 		speech_visible = false
-		speech_timer   = 10.0
+		speech_timer   = 7.0
 
 func _show_feedback(text: String, color: Color) -> void:
 	feedback_label.text = text
